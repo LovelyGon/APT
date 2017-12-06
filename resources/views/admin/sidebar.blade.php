@@ -33,7 +33,7 @@
         </li>
          <li class="treeview">
           <a href="basicinfo">
-            <i class="fa fa-dashboard"></i> <span>Policies</span>          
+            <i class="fa fa-dashboard"></i> <span>Commission and Policies</span>          
           </a>        
         </li>
          <li class="treeview">
