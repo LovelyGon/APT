@@ -9,9 +9,39 @@
         <li class="treeview">
           <a href="basicinfo">
             <i class="fa fa-dashboard"></i> <span>Basic Information</span>          
-          </a>
-         
+          </a>        
         </li>
+         <li class="treeview">
+          <a href="basicinfo">
+            <i class="fa fa-dashboard"></i> <span>Features</span>          
+          </a>        
+        </li>
+         <li class="treeview">
+          <a href="basicinfo">
+            <i class="fa fa-dashboard"></i> <span>Apartments</span>          
+          </a>        
+        </li>
+         <li class="treeview">
+          <a href="basicinfo">
+            <i class="fa fa-dashboard"></i> <span>Apartment Facilities</span>          
+          </a>        
+        </li>
+         <li class="treeview">
+          <a href="basicinfo">
+            <i class="fa fa-dashboard"></i> <span>Galleries</span>          
+          </a>        
+        </li>
+         <li class="treeview">
+          <a href="basicinfo">
+            <i class="fa fa-dashboard"></i> <span>Policies</span>          
+          </a>        
+        </li>
+         <li class="treeview">
+          <a href="basicinfo">
+            <i class="fa fa-dashboard"></i> <span>Contract</span>          
+          </a>        
+        </li>
+
 
       </ul>
     </section>
