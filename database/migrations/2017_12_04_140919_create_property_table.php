@@ -19,7 +19,7 @@ class CreatePropertyTable extends Migration
             $table->String('property_name');
             $table->String('property_type');
             $table->String('star_rating');
-            $table->String('property_number');
+            $table->Integer('property_number');
             $table->String('website');
             $table->String('contact_name');
             $table->String('address');
@@ -28,6 +28,7 @@ class CreatePropertyTable extends Migration
             $table->String('city');
             $table->String('zipcode');
             $table->String('phonenumber');
+            $table->Integer('property_size');
         });
     }
 
