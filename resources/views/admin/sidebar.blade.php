@@ -8,7 +8,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="basicinfo">
-            <i class="fa fa-dashboard"></i> <span>Basic Information</span>          
+            <i class="fa fa-dashboard"></i> <span>General Information</span>          
           </a>        
         </li>
          <li class="treeview">
