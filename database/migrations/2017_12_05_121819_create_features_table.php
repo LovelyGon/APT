@@ -20,11 +20,11 @@ class CreateFeaturesTable extends Migration
             $table->time('arival_to');
             $table->time('departure_from');
             $table->time('departure_to');
-            $table->boolean('internet');
-            $table->boolean('parking');
-            $table->boolean('breakfast');
-            $table->boolean('children');
-            $table->boolean('pet');
+            $table->String('internet');
+            $table->String('parking');
+            $table->String('breakfast');
+            $table->String('children');
+            $table->String('pet');
             $table->String('language');
             $table->Text('popular_facility');
             $table->integer('property_id')->unsigned()->nullable();
