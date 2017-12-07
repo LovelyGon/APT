@@ -12,32 +12,32 @@
           </a>        
         </li>
          <li class="treeview">
-          <a href="basicinfo">
+          <a href="features">
             <i class="fa fa-dashboard"></i> <span>Features</span>          
           </a>        
         </li>
          <li class="treeview">
-          <a href="basicinfo">
+          <a href="apartments">
             <i class="fa fa-dashboard"></i> <span>Apartments</span>          
           </a>        
         </li>
          <li class="treeview">
-          <a href="basicinfo">
+          <a href="facilities">
             <i class="fa fa-dashboard"></i> <span>Apartment Facilities</span>          
           </a>        
         </li>
          <li class="treeview">
-          <a href="basicinfo">
+          <a href="galleries">
             <i class="fa fa-dashboard"></i> <span>Galleries</span>          
           </a>        
         </li>
          <li class="treeview">
-          <a href="basicinfo">
+          <a href="policies">
             <i class="fa fa-dashboard"></i> <span>Commission and Policies</span>          
           </a>        
         </li>
          <li class="treeview">
-          <a href="basicinfo">
+          <a href="contract">
             <i class="fa fa-dashboard"></i> <span>Contract</span>          
           </a>        
         </li>
