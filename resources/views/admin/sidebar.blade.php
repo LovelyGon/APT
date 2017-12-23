@@ -28,7 +28,7 @@
         </li>
          <li class="treeview">
           <a href="galleries">
-            <i class="fa fa-dashboard"></i> <span>Galleries</span>          
+            <i class="fa fa-dashboard"></i> <span>Apartment Galleries</span>          
           </a>        
         </li>
          <li class="treeview">

@@ -68,7 +68,9 @@
 							<h4>
 								<i class="icon fa fa-info"></i> Apartment
 							</h4>
-							Info alert preview. This alert is dismissable.
+							Info alert preview. This alert is dismissable.Info alert preview. This alert is dismissable.
+							Info alert preview. This alert is dismissable.Info alert preview. This alert is dismissable.
+							
 						</div>
 
 
@@ -212,27 +214,370 @@
 		<div class="box box-default">
 			<div class="box-header with-border">
 				<h3 class="box-title">
-					<b>Photo Galaries of your apartment</b>
+					<b>Photo Galaries of your property</b>
 				</h3>
-				<br> <span style="color: green">Tram nghe khong bang mat thay, vi
-					vay hay su dung hinh anh de cho khach hang biet ve can ho cua ban
-					dep toi muc nao, hien dai ra sao va dac biet la nhung hinh anh cua
-					nhung hoat dong, nhung su kien lien quan den khach hang da dien ra
-					tai can ho cua ban</span>
+				<div class="row ">
+					<div class="col-md-10">
+						<span style="color: green">Tram nghe khong bang mat thay, vi vay
+							hay su dung hinh anh de cho khach hang biet ve can ho cua ban dep
+							toi muc nao, hien dai ra sao va dac biet la nhung hinh anh cua
+							nhung hoat dong, nhung su kien lien quan den khach hang da dien
+							ra tai can ho cua ban</span>
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-block btn-primary"
+							style="float: right; width: 100px">
+							<i class="fa fa-image"></i> Add photo
+						</button>
+					</div>
+				</div>
+
 
 
 			</div>
 
 			<div class="box-body">
-				<div class="timeline-item">                
-				<button type="button" class="btn btn-block btn-primary fa-image" style="float:right;width:100px">Add photo</button>
-                <div class="timeline-body">
-                  <img src="http://placehold.it/150x100" alt="..." class="margin">
-                  <img src="http://placehold.it/150x100" alt="..." class="margin">
-                  <img src="http://placehold.it/150x100" alt="..." class="margin">
-                  <img src="http://placehold.it/150x100" alt="..." class="margin">
-                </div>
-              </div>
+				<div class="timeline-item">
+
+					<!-- 					<div class="timeline-body"> -->
+					<div class="row ">
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="box box-solid">
+
+								<img width="100%" height="100%"
+									src="http://placehold.it/150x100" alt="..."> <img>
+
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a href=""> <i class="fa fa-trash-o"></i>Delete
+									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+									</a>
+								</div>
+								<!-- /.box-footer-->
+							</div>
+						</div>
+					</div>
+
+					<!-- /.box -->
+
+
+					<!-- 					</div> -->
+				</div>
 			</div>
 		</div>
 
@@ -243,7 +588,8 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<button type="button" class="btn btn-block btn-primary btn-lg">Save and continue</button>
+		<button type="button" class="btn btn-block btn-primary btn-lg">Save
+			and continue</button>
 	</div>
 
 </div>
