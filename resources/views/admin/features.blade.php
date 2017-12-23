@@ -237,18 +237,107 @@
                 <h3 class="box-title">Popular facilities</h3>                    
             </div>  
             
-             <div class="box-body">
-
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="form-group">
-                           
-                        </div>
-                    </div>
-
-                </div>
-
+           <div class="row">
+           		<div class="col-md-6">
+           		
+           			  <!-- /.box-header -->
+            <div class="box-body">
+              <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+              <ul class="todo-list">
+                <li>
+               
+                  <!-- checkbox -->
+                  <input type="checkbox" value="">
+                  <!-- todo text -->
+                  <span class="text">Design a nice theme</span>
+                  <!-- Emphasis label -->
+                 
+                </li>
+                <li>
+                     
+                  <input type="checkbox" value="">
+                  <span class="text">Make the theme responsive</span>
+                  
+                </li>
+                <li>
+                     
+                  <input type="checkbox" value="">
+                  <span class="text">Let theme shine like a star</span>
+                  
+                </li>
+                <li>
+                   
+                  <input type="checkbox" value="">
+                  <span class="text">Let theme shine like a star</span>
+                  
+                </li>
+                <li>
+                    
+                  <input type="checkbox" value="">
+                  <span class="text">Check your messages and notifications</span>
+                  
+                </li>
+                <li>
+                     
+                  <input type="checkbox" value="">
+                  <span class="text">Let theme shine like a star</span>
+                 
+                </li>
+              </ul>
             </div>
+           			
+           		</div>
+           		<div class="col-md-6">
+           			  <!-- /.box-header -->
+            <div class="box-body">
+              <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+              <ul class="todo-list">
+                <li>
+                 
+                  <!-- checkbox -->
+                  <input type="checkbox" value="">
+                  <!-- todo text -->
+                  <span class="text">Design a nice theme</span>
+                 
+                </li>
+                <li>
+                     
+                  <input type="checkbox" value="">
+                  <span class="text">Make the theme responsive</span>
+                  
+                </li>
+                <li>
+                     
+                  <input type="checkbox" value="">
+                  <span class="text">Let theme shine like a star</span>
+                
+                </li>
+                <li>
+                 
+                  <input type="checkbox" value="">
+                  <span class="text">Let theme shine like a star</span>
+                 
+                </li>
+                <li>
+                     
+                  <input type="checkbox" value="">
+                  <span class="text">Check your messages and notifications</span>
+                
+                </li>
+                <li>
+                     
+                  <input type="checkbox" value="">
+                  <span class="text">Let theme shine like a star</span>
+                
+                </li>
+              </ul>
+            </div>
+           		</div>
+           </div>
+          
+          
+           
+        
             
         </div>  
     </div>  

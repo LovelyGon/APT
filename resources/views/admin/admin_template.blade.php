@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="../plugins/iCheck/all.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../fonts/ionicons.min.css">
   <!-- Theme style -->
