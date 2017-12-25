@@ -15,18 +15,18 @@
 							<label>Do you have wifi available for your Guest?</label>
 							<div class="radio">
 								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios1" value="option1" checked> Yes, it's free
+									id="optionsRadios1" value="wififree" checked> Yes, it's free
 									wifi
 								</label>
 							</div>
 							<div class="radio">
 								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios2" value="option2"> Yes, but it's not free
+									id="optionsRadios2" value="wifinotfree"> Yes, but it's not free
 								</label>
 							</div>
 							<div class="radio">
 								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios2" value="option2"> No
+									id="optionsRadios2" value="No"> No
 								</label>
 							</div>
 						</div>
@@ -282,7 +282,7 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<button type="button" class="btn btn-block btn-primary btn-lg">Save and continue</button>
+		<a href="apartments" class="btn btn-block btn-primary btn-lg">Save and continue</a>
 	</div>
 
 </div>
