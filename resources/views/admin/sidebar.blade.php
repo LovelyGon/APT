@@ -7,37 +7,37 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
-          <a href="admin/basicinfo">
+          <a href="basicinfo">
             <i class="fa fa-dashboard"></i> <span>General Information</span>          
           </a>        
         </li>
          <li class="treeview">
-          <a href="admin/features">
+          <a href="features">
             <i class="fa fa-dashboard"></i> <span>Features</span>          
           </a>        
         </li>
          <li class="treeview">
-          <a href="admin/apartments">
+          <a href="apartments">
             <i class="fa fa-dashboard"></i> <span>Apartments</span>          
           </a>        
         </li>
          <li class="treeview">
-          <a href="admin/facilities">
+          <a href="facilities">
             <i class="fa fa-dashboard"></i> <span>Apartment Facilities</span>          
           </a>        
         </li>
          <li class="treeview">
-          <a href="admin/galleries">
+          <a href="galleries">
             <i class="fa fa-dashboard"></i> <span>Apartment Galleries</span>          
           </a>        
         </li>
          <li class="treeview">
-          <a href="admin/policies">
+          <a href="policies">
             <i class="fa fa-dashboard"></i> <span>Commission and Policies</span>          
           </a>        
         </li>
          <li class="treeview">
-          <a href="admin/contract">
+          <a href="contract">
             <i class="fa fa-dashboard"></i> <span>Contract</span>          
           </a>        
         </li>
