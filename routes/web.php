@@ -12,14 +12,14 @@
  */
 
 
+Route::get('/', function () {
+    return view('welcome');
+});
+    
 Route::group(array('prefix' => 'admin'), function () {
-    
+   
     Route::get('/', function () {
-        return view('welcome');
-    });
-    
-    Route::get('home', function () {
-        return view('admin.home');
+        return view('admin.basic_info');
     });
     
     Route::get('basicinfo', function () {
