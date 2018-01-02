@@ -3,12 +3,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
-		General information <small>Here you can input basic information of your apartment</small>
+		@lang('property.general_info') <small>Here you can input basic information of your apartment</small>
 	</h1>
 	
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a class="active">General information</a></li>
+		<li><a class="active">@lang('property.general_info')</a></li>
 	</ol>
 </section>
 <section class="content">
@@ -17,7 +17,7 @@
 	<div class="col-md-6">
 		<div class="box box-default">
 			<div class="box-header with-border">
-				<h3 class="box-title">General</h3>
+				<h3 class="box-title">@lang('homepage.general')</h3>
 
 				<div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool"
