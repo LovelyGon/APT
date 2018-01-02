@@ -3,7 +3,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
-		Add apartment <small>You did a great job</small>
+		Apartment details <small>You did a great job</small>
 	</h1>
 	
 	<ol class="breadcrumb">
