@@ -1,5 +1,21 @@
 @extends('admin.admin_template') @section('content')
 
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		Add apartment <small>You did a great job</small>
+	</h1>
+	
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="apartments" class="active">apartments</a></li>
+		
+	</ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
 <div class="box box-solid">
 	<div class="box-header with-border">
 		<h3 class="box-title">Apartments</h3>
@@ -72,10 +88,22 @@
 						<h3 class="widget-user-username">Two-bedrom Aparment</h3>
 						<h5 class="badge bg-green">$600/month - Number of this type: 5</h5>
 						
+						<div class="form-group">
+										<label>Kind of beds</label> <select id="apartmentType"
+											class="form-control select2">
+											<option style="" selected="selected">N/A</option>
+											<option style="" selected="selected">1 ✯</option>
+											<option class="fa-star">2 ✯ ✯</option>
+											<option class="fa-star">3 ✯ ✯ ✯</option>
+											<option class="fa-star">4 ✯ ✯ ✯ ✯</option>
+											<option class="fa-star">5 ✯ ✯ ✯ ✯ ✯</option>
+										</select>
+									</div>
+						
 					</div>
 					<div class="box-footer no-padding">
 						<ul class="nav nav-stacked">
-							
+							 
 							<li><a href="#">Living room <span
 									class="pull-right badge bg-aqua">1</span></a></li>
 							<li><a href="#">Bed room <span class="pull-right badge bg-green">2</span></a></li>
@@ -154,5 +182,6 @@
 	<!-- /.box-body -->
 </div>
 <!-- /.box -->
+</section>
 
 @endsection

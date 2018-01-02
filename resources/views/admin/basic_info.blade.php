@@ -1,4 +1,18 @@
 @extends('admin.admin_template') @section('content')
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		General information <small>Here you can input basic information of your apartment</small>
+	</h1>
+	
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a class="active">General information</a></li>
+	</ol>
+</section>
+<section class="content">
+
 <div class="row">
 	<div class="col-md-6">
 		<div class="box box-default">
@@ -401,6 +415,6 @@
 
 </div>
 
-
+</section>
 <!-- /.box box box-default-->
 @endsection

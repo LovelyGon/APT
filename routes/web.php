@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::group(array('prefix' => 'admin'), function () {
    
     Route::get('/', function () {
-        return view('admin.basic_info');
+        return view('admin.login');
     });
     
     Route::get('basicinfo', function () {
