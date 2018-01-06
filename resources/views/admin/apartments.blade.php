@@ -88,17 +88,7 @@
 						<h3 class="widget-user-username">Two-bedrom Aparment</h3>
 						<h5 class="badge bg-green">$600/month - Number of this type: 5</h5>
 						
-						<div class="form-group">
-										<label>Kind of beds</label> <select id="apartmentType"
-											class="form-control select2">
-											<option style="" selected="selected">N/A</option>
-											<option style="" selected="selected">1 ✯</option>
-											<option class="fa-star">2 ✯ ✯</option>
-											<option class="fa-star">3 ✯ ✯ ✯</option>
-											<option class="fa-star">4 ✯ ✯ ✯ ✯</option>
-											<option class="fa-star">5 ✯ ✯ ✯ ✯ ✯</option>
-										</select>
-									</div>
+					
 						
 					</div>
 					<div class="box-footer no-padding">
