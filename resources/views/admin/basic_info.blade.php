@@ -1,3 +1,7 @@
+<?php
+    use App\Enumeration\PropertyType;
+?>
+
 @extends('admin.admin_template') @section('content')
 
 <!-- Content Header (Page header) -->
@@ -12,6 +16,10 @@
 	</ol>
 </section>
 <section class="content">
+
+{!! Form::open(['url' => 'foo/bar']) !!}
+  
+
 
 <div class="row">
 	<div class="col-md-6">
@@ -44,11 +52,11 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label>Property type</label> <select class="form-control select2">
-								<option selected="selected">Apartment</option>
-								<option>Monthly Rental Hotel</option>
-								<option>Shared house</option>
-							</select>
+							 <?php														
+							 $translatedItems = PropertyType::toArray();
+							 echo Form::label('propertyType', __('property.propertyType'));
+							 echo Form::select('size', $translatedItems, null, ['class' => 'form-control select2']); 
+							 ?>							
 						</div>
 					</div>
 
@@ -414,7 +422,7 @@
 	</div>
 
 </div>
-
+{!! Form::close() !!}
 </section>
 <!-- /.box box box-default-->
 @endsection

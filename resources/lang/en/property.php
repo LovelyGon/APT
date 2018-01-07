@@ -15,5 +15,10 @@ return [
 
     'general_info' => 'General information',
     'next' => 'Next &raquo;',
-
+    'propertyType'=> 'Property type',
+    'property_type' => [
+       'apt' => 'Apartment',
+       'mhr' => 'Montly hotel room',
+       'ssh' => 'Shared house'
+    ]
 ];
