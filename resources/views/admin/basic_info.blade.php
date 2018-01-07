@@ -1,5 +1,6 @@
 <?php
     use App\Enumeration\PropertyType;
+use DeepCopy\f003\Foo;
 ?>
 
 @extends('admin.admin_template') @section('content')
@@ -54,8 +55,8 @@
 						<div class="form-group">
 							 <?php														
 							 $translatedItems = PropertyType::toArray();
-							 echo Form::label('propertyType', __('property.propertyType'));
-							 echo Form::select('size', $translatedItems, null, ['class' => 'form-control select2']); 
+							 echo Foo::label('propertyType', __('property.propertyType'));
+							 echo Foo::select('size', $translatedItems, null, ['class' => 'form-control select2']); 
 							 ?>							
 						</div>
 					</div>
