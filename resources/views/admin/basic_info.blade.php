@@ -1,5 +1,6 @@
 <?php
     use App\Enumeration\PropertyType;
+    use App\Enumeration\starRating;
 use DeepCopy\f003\Foo;
 ?>
 
@@ -63,14 +64,19 @@ use DeepCopy\f003\Foo;
 
 					<div class="col-md-6">
 						<div class="form-group">
-							<label>Star rating</label> <select class="form-control select2">
+                                                        <?php														
+							 $translatedItems12 =starRating::toArray();
+							 echo Form::label('star_rating', __('star.star_rating'));
+							 echo Form::select('size', $translatedItems12, null, ['class' => 'form-control select2']); 
+							 ?>							
+<!--							<label>Star rating</label> <select class="form-control select2">
 								<option style="" selected="selected">N/A</option>
 								<option style="" selected="selected">1 ✯</option>
 								<option class="fa-star">2 ✯ ✯</option>
 								<option class="fa-star">3 ✯ ✯ ✯</option>
 								<option class="fa-star">4 ✯ ✯ ✯ ✯</option>
 								<option class="fa-star">5 ✯ ✯ ✯ ✯ ✯</option>
-							</select>
+							</select>-->
 						</div>
 					</div>
 

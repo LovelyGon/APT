@@ -1,3 +1,11 @@
+<?php
+    use App\Enumeration\InternetType;
+    use App\Enumeration\ParkingType;
+    use App\Enumeration\ChildrenType;
+    use App\Enumeration\BreakfastType;
+    use App\Enumeration\PetsType;
+?>
+
 @extends('admin.admin_template') @section('content')
 
 <!-- Content Header (Page header) -->
@@ -25,7 +33,15 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
-							<label>Do you have wifi available for your Guest?</label>
+                                                        <?php														
+							 $translatedItems1 = InternetType::toArray();
+                                                         echo Form::label('interner_type', __('internet.interner_info'));
+                                                         foreach ($translatedItems1 as $translatedItems)
+                                                         {
+                                                             echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                         }
+							 ?>	
+<!--							<label>Do you have wifi available for your Guest?</label>
 							<div class="radio">
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios1" value="wififree" checked> Yes, it's free
@@ -41,7 +57,7 @@
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="No"> No
 								</label>
-							</div>
+							</div>-->
 						</div>
 					</div>
 				</div>
@@ -60,7 +76,15 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
-							<label>Do you have parking lots for cars?</label>
+                                                        <?php														
+                                                            $translatedItems2= ParkingType ::toArray();
+                                                            echo Form::label('Parking_info', __('parking.Parking_info'));
+                                                            foreach ($translatedItems2 as $translatedItems)
+                                                            {
+                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                            }
+							 ?>
+<!--							<label>Do you have parking lots for cars?</label>
 
 							<div class="radio">
 								<label> <input type="radio" name="optionsRadios"
@@ -77,7 +101,7 @@
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="option2"> No
 								</label>
-							</div>
+							</div>-->
 						</div>
 					</div>
 
@@ -99,7 +123,15 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
-							<label>Could you accommodate children?</label>
+                                                        <?php														
+                                                            $translatedItems3= ChildrenType ::toArray();
+                                                            echo Form::label('Children_info', __('children.Children_info'));
+                                                            foreach ($translatedItems3 as $translatedItems)
+                                                            {
+                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                            }
+							 ?>
+<!--							<label>Could you accommodate children?</label>
 
 							<div class="radio">
 								<label> <input type="radio" name="optionsRadios"
@@ -110,7 +142,7 @@
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="option2"> No
 								</label>
-							</div>
+							</div>-->
 						</div>
 					</div>
 				</div>
@@ -130,23 +162,14 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
-							<label>Is breakfast available for your Guest?</label>
-							<div class="radio">
-								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios1" value="option1" checked> Yes, already
-									incuded in the price
-								</label>
-							</div>
-							<div class="radio">
-								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios2" value="option2"> Yes, but it's optional
-								</label>
-							</div>
-							<div class="radio">
-								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios2" value="option2"> No
-								</label>
-							</div>
+                                                        <?php														
+                                                            $translatedItems4= BreakfastType ::toArray();
+                                                            echo Form::label('BreakFast_info', __('breakfast.BreakFast_info'));
+                                                            foreach ($translatedItems4 as $translatedItems)
+                                                            {
+                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                            }
+							 ?>
 						</div>
 					</div>
 
@@ -169,8 +192,16 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
-							<label>Do you allow pets of Guest?</label>
-
+                                                         <?php														
+                                                            $translatedItems5= PetsType ::toArray();
+                                                            echo Form::label('Pets_info', __('Pets.Pets_info'));
+                                                            foreach ($translatedItems5 as $translatedItems)
+                                                            {
+                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                            }
+							 ?>
+<!--							<label>Do you allow pets of Guest?</label>
+                                                           
 							<div class="radio">
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="option2"> No
@@ -185,7 +216,7 @@
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="option2"> Yes, any pets
 								</label>
-							</div>
+							</div>-->
 
 						</div>
 					</div>
