@@ -67,7 +67,7 @@ use DeepCopy\f003\Foo;
                                                         <?php														
 							 $translatedItems12 =starRating::toArray();
 							 echo Form::label('star_rating', __('star.star_rating'));
-							 echo Form::select('size', $translatedItems12, null, ['class' => 'form-control select2']); 
+							 echo Form::select('size', $translatedItems12, null, [ 'multiple'=>'multiple','class' => 'form-control select2']); 
 							 ?>							
 <!--							<label>Star rating</label> <select class="form-control select2">
 								<option style="" selected="selected">N/A</option>

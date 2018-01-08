@@ -246,11 +246,27 @@
 									class="fa fa-check"></i>English</label> <label
 									class="control-label" for="inputSuccess"><i class="fa fa-check"></i>Vietnamese</label>
 							</div>
-							<select class="form-control select2">
+							<select class="form-control select2"  multiple='multiple' id="pre-selected-options">
 								<option selected="selected">Please add more languages</option>
 								<option>Vietnamese</option>
 								<option>English</option>
 							</select>
+                                                        <select id="framework" name="framework" multiple>
+                                                            <option value="Codeigniter">Codeigniter</option>
+                                                            <option value="CakePHP">CakePHP</option>
+                                                            <option value="Laravel">Laravel</option>
+                                                            <option value="YII">YII</option>
+                                                            <option value="Zend">Zend</option>
+                                                            <option value="Symfony">Symfony</option>
+                                                            <option value="Phalcon">Phalcon</option>
+                                                            <option value="Slim">Slim</option>
+                                                        </select>
+                                                        <script>
+                                                            $(document).ready(function(){
+                                                                $('#framework').multiselect({
+                                                                }); 
+                                                            });
+                                                        </script>
 						</div>
 					</div>
 
