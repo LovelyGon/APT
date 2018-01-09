@@ -43,4 +43,11 @@ Route::group(array('prefix' => 'admin'), function () {
     Route::get('admin/login', function () {
         return view('admin.login');
     });
+    
+    Route::get('facilities', function () {
+        return view('admin.facilities');
+    });
+        Route::get('galleries', function () {
+            return view('admin.galleries');
+        });
 });
