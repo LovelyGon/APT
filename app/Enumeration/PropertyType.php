@@ -27,4 +27,17 @@ class PropertyType extends Enum
         return $translatedItem;
     }
     
+    public static function toTranslatedArray()
+    {
+        $translatedItem = array();
+        
+        
+        $items = PropertyType::toArray();
+        
+        foreach ($items as $key => $value) {
+            $translatedItem[$key] = __('property.property_type.' . $items[$key]);
+        }
+        
+        return $translatedItem;
+    }
 }
