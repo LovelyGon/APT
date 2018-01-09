@@ -23,7 +23,6 @@ class PropertyType extends Enum
         foreach ($items as $key => $value) {
             $translatedItem[$key] = __('property.property_type.' . $items[$key]);
         }
-        
         return $translatedItem;
     }
     
