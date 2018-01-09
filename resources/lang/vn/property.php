@@ -13,7 +13,11 @@ return [
     |
     */
 
-    'general_info' => 'General information',
+    'general_info' => 'Thông tin tòa nhà',
     'next' => 'Next &raquo;',
-
+    'property_type' => [
+        'apt' => 'Căn hộ',
+        'mhr' => 'Phòng khách sạn thuê tháng',
+        'ssh' => 'Shared house'
+    ]
 ];
