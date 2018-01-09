@@ -6,11 +6,11 @@ use MyCLabs\Enum\Enum;
 class PropertyType extends Enum
 {
 
-    const apt = 'apt';
+    const APT = 'apt';
 
-    const mhr = 'mhr';
+    const MHR = 'mhr';
 
-    const ssh = 'ssh';
+    const SSH = 'ssh';
 
     public static function toArray()
     {
