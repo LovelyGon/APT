@@ -21,7 +21,7 @@ class InternetType extends Enum
         $items = $reflection->getConstants();
         
         foreach ($items as $key => $value) {
-            $translatedItem[$key] = __('internet.interner_type.' . $items[$key]);
+            $translatedItem[$key] = __('features.interner_type.' . $items[$key]);
         }
         return $translatedItem;
     }

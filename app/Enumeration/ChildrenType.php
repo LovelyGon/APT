@@ -21,7 +21,7 @@ class ChildrenType extends Enum
         $items = $reflection->getConstants();
         
         foreach ($items as $key => $value) {
-            $translatedItem[$key] = __('Children.Children_type.' . $items[$key]);
+            $translatedItem[$key] = __('features.Children_type.' . $items[$key]);
         }
         return $translatedItem;
     }

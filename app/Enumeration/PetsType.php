@@ -21,7 +21,7 @@ class PetsType extends Enum
         $items = $reflection->getConstants();
         
         foreach ($items as $key => $value) {
-            $translatedItem[$key] = __('Pets.Pets_type.' . $items[$key]);
+            $translatedItem[$key] = __('features.Pets_type.' . $items[$key]);
         }
         return $translatedItem;
     }

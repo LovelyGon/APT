@@ -27,7 +27,7 @@ class starRating extends Enum
         $items = $reflection->getConstants();
         
         foreach ($items as $key => $value) {
-            $translatedItem[$key] = __('star.starRating.' . $items[$key]);
+            $translatedItem[$key] = __('features.starRating.' . $items[$key]);
         }
         return $translatedItem;
     }
