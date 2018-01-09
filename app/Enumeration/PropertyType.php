@@ -26,4 +26,5 @@ class PropertyType extends Enum
         
         return $translatedItem;
     }
+    
 }
