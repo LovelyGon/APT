@@ -3,14 +3,14 @@ namespace App\Enumeration;
 
 use MyCLabs\Enum\Enum;
 
-class PropertyType extends Enum
+class ParkingType extends Enum
 {
 
-    const apt = 'apt';
+    const ywf = 'ywf';
 
-    const mhr = 'mhr';
+    const ynwf = 'ynwf';
 
-    const ssh = 'ssh';
+    const no = 'no';
 
     public static function toArray()
     {
@@ -21,7 +21,7 @@ class PropertyType extends Enum
         $items = $reflection->getConstants();
         
         foreach ($items as $key => $value) {
-            $translatedItem[$key] = __('property.property_type.' . $items[$key]);
+            $translatedItem[$key] = __('ParKing.Parking_type.' . $items[$key]);
         }
         return $translatedItem;
     }

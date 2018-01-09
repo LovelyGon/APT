@@ -1,3 +1,12 @@
+<?php
+    use App\Enumeration\InternetType;
+    use App\Enumeration\ParkingType;
+    use App\Enumeration\ChildrenType;
+    use App\Enumeration\BreakfastType;
+    use App\Enumeration\PetsType;
+    use App\Enumeration\PopularType;
+?>
+
 @extends('admin.admin_template') @section('content')
 
 <!-- Content Header (Page header) -->
@@ -12,6 +21,7 @@
 	</ol>
 </section>
 <section class="content">
+ {!! Form::open(['route' => 'features']) !!}
 <!-- SELECT2 EXAMPLE -->
 <div class="row">
 	<div class="col-md-6">
@@ -25,7 +35,15 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
-							<label>Do you have wifi available for your Guest?</label>
+                                                        <?php														
+							 $translatedItems1 = InternetType::toArray();
+                                                         echo Form::label('interner_type', __('internet.interner_info'));
+                                                         foreach ($translatedItems1 as $translatedItems)
+                                                         {
+                                                             echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                         }
+							 ?>	
+<!--							<label>Do you have wifi available for your Guest?</label>
 							<div class="radio">
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios1" value="wififree" checked> Yes, it's free
@@ -41,7 +59,7 @@
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="No"> No
 								</label>
-							</div>
+							</div>-->
 						</div>
 					</div>
 				</div>
@@ -60,7 +78,15 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
-							<label>Do you have parking lots for cars?</label>
+                                                        <?php														
+                                                            $translatedItems2= ParkingType ::toArray();
+                                                            echo Form::label('Parking_info', __('parking.Parking_info'));
+                                                            foreach ($translatedItems2 as $translatedItems)
+                                                            {
+                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                            }
+							 ?>
+<!--							<label>Do you have parking lots for cars?</label>
 
 							<div class="radio">
 								<label> <input type="radio" name="optionsRadios"
@@ -77,7 +103,7 @@
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="option2"> No
 								</label>
-							</div>
+							</div>-->
 						</div>
 					</div>
 
@@ -99,7 +125,15 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
-							<label>Could you accommodate children?</label>
+                                                        <?php														
+                                                            $translatedItems3= ChildrenType ::toArray();
+                                                            echo Form::label('Children_info', __('children.Children_info'));
+                                                            foreach ($translatedItems3 as $translatedItems)
+                                                            {
+                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                            }
+							 ?>
+<!--							<label>Could you accommodate children?</label>
 
 							<div class="radio">
 								<label> <input type="radio" name="optionsRadios"
@@ -110,7 +144,7 @@
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="option2"> No
 								</label>
-							</div>
+							</div>-->
 						</div>
 					</div>
 				</div>
@@ -130,23 +164,14 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
-							<label>Is breakfast available for your Guest?</label>
-							<div class="radio">
-								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios1" value="option1" checked> Yes, already
-									incuded in the price
-								</label>
-							</div>
-							<div class="radio">
-								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios2" value="option2"> Yes, but it's optional
-								</label>
-							</div>
-							<div class="radio">
-								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios2" value="option2"> No
-								</label>
-							</div>
+                                                        <?php														
+                                                            $translatedItems4= BreakfastType ::toArray();
+                                                            echo Form::label('BreakFast_info', __('breakfast.BreakFast_info'));
+                                                            foreach ($translatedItems4 as $translatedItems)
+                                                            {
+                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                            }
+							 ?>
 						</div>
 					</div>
 
@@ -169,8 +194,16 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
-							<label>Do you allow pets of Guest?</label>
-
+                                                         <?php														
+                                                            $translatedItems5= PetsType ::toArray();
+                                                            echo Form::label('Pets_info', __('Pets.Pets_info'));
+                                                            foreach ($translatedItems5 as $translatedItems)
+                                                            {
+                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                            }
+							 ?>
+<!--							<label>Do you allow pets of Guest?</label>
+                                                           
 							<div class="radio">
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="option2"> No
@@ -185,7 +218,7 @@
 								<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="option2"> Yes, any pets
 								</label>
-							</div>
+							</div>-->
 
 						</div>
 					</div>
@@ -215,11 +248,32 @@
 									class="fa fa-check"></i>English</label> <label
 									class="control-label" for="inputSuccess"><i class="fa fa-check"></i>Vietnamese</label>
 							</div>
-							<select class="form-control select2">
+							<select class="form-control select2"  multiple='multiple' id="pre-selected-options">
 								<option selected="selected">Please add more languages</option>
 								<option>Vietnamese</option>
 								<option>English</option>
 							</select>
+                                                       <form method="post" id="framework_form">
+                                                            <div class="form-group">
+                                                                <label>Select which Framework you have knowledge</label>
+                                                                <select id="framework" name="framework" multiple='multiple'>
+                                                                   <option value="Codeigniter">Codeigniter</option>
+                                                                   <option value="CakePHP">CakePHP</option>
+                                                                   <option value="Laravel">Laravel</option>
+                                                                   <option value="YII">YII</option>
+                                                                   <option value="Zend">Zend</option>
+                                                                   <option value="Symfony">Symfony</option>
+                                                                   <option value="Phalcon">Phalcon</option>
+                                                                   <option value="Slim">Slim</option>
+                                                                </select>
+                                                            </div>
+                                                       </form>
+                                                        <script>
+                                                            $(document).ready(function(){
+                                                                $('#framework').multiselect({
+                                                                }); 
+                                                               });
+                                                        </script>
 						</div>
 					</div>
 
@@ -238,15 +292,23 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-6">
+                            <?php														
+                               $translatedItems6= PopularType ::toArray();
 
-					<!-- /.box-header -->
+                               foreach ($translatedItems6 as $translatedItems)
+                               {
+                                   echo "<div class='col-md-6'><div class='box-body'><ul class='todo-list'><li>".Form::checkbox('sex', $translatedItems)."<span class='text'>" .$translatedItems."<br></span></li></ul></div></div>";  
+                               }
+                            ?>
+<!--				<div class="col-md-6">
+
+					 /.box-header 
 					<div class="box-body">
-						<!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+						 See dist/js/pages/dashboard.js to activate the todoList plugin 
 						<ul class="todo-list">
 							<li>
-								<!-- checkbox --> <input type="checkbox" value=""> <!-- todo text -->
-								<span class="text">Design a nice theme</span> <!-- Emphasis label -->
+								 checkbox  <input type="checkbox" value="">  todo text 
+								<span class="text">Design a nice theme</span>  Emphasis label 
 
 							</li>
 							<li><input type="checkbox" value=""> <span class="text">Make the
@@ -264,12 +326,12 @@
 
 				</div>
 				<div class="col-md-6">
-					<!-- /.box-header -->
+					 /.box-header 
 					<div class="box-body">
-						<!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+						 See dist/js/pages/dashboard.js to activate the todoList plugin 
 						<ul class="todo-list">
 							<li>
-								<!-- checkbox --> <input type="checkbox" value=""> <!-- todo text -->
+								 checkbox  <input type="checkbox" value="">  todo text 
 								<span class="text">Design a nice theme</span>
 
 							</li>
@@ -285,7 +347,7 @@
 									shine like a star</span></li>
 						</ul>
 					</div>
-				</div>
+				</div>-->
 			</div>
 
 		</div>
@@ -294,11 +356,11 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<a href="apartments" class="btn btn-block btn-primary btn-lg">Save and continue</a>
+                {!! Form::submit('Save and continue', ['class' => 'btn btn-block btn-primary btn-lg']) !!}
 	</div>
 
 </div>
-
+</form>{!! Form::close() !!}
 </section>
 
 <!-- /.box box box-default-->

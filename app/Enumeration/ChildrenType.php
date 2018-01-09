@@ -3,14 +3,14 @@ namespace App\Enumeration;
 
 use MyCLabs\Enum\Enum;
 
-class PropertyType extends Enum
+class ChildrenType extends Enum
 {
 
-    const apt = 'apt';
 
-    const mhr = 'mhr';
 
-    const ssh = 'ssh';
+    const yes = 'yes';
+
+    const no = 'no';
 
     public static function toArray()
     {
@@ -21,7 +21,7 @@ class PropertyType extends Enum
         $items = $reflection->getConstants();
         
         foreach ($items as $key => $value) {
-            $translatedItem[$key] = __('property.property_type.' . $items[$key]);
+            $translatedItem[$key] = __('Children.Children_type.' . $items[$key]);
         }
         return $translatedItem;
     }

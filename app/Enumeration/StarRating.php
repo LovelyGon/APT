@@ -3,14 +3,20 @@ namespace App\Enumeration;
 
 use MyCLabs\Enum\Enum;
 
-class PropertyType extends Enum
+class starRating extends Enum
 {
 
-    const apt = 'apt';
+    const NA = 'NA';
 
-    const mhr = 'mhr';
+    const NA1S = '1S';
 
-    const ssh = 'ssh';
+    const NA2S = '2S';
+    
+    const NA3S = '3S';
+    
+    const NA4S = '4S';
+    
+    const NA5S = '5S';
 
     public static function toArray()
     {
@@ -21,7 +27,7 @@ class PropertyType extends Enum
         $items = $reflection->getConstants();
         
         foreach ($items as $key => $value) {
-            $translatedItem[$key] = __('property.property_type.' . $items[$key]);
+            $translatedItem[$key] = __('star.starRating.' . $items[$key]);
         }
         return $translatedItem;
     }
