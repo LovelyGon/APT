@@ -29,7 +29,7 @@ Route::group(array('prefix' => 'admin'), function () {
     Route::get('features', function () {
         return view('admin.features');
     });
-    
+    Route::post('/', 'featuresController@create')->name('features');
     Route::get('apartments/create', function () {
         return view('admin.apartments-create');
     });

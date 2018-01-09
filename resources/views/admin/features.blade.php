@@ -4,6 +4,7 @@
     use App\Enumeration\ChildrenType;
     use App\Enumeration\BreakfastType;
     use App\Enumeration\PetsType;
+    use App\Enumeration\PopularType;
 ?>
 
 @extends('admin.admin_template') @section('content')
@@ -20,6 +21,7 @@
 	</ol>
 </section>
 <section class="content">
+ {!! Form::open(['route' => 'features']) !!}
 <!-- SELECT2 EXAMPLE -->
 <div class="row">
 	<div class="col-md-6">
@@ -251,21 +253,26 @@
 								<option>Vietnamese</option>
 								<option>English</option>
 							</select>
-                                                        <select id="framework" name="framework" multiple>
-                                                            <option value="Codeigniter">Codeigniter</option>
-                                                            <option value="CakePHP">CakePHP</option>
-                                                            <option value="Laravel">Laravel</option>
-                                                            <option value="YII">YII</option>
-                                                            <option value="Zend">Zend</option>
-                                                            <option value="Symfony">Symfony</option>
-                                                            <option value="Phalcon">Phalcon</option>
-                                                            <option value="Slim">Slim</option>
-                                                        </select>
+                                                       <form method="post" id="framework_form">
+                                                            <div class="form-group">
+                                                                <label>Select which Framework you have knowledge</label>
+                                                                <select id="framework" name="framework" multiple='multiple'>
+                                                                   <option value="Codeigniter">Codeigniter</option>
+                                                                   <option value="CakePHP">CakePHP</option>
+                                                                   <option value="Laravel">Laravel</option>
+                                                                   <option value="YII">YII</option>
+                                                                   <option value="Zend">Zend</option>
+                                                                   <option value="Symfony">Symfony</option>
+                                                                   <option value="Phalcon">Phalcon</option>
+                                                                   <option value="Slim">Slim</option>
+                                                                </select>
+                                                            </div>
+                                                       </form>
                                                         <script>
                                                             $(document).ready(function(){
                                                                 $('#framework').multiselect({
                                                                 }); 
-                                                            });
+                                                               });
                                                         </script>
 						</div>
 					</div>
@@ -285,15 +292,23 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-6">
+                            <?php														
+                               $translatedItems6= PopularType ::toArray();
 
-					<!-- /.box-header -->
+                               foreach ($translatedItems6 as $translatedItems)
+                               {
+                                   echo "<div class='col-md-6'><div class='box-body'><ul class='todo-list'><li>".Form::checkbox('sex', $translatedItems)."<span class='text'>" .$translatedItems."<br></span></li></ul></div></div>";  
+                               }
+                            ?>
+<!--				<div class="col-md-6">
+
+					 /.box-header 
 					<div class="box-body">
-						<!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+						 See dist/js/pages/dashboard.js to activate the todoList plugin 
 						<ul class="todo-list">
 							<li>
-								<!-- checkbox --> <input type="checkbox" value=""> <!-- todo text -->
-								<span class="text">Design a nice theme</span> <!-- Emphasis label -->
+								 checkbox  <input type="checkbox" value="">  todo text 
+								<span class="text">Design a nice theme</span>  Emphasis label 
 
 							</li>
 							<li><input type="checkbox" value=""> <span class="text">Make the
@@ -311,12 +326,12 @@
 
 				</div>
 				<div class="col-md-6">
-					<!-- /.box-header -->
+					 /.box-header 
 					<div class="box-body">
-						<!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+						 See dist/js/pages/dashboard.js to activate the todoList plugin 
 						<ul class="todo-list">
 							<li>
-								<!-- checkbox --> <input type="checkbox" value=""> <!-- todo text -->
+								 checkbox  <input type="checkbox" value="">  todo text 
 								<span class="text">Design a nice theme</span>
 
 							</li>
@@ -332,7 +347,7 @@
 									shine like a star</span></li>
 						</ul>
 					</div>
-				</div>
+				</div>-->
 			</div>
 
 		</div>
@@ -341,11 +356,11 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<a href="apartments" class="btn btn-block btn-primary btn-lg">Save and continue</a>
+                {!! Form::submit('Save and continue', ['class' => 'btn btn-block btn-primary btn-lg']) !!}
 	</div>
 
 </div>
-
+</form>{!! Form::close() !!}
 </section>
 
 <!-- /.box box box-default-->
