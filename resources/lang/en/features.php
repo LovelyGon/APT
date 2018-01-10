@@ -13,6 +13,40 @@ return [
     |
     */
 
+    'BreakFast_info' => 'Is breakfast available for your Guest?',
+    'next' => 'Next &raquo;',
+    'BreakFast_type' => [
+       'yesap' => "Yes, already incuded in the price",
+        'yesbo' => "Yes, but it's optional",
+       'no'=> 'No'
+    ],
+    'interner_info' => 'Do you have wifi available for your Guest?',
+    'next' => 'Next &raquo;',
+    'interner_type' => [
+       'ywf' => "Yes, it's free wifi",
+       'ynwf' => "Yes, but it's not free",
+       'no'=> 'No'
+    ],
+    'Parking_info' => 'Do you have parking lots for cars?',
+    'next' => 'Next &raquo;',
+    'Parking_type' => [
+       'ywf' => "Yes, it's free parking",
+       'ynwf' => "Yes, but it's not free",
+       'no'=> 'No'
+    ],
+     'Children_info' => 'Could you accommodate children?',
+    'next' => 'Next &raquo;',
+    'Children_type' => [
+       'yes' => "yes",
+       'no'=> 'No'
+    ],
+     'Pets_info' => 'Do you allow pets of Guest?',
+    'next' => 'Next &raquo;',
+    'Pets_type' => [
+        'no'=> 'No',
+        'yesap' => "Yes, allow cats only",
+        'yesbo' => "Yes, any pets"
+    ],
     'Popular_info' => 'Popular facilities',
     'next' => 'Next &raquo;',
     'Popular_type' => [
