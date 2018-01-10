@@ -179,32 +179,15 @@
 									class="fa fa-check"></i>English</label> <label
 									class="control-label" for="inputSuccess"><i class="fa fa-check"></i>Vietnamese</label>
 							</div>
-							<select class="form-control select2"  multiple='multiple' id="pre-selected-options">
-								<option selected="selected">Please add more languages</option>
-								<option>Vietnamese</option>
-								<option>English</option>
+							<select class="form-control select2"  multiple id="pre-selected-options">
+								<option value="Codeigniter">Please add more languages</option>
+								<option value="Codeigniter">Vietnamese</option>
+								<option value="Codeigniter">English</option>
+                                                                <option value="Codeigniter">Vietnamese</option>
+								<option value="Codeigniter">English</option><option value="Codeigniter">Vietnamese</option>
+								<option value="Codeigniter">English</option>
+                                                                
 							</select>
-                                                       <form method="post" id="framework_form">
-                                                            <div class="form-group">
-                                                                <label>Select which Framework you have knowledge</label>
-                                                                <select id="framework" name="framework" multiple='multiple'>
-                                                                   <option value="Codeigniter">Codeigniter</option>
-                                                                   <option value="CakePHP">CakePHP</option>
-                                                                   <option value="Laravel">Laravel</option>
-                                                                   <option value="YII">YII</option>
-                                                                   <option value="Zend">Zend</option>
-                                                                   <option value="Symfony">Symfony</option>
-                                                                   <option value="Phalcon">Phalcon</option>
-                                                                   <option value="Slim">Slim</option>
-                                                                </select>
-                                                            </div>
-                                                       </form>
-                                                        <script>
-                                                            $(document).ready(function(){
-                                                                $('#framework').multiselect({
-                                                                }); 
-                                                               });
-                                                        </script>
 						</div>
 					</div>
 

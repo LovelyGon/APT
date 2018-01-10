@@ -86,7 +86,7 @@ class PopularType extends Enum
         $items = $reflection->getConstants();
         
         foreach ($items as $key => $value) {
-            $translatedItem[$key] = __('Popular.Popular_type.' . $items[$key]);
+            $translatedItem[$key] = __('features.Popular_type.' . $items[$key]);
         }
         return $translatedItem;
     }
