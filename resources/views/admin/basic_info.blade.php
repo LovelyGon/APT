@@ -1,15 +1,15 @@
 <?php
-    use App\Enumeration\PropertyType;
+use App\Enumeration\PropertyType;
     use App\Enumeration\starRating;
 use DeepCopy\f003\Foo;
 ?>
-
-@extends('admin.admin_template') @section('content')
+@extends('admin.admin_template') 
+@section('content')
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
-		@lang('property.general_info') <small>Here you can input basic information of your apartment</small>
+		@lang('property.general_info') <small>@lang('property.general_des')</small>
 	</h1>
 	
 	<ol class="breadcrumb">
@@ -18,17 +18,14 @@ use DeepCopy\f003\Foo;
 	</ol>
 </section>
 <section class="content">
-
-{!! Form::open(['url' => 'foo/bar']) !!}
-  
-
-
+<!-- {!! Form::open(['method'=>'post','url' => 'admin/addproperty']) !!} -->
+<form action="{{url('admin/addproperty')}}" method="post" enctype="multipart/form-data">
+	 {!!csrf_field()!!}
 <div class="row">
 	<div class="col-md-6">
 		<div class="box box-default">
 			<div class="box-header with-border">
 				<h3 class="box-title">@lang('homepage.general')</h3>
-
 				<div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool"
 						data-widget="collapse">
@@ -42,9 +39,12 @@ use DeepCopy\f003\Foo;
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group">
-							<label>Property name<span style="color: red"> *</span></label> <input
-								type="text" class="form-control" id="propertyName"
-								placeholder="Enter property name">
+							<?php
+							   $enter_property_name=__('property.enter_property_name');
+							   echo Form::label(__('property.property_name'));
+							   echo ('<span style="color: red">*</span>');
+							   echo Form::text('property_name',null,['class'=>'form-control','placeholder'=>$enter_property_name]);
+							?>
 						</div>
 						<!-- /.form-group -->
 					</div>
@@ -54,39 +54,28 @@ use DeepCopy\f003\Foo;
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							 <?php														
-							 $translatedItems = PropertyType::toArray();
-							 echo Form::label('propertyType', __('property.propertyType'));
-							 echo Form::select('size', $translatedItems, null, ['class' => 'form-control select2']); 
+							 <?php		
+							$property_type_label = __('property.property_type_label');								
+							$translatedItems = PropertyType::toArray();
+							 echo Form::label($property_type_label);
+							 echo Form::select('property_type', $translatedItems,null, ['class' => 'form-control select2']); 
 							 ?>							
 						</div>
 					</div>
 
 					<div class="col-md-6">
 						<div class="form-group">
-                                                        <?php														
-							 $translatedItems12 =starRating::toArray();
-							 echo Form::label('star_rating', __('star.star_rating'));
-							 echo Form::select('size', $translatedItems12, null, [ 'multiple'=>'multiple','class' => 'form-control select2']); 
-							 ?>							
-<!--							<label>Star rating</label> <select class="form-control select2">
-								<option style="" selected="selected">N/A</option>
-								<option style="" selected="selected">1 ✯</option>
-								<option class="fa-star">2 ✯ ✯</option>
-								<option class="fa-star">3 ✯ ✯ ✯</option>
-								<option class="fa-star">4 ✯ ✯ ✯ ✯</option>
-								<option class="fa-star">5 ✯ ✯ ✯ ✯ ✯</option>
+							<label>@lang('property.rating')</label>
+							<select class="form-control select2" name="star_rating">
+								<option value="N/A">N/A</option>
+								<option value="1">1 ✯</option>
+								<option value ="2" class="fa-star">2 ✯ ✯</option>
+								<option value ="3" class="fa-star">3 ✯ ✯ ✯</option>
+								<option value ="4" class="fa-star">4 ✯ ✯ ✯ ✯</option>
+								<option value ="5" class="fa-star">5 ✯ ✯ ✯ ✯ ✯</option>
 							</select>-->
 						</div>
 					</div>
-
-					<!-- 					<div class="col-md-3"> -->
-					<!-- 						<div class="form-group"> -->
-					<!-- 							<label>How many apartments do you have?<span style="color: red">-->
-					<!-- 									*</span></label> <input type="number" class="form-control" -->
-					<!-- 								id="numberApartment" placeholder="Number of apartment"> -->
-					<!-- 						</div> -->
-					<!-- 					</div> -->
 
 				</div>
 				<!-- /.row -->
@@ -101,18 +90,16 @@ use DeepCopy\f003\Foo;
 							Info alert preview. This alert is dismissable.Info alert preview. This alert is dismissable.
 							
 						</div>
-
-
-
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group">
-							<label>Property website</label> <input type="text"
-								class="form-control" id="website"
-								placeholder="Enter property website">
+							<?php
+							echo Form::label(__('property.property_website'));
+							echo Form::text('website',null,['class'=>'form-control','placeholder'=>__('property.enter_property_website')]);
+							?>
 						</div>
 					</div>
 				</div>
@@ -123,8 +110,7 @@ use DeepCopy\f003\Foo;
 	<div class="col-md-6">
 		<div class="box box-default">
 			<div class="box-header with-border">
-				<h3 class="box-title">Address</h3>
-
+				<h3 class="box-title">@lang('property.address')</h3>
 				<div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool"
 						data-widget="collapse">
@@ -140,10 +126,10 @@ use DeepCopy\f003\Foo;
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group">
-							<label>Department's owner or who is responsible for it<span
-								style="color: red"> *</span></label> <input type="text"
-								class="form-control" id="contactName"
-								placeholder="Enter contact name">
+							<label>@lang('property.owner')<span style="color: red"> *</span></label> 
+							<?php
+							echo Form::text('contact_name',null,['class'=>'form-control','placeholder'=>__('property.contactName')]);
+							?>
 						</div>
 					</div>
 
@@ -153,9 +139,10 @@ use DeepCopy\f003\Foo;
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group">
-							<label>Address<span style="color: red"> *</span></label> <input
-								type="text" class="form-control" id="address"
-								placeholder="Enter address">
+							<label>@lang('property.address')<span style="color: red"> *</span></label> 
+							<?php
+							echo Form::text('address',null,['class'=>'form-control','placeholder'=>__('property.enter_address')]);
+							?>
 						</div>
 
 					</div>
@@ -165,8 +152,10 @@ use DeepCopy\f003\Foo;
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group">
-							<label>Address line 2</label> <input type="text"
-								class="form-control" id="addresssLine2" placeholder="(optional)">
+							<label>@lang('property.address2')</label> 
+							<?php
+							echo Form::text('address_line2',null,['class'=>'form-control','placeholder'=>__('property.enter_address2')]);
+							?>
 						</div>
 
 					</div>
@@ -177,18 +166,19 @@ use DeepCopy\f003\Foo;
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-
-							<label>Country</label> <input type="text" class="form-control"
-								id="country">
+							<label>@lang('property.country')</label> 
+							<input type="text" class="form-control"
+								id="country" name="country">
 						</div>
 
 					</div>
 
 					<div class="col-md-6">
 						<div class="form-group">
-							<label>City</label> <input type="text" class="form-control"
-								id="city">
-
+							<label>@lang('property.city')</label> 
+							<div id="select_city">
+							
+						    </div>
 						</div>
 
 					</div>
@@ -197,36 +187,20 @@ use DeepCopy\f003\Foo;
 
 				<div class="row">
 					<div class="col-md-6">
-						<div class="form-group">
-							<label>Phone number<span style="color: red"> *</span></label>
-							<div class="input-group margin">
-								<div class="input-group-btn">
-									<button type="button" class="btn btn-default dropdown-toggle"
-										data-toggle="dropdown">
-										Action <span class="fa fa-caret-down"></span>
-									</button>
-									<ul class="dropdown-menu">
-										<li class=""><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-									</ul>
-								</div>
-								<!-- /btn-group -->
-								<input type="text" class="form-control" id="phoneNumber">
-							</div>
+						<div class="form-inline">
+							<label>@lang('property.phone')<span style="color: red"> *</span></label></br>
+								<input readonly="true" class="form-control" id="callingCode" style="width: 60px" name="callingCode">
+								<input type="number" class="form-control" id="phoneNumber" min="0" style="max-width: 150px;" name="phonenumber">
 						</div>
 
 					</div>
-
 					<div class="col-md-6">
 						<div class="form-group">
-							<label>Zipcode</label> <input type="text" class="form-control"
+							<label id="zipcode">@lang('property.zipcode')</label> 
+							<input type="text" class="form-control"
 								id="zipcode">
-
 						</div>
-
+                        
 					</div>
 
 				</div>
@@ -236,14 +210,13 @@ use DeepCopy\f003\Foo;
 			</div>
 		</div>
 	</div>
-
 </div>
 <div class="row">
 	<div class="col-md-12">
 		<div class="box box-default">
 			<div class="box-header with-border">
 				<h3 class="box-title">
-					<b>Photo Galaries of your property</b>
+					<b>@lang('property.galary-image')</b>
 				</h3>
 				<div class="row ">
 					<div class="col-md-10">
@@ -254,182 +227,121 @@ use DeepCopy\f003\Foo;
 							ra tai can ho cua ban</span>
 					</div>
 					<div class="col-md-2">
-						<button type="button" class="btn btn-block btn-primary"
+						<input type="file"  id="input03" multiple="true" name="image" 
 							style="float: right; width: 100px">
-							<i class="fa fa-image"></i> Add photo
-						</button>
 					</div>
 				</div>
-
-
-
 			</div>
-
-			<div class="box-body">
+            <div class="box-body">
 				<div class="timeline-item">
-
-					<!-- 					<div class="timeline-body"> -->
 					<div class="row ">
-						<div class="col-md-2">
-							<div class="box box-solid">
-
-								<img width="100%" height="100%"
-									src="http://placehold.it/150x100" alt="..."> <img>
-
-								<!-- /.box-body -->
-								<div class="box-footer">
-									<a href=""> <i class="fa fa-trash-o"></i>Delete
-									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-									</a>
-								</div>
-								<!-- /.box-footer-->
+						<div class ="preview">
+							<div class="div_image">
+								<h1>hello</h1>
 							</div>
 						</div>
-						<div class="col-md-2">
-							<div class="box box-solid">
-
-								<img width="100%" height="100%"
-									src="http://placehold.it/150x100" alt="..."> <img>
-
-								<!-- /.box-body -->
-								<div class="box-footer">
-									<a href=""> <i class="fa fa-trash-o"></i>Delete
-									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-									</a>
-								</div>
-								<!-- /.box-footer-->
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="box box-solid">
-
-								<img width="100%" height="100%"
-									src="http://placehold.it/150x100" alt="..."> <img>
-
-								<!-- /.box-body -->
-								<div class="box-footer">
-									<a href=""> <i class="fa fa-trash-o"></i>Delete
-									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-									</a>
-								</div>
-								<!-- /.box-footer-->
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="box box-solid">
-
-								<img width="100%" height="100%"
-									src="http://placehold.it/150x100" alt="..."> <img>
-
-								<!-- /.box-body -->
-								<div class="box-footer">
-									<a href=""> <i class="fa fa-trash-o"></i>Delete
-									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-									</a>
-								</div>
-								<!-- /.box-footer-->
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="box box-solid">
-
-								<img width="100%" height="100%"
-									src="http://placehold.it/150x100" alt="..."> <img>
-
-								<!-- /.box-body -->
-								<div class="box-footer">
-									<a href=""> <i class="fa fa-trash-o"></i>Delete
-									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-									</a>
-								</div>
-								<!-- /.box-footer-->
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="box box-solid">
-
-								<img width="100%" height="100%"
-									src="http://placehold.it/150x100" alt="..."> <img>
-
-								<!-- /.box-body -->
-								<div class="box-footer">
-									<a href=""> <i class="fa fa-trash-o"></i>Delete
-									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-									</a>
-								</div>
-								<!-- /.box-footer-->
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="box box-solid">
-
-								<img width="100%" height="100%"
-									src="http://placehold.it/150x100" alt="..."> <img>
-
-								<!-- /.box-body -->
-								<div class="box-footer">
-									<a href=""> <i class="fa fa-trash-o"></i>Delete
-									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-									</a>
-								</div>
-								<!-- /.box-footer-->
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="box box-solid">
-
-								<img width="100%" height="100%"
-									src="http://placehold.it/150x100" alt="..."> <img>
-
-								<!-- /.box-body -->
-								<div class="box-footer">
-									<a href=""> <i class="fa fa-trash-o"></i>Delete
-									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-									</a>
-								</div>
-								<!-- /.box-footer-->
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="box box-solid">
-
-								<img width="100%" height="100%"
-									src="http://placehold.it/150x100" alt="..."> <img>
-
-								<!-- /.box-body -->
-								<div class="box-footer">
-									<a href=""> <i class="fa fa-trash-o"></i>Delete
-									</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-									</a>
-								</div>
-								<!-- /.box-footer-->
-							</div>
-						</div>
-						
-					
 					</div>
-
-					<!-- /.box -->
-
-
-					<!-- 					</div> -->
 				</div>
 			</div>
 		</div>
-
 		<!-- /.box-header -->
-
 	</div>
 </div>
-
 <div class="row">
 	<div class="col-md-12">
-		<a href="features" class="btn btn-block btn-primary btn-lg">Save
-			and continue</a>
+		<button  type ="submit" class="btn btn-block btn-primary btn-lg">@lang('property.save')</button>
 	</div>
-
 </div>
-{!! Form::close() !!}
+</form>
+<!-- {!! Form::close() !!} -->
 </section>
 <!-- /.box box box-default-->
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(function () {
+		$("input[name=image]").previewimage({
+			div: ".preview",
+			imgwidth: 152,
+			imgheight: 100,
+            delname: 'Delete'
+		});
+		//------------------------------------------------------------------
+	    $('#input03').filestyle({
+				input : false,
+				btnClass : 'btn-primary',
+				htmlIcon : '<span class="oi oi-folder"></span> '
+	    });
+	    //------------------------------------------------------------------
+	    $("#country").countrySelect({
+	    	defaultCountry: "us"
+	    });
+	    //------------------------------------------------------------------
+	    $('.select2').select2();
+	    
+	});
+//--------------------------------------------------------------------------
+    $(document).ready(function(){
+       $('#country').on('change',function(){
+            $countryData = $("#country").countrySelect("getSelectedCountryData");  
+	        $iso2 = $countryData['iso2'];
+	        $.ajax({
+	        	type:'get',
+	        	url: '{{URL::to('admin/get_calling_code')}}',
+	        	data:{iso2:$iso2},
+	        	success:function(data){
+	        		$('#callingCode').val('+'+data);
+	        		console.log(data);
+	        	}
+	        });
+       });
+    });
+ //------------------------------------------------------------------------
+ $(document).ready(function(){
+       $('#country').on('change',function(){
+            $countryData = $("#country").countrySelect("getSelectedCountryData");  
+	        $iso2 = $countryData['iso2'];
+	        $.ajax({
+	        	type:'get',
+	        	url: '{{URL::to('admin/get_country')}}',
+	        	data:{iso2:$iso2},
+	        	success:function(data){
+	        		$('#select_city').html(data);
+	        		console.log(data);
+	        	}
+	        });
+       });
+    });
+ //-----------------------------------------------------------------------
+ $(document).ready(function(){
+    $countryData = $("#country").countrySelect("getSelectedCountryData");  
+        $iso2 = $countryData['iso2'];
+        $.ajax({
+        	type:'get',
+        	url: '{{URL::to('admin/get_country')}}',
+        	data:{iso2:$iso2},
+        	success:function(data){
+        		$('#select_city').html(data);
+        		console.log(data);
+        	}
+        });
+
+        $.ajax({
+        	type:'get',
+        	url: '{{URL::to('admin/get_calling_code')}}',
+        	data:{iso2:$iso2},
+        	success:function(data){
+        		$('#callingCode').val('+'+data);
+        		console.log(data);
+        	}
+        });
+ });
+ //------------------------------------------------------------------------
+ $(document).ready(function(){
+    $text = $('#zipcode').text();
+	   if($text == 'Mã bưu điện'){
+           $('span.buttonText').text("@lang('property.choose-image')")
+	   }
+ });
+	
+</script>

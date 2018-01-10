@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="apt-angular">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,9 +11,12 @@
    Font Awesome 
 -->  <link rel="stylesheet" href="{{asset('fonts/font-awesome.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/iCheck/all.css')}}">
-   Ionicons 
+  <link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
+  <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('fonts/ionicons.min.css')}}">
-   Theme style 
+  <link rel="stylesheet" href="{{asset('css/mycss.css')}}">
+  <link rel="stylesheet" href="{{asset('css/countrySelect.css')}}">
+  <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
@@ -61,10 +64,16 @@
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- SlimScroll -->
 <script src="{{asset('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
+<script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
 <!-- FastClick -->
 <script src="{{asset('plugins/fastclick/fastclick.js')}}"></script>
+<script src= "{{asset('js/angular.min.js')}}"></script>
+<script src="{{asset('js/angular.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/app.min.js')}}"></script>
+<script src="{{asset('js/previewImage.js')}}"></script>
+<script src="{{asset('js/bootstrap-filestyle.min.js')}}"></script>
+<script src="{{asset('js/countrySelect.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>\
   
