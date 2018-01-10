@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'general_info' => 'Thông tin cơ bản',
+    'general_info' => 'Thông tin tòa nhà',
     'next' => 'Next &raquo;',
     'property_type_label'=>'Loại Tòa Nhà',
     'general_des' =>'Nơi bạn có thể nhập những thông tin cơ bản cho căn hộ của bạn.',

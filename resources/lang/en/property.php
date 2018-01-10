@@ -40,3 +40,4 @@ return [
     'galary-image'=>'Photo Galaries of your property',
     'save'=>'Save and continue'
 ];
+

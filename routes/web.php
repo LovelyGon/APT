@@ -12,7 +12,7 @@
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.features');
 });
 Route::get('admin/get_calling_code','BasicInfoController@get_calling_code');   
 Route::get('admin/get_country','BasicInfoController@get_country');   
@@ -30,7 +30,7 @@ Route::group(array('prefix' => 'admin'), function () {
     Route::get('features', function () {
         return view('admin.features');
     });
-    
+    Route::post('/', 'featuresController@create')->name('features');
     Route::get('apartments/create', function () {
         return view('admin.apartments-create');
     });
@@ -44,5 +44,11 @@ Route::group(array('prefix' => 'admin'), function () {
     Route::get('admin/login', function () {
         return view('admin.login');
     });
-
+    
+    Route::get('facilities', function () {
+        return view('admin.facilities');
+    });
+        Route::get('galleries', function () {
+            return view('admin.galleries');
+        });
 });

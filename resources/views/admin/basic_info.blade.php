@@ -1,5 +1,6 @@
 <?php
 use App\Enumeration\PropertyType;
+    use App\Enumeration\starRating;
 use DeepCopy\f003\Foo;
 ?>
 @extends('admin.admin_template') 
@@ -72,7 +73,7 @@ use DeepCopy\f003\Foo;
 								<option value ="3" class="fa-star">3 ✯ ✯ ✯</option>
 								<option value ="4" class="fa-star">4 ✯ ✯ ✯ ✯</option>
 								<option value ="5" class="fa-star">5 ✯ ✯ ✯ ✯ ✯</option>
-							</select>
+							</select>-->
 						</div>
 					</div>
 
