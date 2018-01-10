@@ -26,7 +26,7 @@ class CreateApartmentsTable extends Migration
             $table->Integer('bedroom_number');
             $table->Integer('apartment_size');
             $table->integer('property_id')->unsigned()->nullable();
-            $table->foreign('property_id')->references('id')->on('propertys');
+            $table->foreign('property_id')->references('id')->on('properties');
         });
     }
 

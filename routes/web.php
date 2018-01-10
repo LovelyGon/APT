@@ -11,11 +11,11 @@
  * |
  */
 
-
 Route::get('/', function () {
     return view('welcome');
 });
-    
+Route::get('admin/get_calling_code','BasicInfoController@get_calling_code');   
+Route::get('admin/get_country','BasicInfoController@get_country');   
 Route::group(array('prefix' => 'admin'), function () {
    
     Route::get('/', function () {
@@ -25,7 +25,8 @@ Route::group(array('prefix' => 'admin'), function () {
     Route::get('basicinfo', function () {
         return view('admin.basic_info');
     });
-    
+    Route:: post('addproperty','BasicInfoController@store');
+
     Route::get('features', function () {
         return view('admin.features');
     });
@@ -43,4 +44,5 @@ Route::group(array('prefix' => 'admin'), function () {
     Route::get('admin/login', function () {
         return view('admin.login');
     });
+
 });
