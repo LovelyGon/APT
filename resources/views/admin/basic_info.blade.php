@@ -73,7 +73,7 @@ use DeepCopy\f003\Foo;
 								<option value ="3" class="fa-star">3 ✯ ✯ ✯</option>
 								<option value ="4" class="fa-star">4 ✯ ✯ ✯ ✯</option>
 								<option value ="5" class="fa-star">5 ✯ ✯ ✯ ✯ ✯</option>
-							</select>-->
+							</select>
 						</div>
 					</div>
 
@@ -237,7 +237,7 @@ use DeepCopy\f003\Foo;
 					<div class="row ">
 						<div class ="preview">
 							<div class="div_image">
-								<h1>hello</h1>
+								
 							</div>
 						</div>
 					</div>
