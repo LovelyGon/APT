@@ -13,13 +13,13 @@ class CreateFeaturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('property_facilitys', function (Blueprint $table) {
+        Schema::create('features', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->time('arival_from');
-            $table->time('arival_to');
-            $table->time('departure_from');
-            $table->time('departure_to');
+            $table->time('arival_from')->nullable();;
+            $table->time('arival_to')->nullable();;
+            $table->time('departure_from')->nullable();;
+            $table->time('departure_to')->nullable();;
             $table->String('internet');
             $table->String('parking');
             $table->String('breakfast');

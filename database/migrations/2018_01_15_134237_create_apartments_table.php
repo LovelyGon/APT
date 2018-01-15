@@ -14,7 +14,7 @@ class CreateApartmentsTable extends Migration
     public function up()
     {
         Schema::create('apartments', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned()->unique();;
             $table->timestamps();
             $table->String('apartment_type');
             $table->String('apartment_name');
@@ -37,6 +37,6 @@ class CreateApartmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('apartments');
     }
 }
