@@ -34,7 +34,9 @@
 <section class="content">
  {!! Form::open(['route' => 'features']) !!}
 <!-- SELECT2 EXAMPLE -->
-<input id="propertyId" name="property_id" value="{{ $id }}" hidden="true"/>
+<?php  if (isset($id)){?>
+	<input id="propertyId" name="property_id" value="{{ $id }}" hidden="true"/>
+<?php } ?>
 <div class="row">
 	<div class="col-md-6">
 		<div class="box box-default">
