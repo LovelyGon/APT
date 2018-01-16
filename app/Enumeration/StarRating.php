@@ -6,17 +6,17 @@ use MyCLabs\Enum\Enum;
 class starRating extends Enum
 {
 
-    const NA = 'NA';
+    const NA = '0';
 
-    const NA1S = '1S';
+    const 1S = '1';
 
-    const NA2S = '2S';
+    const 2S = '2';
     
-    const NA3S = '3S';
+    const 3S = '3';
     
-    const NA4S = '4S';
+    const 4S = '4';
     
-    const NA5S = '5S';
+    const S5 = '5';
 
     public static function toArray()
     {
