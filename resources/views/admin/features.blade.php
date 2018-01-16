@@ -8,7 +8,18 @@
 ?>
 
 @extends('admin.admin_template') @section('content')
-
+@if(!empty($error))
+					{!! $error !!}
+				@endif
+				@if(count($errors)>0)
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{!! $error !!}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif()
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
@@ -40,7 +51,7 @@
                                                          echo Form::label('interner_type', __('features.interner_info'));
                                                          foreach ($internet_type_items as $translatedItems)
                                                          {
-                                                             echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                             echo "<div class='radio'><label>".Form::radio('internet', $translatedItems) .$translatedItems."<br></label></div>";  
                                                          }
 							 ?>	
                                             </div>
@@ -65,7 +76,7 @@
                                                             echo Form::label('Parking_info', __('features.Parking_info'));
                                                             foreach ($partking_type_items as $translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                                echo "<div class='radio'><label>".Form::radio('parking', $translatedItems) .$translatedItems."<br></label></div>";  
                                                             }
 							 ?>
 						</div>
@@ -94,7 +105,7 @@
                                                             echo Form::label('Children_info', __('features.Children_info'));
                                                             foreach ($children_type_items as $translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                                echo "<div class='radio'><label>".Form::radio('children', $translatedItems) .$translatedItems."<br></label></div>";  
                                                             }
 							 ?>
 						</div>
@@ -121,7 +132,7 @@
                                                             echo Form::label('BreakFast_info', __('features.BreakFast_info'));
                                                             foreach ($breakfast_type_items as $translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                                echo "<div class='radio'><label>".Form::radio('breakfast', $translatedItems) .$translatedItems."<br></label></div>";  
                                                             }
 							 ?>
 						</div>
@@ -151,7 +162,7 @@
                                                             echo Form::label('Pets_info', __('features.Pets_info'));
                                                             foreach ($Pets_type_items as $translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('sex', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                                echo "<div class='radio'><label>".Form::radio('pets', $translatedItems) .$translatedItems."<br></label></div>";  
                                                             }
 //							 ?>
 						</div>
@@ -172,21 +183,15 @@
 
 				<div class="row">
 					<div class="col-md-7">
-						<div class="form-group">
+						<div class="form-group" style="width:600px;">
 							<label>How many languages can you speak?</label>
 							<div class="form-group has-success">
-								<label class="control-label" for="inputSuccess"><i
-									class="fa fa-check"></i>English</label> <label
-									class="control-label" for="inputSuccess"><i class="fa fa-check"></i>Vietnamese</label>
 							</div>
-							<select class="form-control select2"  multiple id="pre-selected-options">
-								<option value="Codeigniter">Please add more languages</option>
-								<option value="Codeigniter">Vietnamese</option>
-								<option value="Codeigniter">English</option>
-                                                                <option value="Codeigniter">Vietnamese</option>
-								<option value="Codeigniter">English</option><option value="Codeigniter">Vietnamese</option>
-								<option value="Codeigniter">English</option>
-                                                                
+							<select class="form-control select2" name="languages[]"  multiple id="pre-selected-options" >
+								<option value="VietNam">Việt Name</option>
+                                                                <option value="NhatBan">Nhật Bản</option>
+                                                                <option value="Nga">Nga</option>
+                                                                 <option value="Ando">Ấn độ</option> 
 							</select>
 						</div>
 					</div>
@@ -208,10 +213,9 @@
 			<div class="row">
                             <?php														
                                $Popular_type_items= PopularType ::toArray();
-
                                foreach ($Popular_type_items as $translatedItems)
                                {
-                                   echo "<div class='col-md-6'><div class='box-body'><ul class='todo-list'><li>".Form::checkbox('sex', $translatedItems)."<span class='text'>" .$translatedItems."<br></span></li></ul></div></div>";  
+                                   echo "<div class='col-md-6'><div class='box-body'><ul class='todo-list'><li>".Form::checkbox('popular[]', $translatedItems)."<span class='text'>" .$translatedItems."<br></span></li></ul></div></div>";  
                                }
                             ?>
 			</div>
@@ -226,7 +230,7 @@
 	</div>
 
 </div>
-</form>{!! Form::close() !!}
+{!! Form::close() !!}
 </section>
 
 <!-- /.box box box-default-->

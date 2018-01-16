@@ -21,7 +21,7 @@ class BreakfastType extends Enum
         $items = $reflection->getConstants();
         
         foreach ($items as $key => $value) {
-            $translatedItem[$key] = __('Breakfast.BreakFast_type.' . $items[$key]);
+            $translatedItem[$key] = __('features.BreakFast_type.' . $items[$key]);
         }
         return $translatedItem;
     }
