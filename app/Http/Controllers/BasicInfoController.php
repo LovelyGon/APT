@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\Property;
 use App\PropertyGallery;
 use PragmaRX\Countries\Facade as Countries;
@@ -43,7 +44,7 @@ class BasicInfoController extends Controller
             $galary->image_name= $images;
             $galary->save();
         }
-        return Redirect('admin/features');
+        return  view('admin.features', ['id' => $id]);
     }
 
     public function get_calling_code (Request $rq)

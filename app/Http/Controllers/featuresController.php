@@ -1,13 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Features;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\PropertyFacilitys;
 
 class featuresController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -26,40 +25,39 @@ class featuresController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-                'internet' => 'required',
-                'parking' => 'required',
-                'breakfast' => 'required',
-                'children' => 'required',
-                'pets' => 'required',
-                'languages' => 'required',
-                'popular' => 'required',
-            ], [
-                'internet.required' => 'Bạn phải chọn internet',
-                'parking.required' => 'Bạn phải chọn parking',
-                'breakfast.required' => 'Bạn phải chọn breakfast',
-                'children.required' => 'Bạn phải chọn children',
-                'pets.required' => 'Bạn phải chọn pet',
-                'languages.required' => 'Bạn phải chọn language',
-                'popular.required' => 'Bạn phải chọn popular',
-            ]);
-        $PropertyFacilitys = new PropertyFacilitys;
-        $PropertyFacilitys->internet=$request->internet;
-        $PropertyFacilitys->parking=$request->parking;
-        $PropertyFacilitys->breakfast=$request->breakfast;
-        $PropertyFacilitys->children=$request->children;
-        $PropertyFacilitys->pet=$request->pets;
-        $PropertyFacilitys->language=implode(',',$request->languages);
-        $PropertyFacilitys->popular_facility=implode(',',$request->popular);
-        $PropertyFacilitys->property_id=1;
-        $PropertyFacilitys->save();
-        return redirect()->route('getfeatures')->withSuccess('Category has been created.');
-        
+            'internet' => 'required',
+            'parking' => 'required',
+            'breakfast' => 'required',
+            'children' => 'required',
+            'pets' => 'required',
+            'languages' => 'required',
+            'popular' => 'required'
+        ], [
+            'internet.required' => 'Báº¡n pháº£i chá»�n internet',
+            'parking.required' => 'Báº¡n pháº£i chá»�n parking',
+            'breakfast.required' => 'Báº¡n pháº£i chá»�n breakfast',
+            'children.required' => 'Báº¡n pháº£i chá»�n children',
+            'pets.required' => 'Báº¡n pháº£i chá»�n pet',
+            'languages.required' => 'Báº¡n pháº£i chá»�n language',
+            'popular.required' => 'Báº¡n pháº£i chá»�n popular'
+        ]);
+        $Features = new Features();
+        $Features->internet = $request->internet;
+        $Features->parking = $request->parking;
+        $Features->breakfast = $request->breakfast;
+        $Features->children = $request->children;
+        $Features->pet = $request->pets;
+        $Features->language = implode(',', $request->languages);
+        $Features->popular_facility = implode(',', $request->popular);
+        $Features->property_id = $request->property_id;
+        $Features->save();
+        return Redirect('admin/apartments');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -70,7 +68,7 @@ class featuresController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,7 +79,7 @@ class featuresController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -92,8 +90,8 @@ class featuresController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -104,7 +102,7 @@ class featuresController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
