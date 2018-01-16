@@ -34,9 +34,11 @@
 <section class="content">
  {!! Form::open(['route' => 'features']) !!}
 <!-- SELECT2 EXAMPLE -->
+<input id="propertyId" name="property_id" value="{{ $id }}" hidden="true"/>
 <div class="row">
 	<div class="col-md-6">
 		<div class="box box-default">
+		
 			<div class="box-header with-border">
 				<h3 class="box-title">Internet</h3>
 
@@ -46,6 +48,8 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
+						
+						
                                                         <?php														
 							 $internet_type_items = InternetType::toArray();
                                                          echo Form::label('interner_type', __('features.interner_info'));
