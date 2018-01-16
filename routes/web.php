@@ -11,9 +11,6 @@
  * |
  */
 
-Route::get('/', function () {
-    return view('admin.features');
-});
 Route::get('admin/get_calling_code','BasicInfoController@get_calling_code');   
 Route::get('admin/get_country','BasicInfoController@get_country');   
 Route::group(array('prefix' => 'admin'), function () {
@@ -27,9 +24,7 @@ Route::group(array('prefix' => 'admin'), function () {
     });
     Route:: post('addproperty','BasicInfoController@store');
 
-    Route::get('features', function () {
-        return view('admin.features');
-    });
+    Route::get('features', 'featuresController@index')->name('getfeatures');
     Route::post('/', 'featuresController@create')->name('features');
     Route::get('apartments/create', function () {
         return view('admin.apartments-create');
@@ -52,3 +47,6 @@ Route::group(array('prefix' => 'admin'), function () {
             return view('admin.galleries');
         });
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
