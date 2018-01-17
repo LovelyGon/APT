@@ -40,7 +40,7 @@ return [
        'yes' => "yes",
        'no'=> 'No'
     ],
-     'Pets_info' => 'Do you allow pets of Guest?',
+    'Pets_info' => 'Do you allow pets of Guest?',
     'next' => 'Next &raquo;',
     'Pets_type' => [
         'no'=> 'No',
@@ -89,5 +89,11 @@ return [
         'Diving' => "Diving",
        'Fishing' => "Fishing",
         'OPseasonal' => "Outdoor Pool (seasonal)",
-    ]
+    ],
+    'Language_info' => 'How many languages can you speak?',
+    'Language_type' => [
+        'vietnam'=> 'Việt Nam',
+        'nhatban' => "Nhật Bản",
+        'campuchia' => "CampuChia"
+    ],
 ];

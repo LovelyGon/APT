@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\PropertyFacilitys;
@@ -50,10 +51,39 @@ class featuresController extends Controller
         $PropertyFacilitys->pet=$request->pets;
         $PropertyFacilitys->language=implode(',',$request->languages);
         $PropertyFacilitys->popular_facility=implode(',',$request->popular);
-        $PropertyFacilitys->property_id=1;
+        $PropertyFacilitys->property_id=Auth::user()->id;
         $PropertyFacilitys->save();
         return redirect()->route('getfeatures')->withSuccess('Category has been created.');
         
+    }
+    
+    public function get_calling_code (Request $rq)
+    {
+        $iso2 = strtoupper($rq->iso2);
+        $results = Countries::where('cca2',$iso2);
+        foreach($results as $result)
+        {
+            $result_callingCode = $result->callingCode;
+        }       
+        return Response($result_callingCode);
+    }
+
+    public function get_country (Request $rq)
+    {
+        $iso2 = strtoupper($rq->iso2);
+        $results = Countries::where('cca2',$iso2);
+        foreach($results as $result)
+        {
+            $result_citys = $result->states;
+        }
+        $result_city_names = [];
+        for($i=1;$i<count($result_citys);$i++)
+        {
+            $city_name = $result_citys[$i]['name'];
+            array_push($result_city_names,$city_name);
+        }  
+        $view_select = view('admin.select')->with(['result_city_names'=>$result_city_names]);           
+        return Response($view_select);
     }
 
     /**

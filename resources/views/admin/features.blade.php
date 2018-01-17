@@ -4,6 +4,7 @@
     use App\Enumeration\ChildrenType;
     use App\Enumeration\BreakfastType;
     use App\Enumeration\PetsType;
+    use App\Enumeration\language;
     use App\Enumeration\PopularType;
 ?>
 
@@ -182,7 +183,7 @@
 			<div class="box-body">
 
 				<div class="row">
-					<div class="col-md-7">
+					<div class="col-md-7">						
 						<div class="form-group" style="width:600px;">
 							<label>How many languages can you speak?</label>
 							<div class="form-group has-success">
@@ -193,6 +194,8 @@
                                                                 <option value="Nga">Nga</option>
                                                                  <option value="Ando">Ấn độ</option> 
 							</select>
+                                                        <input type="text" class="form-control"
+								id="country" name="country">
 						</div>
 					</div>
 

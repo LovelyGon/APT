@@ -13,12 +13,7 @@
 
 Route::get('admin/get_calling_code','BasicInfoController@get_calling_code');   
 Route::get('admin/get_country','BasicInfoController@get_country');   
-Route::group(array('prefix' => 'admin'), function () {
-   
-    Route::get('/', function () {
-        return view('admin.login');
-    });
-    
+Route::group(['prefix' => 'admin','middleware' => ['auth']], function () { 
     Route::get('basicinfo', function () {
         return view('admin.basic_info');
     });
