@@ -16,7 +16,8 @@ class featuresController extends Controller
      */
     public function index()
     {
-        return view('admin.features');
+        $features = PropertyFacilitys::where('property_id', '=', Auth::user()->id)->get();
+        return view('admin.features')->with('features', $features);;
     }
 
     /**

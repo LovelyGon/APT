@@ -7,10 +7,10 @@ class BreakfastType extends Enum
 {
 
 
-    const yesap = 'yesap';
-    const yesbo = 'yesbo';
+    const YESAP = 'YESAP';
+    const YESBO = 'YESBO';
 
-    const no = 'no';
+    const NO = 'NO';
 
     public static function toArray()
     {

@@ -6,11 +6,11 @@ use MyCLabs\Enum\Enum;
 class ParkingType extends Enum
 {
 
-    const ywf = 'ywf';
+    const YWF = 'YWF';
 
-    const ynwf = 'ynwf';
+    const YNWF = 'YNWF';
 
-    const no = 'no';
+    const NO = 'NO';
 
     public static function toArray()
     {
