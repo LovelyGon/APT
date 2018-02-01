@@ -55,17 +55,20 @@
 						
                                                         <?php														
 							 $internet_type_items = InternetType::toArray();
-                                                        
+                                                
                                                          echo Form::label('interner_type', __('features.interner_info'));
-                                                         foreach ($features as $feature){
+                                                  
                                                             foreach ($internet_type_items as $key =>$translatedItems)
                                                             {
-
-                                                
-                                                            echo "<div class='radio'><label>".Form::radio('internet',$key) .$translatedItems."<br></label></div>";
-
+                                                              foreach($features as $featuresss)
+                                                                  {
+                                                         ?>       
+<!--//                                                            echo "<div class='radio'><label>".Form::radio('internet',$key) .$translatedItems."<br></label></div>";-->
+<div class='radio'><label><input type="radio" name="gender" value="<?php $key ?>"><?php echo $translatedItems ?></label></div>
+<input type="text" class="form-control"id="country" name="country">
+                                                         <?php
                                                             }
-                                                         }
+                                                            }
 							 ?>	
                                             </div>
 					</div>
@@ -208,9 +211,8 @@
                                                                 <option value="NhatBan">Nhật Bản</option>
                                                                 <option value="Nga">Nga</option>
                                                                  <option value="Ando">Ấn độ</option> 
-							</select>
-                                                        <input type="text" class="form-control"
-								id="country" name="country">
+                                                        </select>
+
 						</div>
 					</div>
 
@@ -253,3 +255,83 @@
 
 <!-- /.box box box-default-->
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(function () {
+		$("input[name=image]").previewimage({
+			div: ".preview",
+			imgwidth: 152,
+			imgheight: 100,
+            delname: 'Delete'
+		});
+		//------------------------------------------------------------------
+	    $('#input03').filestyle({
+				input : false,
+				btnClass : 'btn-primary',
+				htmlIcon : '<span class="oi oi-folder"></span> '
+	    });
+	    //------------------------------------------------------------------
+	    $("#country").countrySelect({
+	    	defaultCountry: "us"
+	    });
+	    //------------------------------------------------------------------
+	    $('.select2').select2();
+	    
+	});
+//--------------------------------------------------------------------------
+    $(document).ready(function(){
+       $('#country').on('change',function(){
+            $countryData = $("#country").countrySelect("getSelectedCountryData");  
+	        $iso2 = $countryData['iso2'];
+	        $.ajax({
+	        	type:'get',
+	        	url: '{{URL::to('admin/get_calling_code')}}',
+	        	data:{iso2:$iso2},
+	        	success:function(data){
+	        		$('#callingCode').val('+'+data);
+	        		console.log(data);
+	        	}
+	        });
+       });
+    });
+ //------------------------------------------------------------------------
+ $(document).ready(function(){
+       $('#country').on('change',function(){
+            $countryData = $("#country").countrySelect("getSelectedCountryData");  
+	        $iso2 = $countryData['iso2'];
+	        $.ajax({
+	        	type:'get',
+	        	url: '{{URL::to('admin/get_country')}}',
+	        	data:{iso2:$iso2},
+	        	success:function(data){
+	        		$('#select_city').html(data);
+	        		console.log(data);
+	        	}
+	        });
+       });
+    });
+ //-----------------------------------------------------------------------
+ $(document).ready(function(){
+    $countryData = $("#country").countrySelect("getSelectedCountryData");  
+        $iso2 = $countryData['iso2'];
+        $.ajax({
+        	type:'get',
+        	url: '{{URL::to('admin/get_country')}}',
+        	data:{iso2:$iso2},
+        	success:function(data){
+        		$('#select_city').html(data);
+        		console.log(data);
+        	}
+        });
+
+        $.ajax({
+        	type:'get',
+        	url: '{{URL::to('admin/get_calling_code')}}',
+        	data:{iso2:$iso2},
+        	success:function(data){
+        		$('#callingCode').val('+'+data);
+        		console.log(data);
+        	}
+        });
+ });
+</script>
