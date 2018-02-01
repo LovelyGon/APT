@@ -1,14 +1,15 @@
 <?php
-
 namespace App\Http\Controllers;
 
+
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Features;
 use App\PropertyFacilitys;
+use Illuminate\Http\Request;
 
 class featuresController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +18,7 @@ class featuresController extends Controller
     public function index()
     {
         $features = PropertyFacilitys::where('property_id', '=', Auth::user()->id)->get();
-        return view('admin.features')->with('features', $features);;
+        return view('admin.features')->with('features', $features);
     }
 
     /**
@@ -44,17 +45,33 @@ class featuresController extends Controller
                 'languages.required' => 'Bạn phải chọn language',
                 'popular.required' => 'Bạn phải chọn popular',
             ]);
-        $PropertyFacilitys = new PropertyFacilitys;
-        $PropertyFacilitys->internet=$request->internet;
-        $PropertyFacilitys->parking=$request->parking;
-        $PropertyFacilitys->breakfast=$request->breakfast;
-        $PropertyFacilitys->children=$request->children;
-        $PropertyFacilitys->pet=$request->pets;
-        $PropertyFacilitys->language=implode(',',$request->languages);
-        $PropertyFacilitys->popular_facility=implode(',',$request->popular);
-        $PropertyFacilitys->property_id=Auth::user()->id;
-        $PropertyFacilitys->save();
-        return redirect()->route('getfeatures')->withSuccess('Category has been created.');
+        $features = PropertyFacilitys::where('property_id', '=', Auth::user()->id)->first();
+        if($features==null){
+            $PropertyFacilitys = new PropertyFacilitys;
+            $PropertyFacilitys->internet=$request->internet;
+            $PropertyFacilitys->parking=$request->parking;
+            $PropertyFacilitys->breakfast=$request->breakfast;
+            $PropertyFacilitys->children=$request->children;
+            $PropertyFacilitys->pet=$request->pets;
+            $PropertyFacilitys->language=implode(',',$request->languages);
+            $PropertyFacilitys->popular_facility=implode(',',$request->popular);
+            $PropertyFacilitys->property_id=Auth::user()->id;
+            $PropertyFacilitys->save();
+            return redirect()->route('getfeatures')->withSuccess('Category has been created.');
+        }else{
+          
+            $user = PropertyFacilitys::where('property_id', '=', Auth::user()->id)->first();
+            $user->internet=$request->internet;
+            $user->parking=$request->parking;
+            $user->breakfast=$request->breakfast;
+            $user->children=$request->children;
+            $user->pet=$request->pets;
+            $user->language=implode(',',$request->languages);
+            $user->popular_facility=implode(',',$request->popular);
+            $user->property_id=Auth::user()->id;
+            $user->save();
+            return redirect()->route('getfeatures')->withSuccess('Category has been update.');
+        }
         
     }
     
@@ -90,7 +107,7 @@ class featuresController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -101,7 +118,7 @@ class featuresController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -112,7 +129,7 @@ class featuresController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -123,8 +140,8 @@ class featuresController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -135,7 +152,7 @@ class featuresController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

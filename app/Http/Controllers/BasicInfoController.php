@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\Property;
-use Countries;
-use App\Galary;
+use App\PropertyGallery;
+use PragmaRX\Countries\Facade as Countries;
 
 class BasicInfoController extends Controller
 {
@@ -21,29 +22,29 @@ class BasicInfoController extends Controller
         $property ->address_line2 = $rq->address_line2;
         $property ->country = $rq->country;
         $property ->city = $rq->city;
+        $property ->zipcode = $rq->zipcode;
         $callingCode = $rq->callingCode;
-        $phonenumber =$rq->phonenumber;
+        $phonenumber = $rq->phonenumber;
         $property ->phonenumber = $callingCode.' '. $phonenumber;
         $property ->city = $rq->city;
         $property->save();
-        $property_ids = Property::where('contact_name',$rq->contact_name)->get();
-        foreach($property_ids as $property_id)
-        {
-            $id = $property_id->id;
-        }   
+        
+        $id = $property->id;
+        
         $files = $rq->image;
+        
         for($i=1;$i<count($files);$i++)
         {   
-            $galary = new Galary;
+            $galary = new PropertyGallery();
             $filename = $files[$i]->getClientOriginalName();
             $images = time(). "_" . $filename;
             $destinationPath = public_path('images');
             $files[$i]->move($destinationPath, $images);
             $galary->property_id = $id;
-            $galary->name= $images;
+            $galary->image_name= $images;
             $galary->save();
         }
-        return Redirect('admin/features');
+        return  view('admin.features', ['id' => $id]);
     }
 
     public function get_calling_code (Request $rq)

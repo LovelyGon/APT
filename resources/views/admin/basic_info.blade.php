@@ -190,15 +190,14 @@ use DeepCopy\f003\Foo;
 						<div class="form-inline">
 							<label>@lang('property.phone')<span style="color: red"> *</span></label></br>
 								<input readonly="true" class="form-control" id="callingCode" style="width: 60px" name="callingCode">
-								<input type="number" class="form-control" id="phoneNumber" min="0" style="max-width: 150px;" name="phonenumber">
+								<input type="text" class="form-control" id="phoneNumber" min="0" style="max-width: 150px;" name="phonenumber" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 						</div>
 
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label id="zipcode">@lang('property.zipcode')</label> 
-							<input type="text" class="form-control"
-								id="zipcode">
+							<input type="text" class="form-control" name="zipcode" id="zipcode">
 						</div>
                         
 					</div>

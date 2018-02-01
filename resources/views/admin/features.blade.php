@@ -35,9 +35,13 @@
 <section class="content">
  {!! Form::open(['route' => 'features']) !!}
 <!-- SELECT2 EXAMPLE -->
+<?php  if (isset($id)){?>
+	<input id="propertyId" name="property_id" value="{{ $id }}" hidden="true"/>
+<?php } ?>
 <div class="row">
 	<div class="col-md-6">
 		<div class="box box-default">
+		
 			<div class="box-header with-border">
 				<h3 class="box-title">Internet</h3>
 
@@ -47,6 +51,8 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="form-group">
+						
+						
                                                         <?php														
 							 $internet_type_items = InternetType::toArray();
                                                         
