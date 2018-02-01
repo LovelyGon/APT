@@ -3,14 +3,13 @@ namespace App\Enumeration;
 
 use MyCLabs\Enum\Enum;
 
-class ChildrenType extends Enum
+class language extends Enum
 {
 
-
-
-    const YES = 'YES';
-
-    const NO = 'NO';
+    
+    const vietnam = 'vietnam';
+    const nhatban = 'nhatban';
+    const campuchia = 'campuchia';
 
     public static function toArray()
     {
@@ -19,10 +18,10 @@ class ChildrenType extends Enum
         $class = get_called_class();        
         $reflection = new \ReflectionClass($class);
         $items = $reflection->getConstants();
-        
         foreach ($items as $key => $value) {
-            $translatedItem[$key] = __('features.Children_type.' . $items[$key]);
+            $translatedItem[$key] = __('features.Language_type' . $items[$key]);
         }
+        
         return $translatedItem;
     }
 }

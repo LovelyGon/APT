@@ -1,7 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Auth;
 use App\Features;
+use App\PropertyFacilitys;
 use Illuminate\Http\Request;
 
 class featuresController extends Controller
@@ -14,7 +17,8 @@ class featuresController extends Controller
      */
     public function index()
     {
-        return view('admin.features');
+        $features = PropertyFacilitys::where('property_id', '=', Auth::user()->id)->get();
+        return view('admin.features')->with('features', $features);
     }
 
     /**
@@ -25,33 +29,79 @@ class featuresController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'internet' => 'required',
-            'parking' => 'required',
-            'breakfast' => 'required',
-            'children' => 'required',
-            'pets' => 'required',
-            'languages' => 'required',
-            'popular' => 'required'
-        ], [
-            'internet.required' => 'Báº¡n pháº£i chá»�n internet',
-            'parking.required' => 'Báº¡n pháº£i chá»�n parking',
-            'breakfast.required' => 'Báº¡n pháº£i chá»�n breakfast',
-            'children.required' => 'Báº¡n pháº£i chá»�n children',
-            'pets.required' => 'Báº¡n pháº£i chá»�n pet',
-            'languages.required' => 'Báº¡n pháº£i chá»�n language',
-            'popular.required' => 'Báº¡n pháº£i chá»�n popular'
-        ]);
-        $Features = new Features();
-        $Features->internet = $request->internet;
-        $Features->parking = $request->parking;
-        $Features->breakfast = $request->breakfast;
-        $Features->children = $request->children;
-        $Features->pet = $request->pets;
-        $Features->language = implode(',', $request->languages);
-        $Features->popular_facility = implode(',', $request->popular);
-        $Features->property_id = $request->property_id;
-        $Features->save();
-        return Redirect('admin/apartments');
+                'internet' => 'required',
+                'parking' => 'required',
+                'breakfast' => 'required',
+                'children' => 'required',
+                'pets' => 'required',
+                'languages' => 'required',
+                'popular' => 'required',
+            ], [
+                'internet.required' => 'Bạn phải chọn internet',
+                'parking.required' => 'Bạn phải chọn parking',
+                'breakfast.required' => 'Bạn phải chọn breakfast',
+                'children.required' => 'Bạn phải chọn children',
+                'pets.required' => 'Bạn phải chọn pet',
+                'languages.required' => 'Bạn phải chọn language',
+                'popular.required' => 'Bạn phải chọn popular',
+            ]);
+        $features = PropertyFacilitys::where('property_id', '=', Auth::user()->id)->first();
+        if($features==null){
+            $PropertyFacilitys = new PropertyFacilitys;
+            $PropertyFacilitys->internet=$request->internet;
+            $PropertyFacilitys->parking=$request->parking;
+            $PropertyFacilitys->breakfast=$request->breakfast;
+            $PropertyFacilitys->children=$request->children;
+            $PropertyFacilitys->pet=$request->pets;
+            $PropertyFacilitys->language=implode(',',$request->languages);
+            $PropertyFacilitys->popular_facility=implode(',',$request->popular);
+            $PropertyFacilitys->property_id=Auth::user()->id;
+            $PropertyFacilitys->save();
+            return redirect()->route('getfeatures')->withSuccess('Category has been created.');
+        }else{
+          
+            $user = PropertyFacilitys::where('property_id', '=', Auth::user()->id)->first();
+            $user->internet=$request->internet;
+            $user->parking=$request->parking;
+            $user->breakfast=$request->breakfast;
+            $user->children=$request->children;
+            $user->pet=$request->pets;
+            $user->language=implode(',',$request->languages);
+            $user->popular_facility=implode(',',$request->popular);
+            $user->property_id=Auth::user()->id;
+            $user->save();
+            return redirect()->route('getfeatures')->withSuccess('Category has been update.');
+        }
+        
+    }
+    
+    public function get_calling_code (Request $rq)
+    {
+        $iso2 = strtoupper($rq->iso2);
+        $results = Countries::where('cca2',$iso2);
+        foreach($results as $result)
+        {
+            $result_callingCode = $result->callingCode;
+        }       
+        return Response($result_callingCode);
+    }
+
+    public function get_country (Request $rq)
+    {
+        $iso2 = strtoupper($rq->iso2);
+        $results = Countries::where('cca2',$iso2);
+        foreach($results as $result)
+        {
+            $result_citys = $result->states;
+        }
+        $result_city_names = [];
+        for($i=1;$i<count($result_citys);$i++)
+        {
+            $city_name = $result_citys[$i]['name'];
+            array_push($result_city_names,$city_name);
+        }  
+        $view_select = view('admin.select')->with(['result_city_names'=>$result_city_names]);           
+        return Response($view_select);
     }
 
     /**

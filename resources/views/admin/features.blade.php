@@ -4,6 +4,7 @@
     use App\Enumeration\ChildrenType;
     use App\Enumeration\BreakfastType;
     use App\Enumeration\PetsType;
+    use App\Enumeration\language;
     use App\Enumeration\PopularType;
 ?>
 
@@ -54,10 +55,16 @@
 						
                                                         <?php														
 							 $internet_type_items = InternetType::toArray();
+                                                        
                                                          echo Form::label('interner_type', __('features.interner_info'));
-                                                         foreach ($internet_type_items as $translatedItems)
-                                                         {
-                                                             echo "<div class='radio'><label>".Form::radio('internet', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                         foreach ($features as $feature){
+                                                            foreach ($internet_type_items as $key =>$translatedItems)
+                                                            {
+
+                                                
+                                                            echo "<div class='radio'><label>".Form::radio('internet',$key) .$translatedItems."<br></label></div>";
+
+                                                            }
                                                          }
 							 ?>	
                                             </div>
@@ -79,10 +86,13 @@
 						<div class="form-group">
                                                         <?php														
                                                             $partking_type_items= ParkingType ::toArray();
+                        
                                                             echo Form::label('Parking_info', __('features.Parking_info'));
-                                                            foreach ($partking_type_items as $translatedItems)
+                                                            
+                                                            foreach ($partking_type_items as $key =>$translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('parking', $translatedItems) .$translatedItems."<br></label></div>";  
+                         
+                                                                echo "<div class='radio'><label>".Form::radio('parking', $key) .$translatedItems."<br></label></div>";  
                                                             }
 							 ?>
 						</div>
@@ -109,9 +119,9 @@
                                                         <?php														
                                                             $children_type_items= ChildrenType ::toArray();
                                                             echo Form::label('Children_info', __('features.Children_info'));
-                                                            foreach ($children_type_items as $translatedItems)
+                                                            foreach ($children_type_items as $key =>$translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('children', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                                echo "<div class='radio'><label>".Form::radio('children', $key) .$translatedItems."<br></label></div>";  
                                                             }
 							 ?>
 						</div>
@@ -136,9 +146,9 @@
                                                         <?php														
                                                             $breakfast_type_items= BreakfastType ::toArray();
                                                             echo Form::label('BreakFast_info', __('features.BreakFast_info'));
-                                                            foreach ($breakfast_type_items as $translatedItems)
+                                                            foreach ($breakfast_type_items as $key =>$translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('breakfast', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                                echo "<div class='radio'><label>".Form::radio('breakfast', $key) .$translatedItems."<br></label></div>";  
                                                             }
 							 ?>
 						</div>
@@ -166,9 +176,9 @@
                                                          <?php														
                                                             $Pets_type_items= PetsType ::toArray();
                                                             echo Form::label('Pets_info', __('features.Pets_info'));
-                                                            foreach ($Pets_type_items as $translatedItems)
+                                                            foreach ($Pets_type_items as $key =>$translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('pets', $translatedItems) .$translatedItems."<br></label></div>";  
+                                                                echo "<div class='radio'><label>".Form::radio('pets', $key) .$translatedItems."<br></label></div>";  
                                                             }
 //							 ?>
 						</div>
@@ -188,7 +198,7 @@
 			<div class="box-body">
 
 				<div class="row">
-					<div class="col-md-7">
+					<div class="col-md-7">						
 						<div class="form-group" style="width:600px;">
 							<label>How many languages can you speak?</label>
 							<div class="form-group has-success">
@@ -199,6 +209,8 @@
                                                                 <option value="Nga">Nga</option>
                                                                  <option value="Ando">Ấn độ</option> 
 							</select>
+                                                        <input type="text" class="form-control"
+								id="country" name="country">
 						</div>
 					</div>
 
@@ -219,9 +231,9 @@
 			<div class="row">
                             <?php														
                                $Popular_type_items= PopularType ::toArray();
-                               foreach ($Popular_type_items as $translatedItems)
+                               foreach ($Popular_type_items as $key =>$translatedItems)
                                {
-                                   echo "<div class='col-md-6'><div class='box-body'><ul class='todo-list'><li>".Form::checkbox('popular[]', $translatedItems)."<span class='text'>" .$translatedItems."<br></span></li></ul></div></div>";  
+                                   echo "<div class='col-md-6'><div class='box-body'><ul class='todo-list'><li>".Form::checkbox('popular[]', $key)."<span class='text'>" .$translatedItems."<br></span></li></ul></div></div>";  
                                }
                             ?>
 			</div>

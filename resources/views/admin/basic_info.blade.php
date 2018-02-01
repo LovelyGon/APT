@@ -56,7 +56,7 @@ use DeepCopy\f003\Foo;
 						<div class="form-group">
 							 <?php		
 							$property_type_label = __('property.property_type_label');								
-							$translatedItems = PropertyType::toArray();
+                                                        $translatedItems = PropertyType::toArray();
 							 echo Form::label($property_type_label);
 							 echo Form::select('property_type', $translatedItems,null, ['class' => 'form-control select2']); 
 							 ?>							

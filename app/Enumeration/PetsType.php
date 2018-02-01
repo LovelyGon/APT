@@ -7,10 +7,10 @@ class PetsType extends Enum
 {
 
 
-    const yesap = 'yesap';
-    const yesbo = 'yesbo';
+    const YESAP = 'YESAP';
+    const YESBO = 'YESBO';
 
-    const no = 'no';
+    const NO = 'NO';
 
     public static function toArray()
     {
@@ -24,5 +24,6 @@ class PetsType extends Enum
             $translatedItem[$key] = __('features.Pets_type.' . $items[$key]);
         }
         return $translatedItem;
+        
     }
 }

@@ -7,14 +7,13 @@ class starRating extends Enum
 {
 
     const NA = '0';
+    const S1 = '1';
 
-    const 1S = '1';
-
-    const 2S = '2';
+    const S2 = '2';
     
-    const 3S = '3';
+    const S3 = '3';
     
-    const 4S = '4';
+    const S4 = '4';
     
     const S5 = '5';
 

@@ -16,36 +16,36 @@ return [
     'BreakFast_info' => 'Is breakfast available for your Guest?',
     'next' => 'Next &raquo;',
     'BreakFast_type' => [
-       'yesap' => "Yes, already incuded in the price",
-        'yesbo' => "Yes, but it's optional",
-       'no'=> 'No'
+       'YESAP' => "Yes, already incuded in the price",
+        'YESBO' => "Yes, but it's optional",
+       'NO'=> 'No'
     ],
     'interner_info' => 'Do you have wifi available for your Guest?',
     'next' => 'Next &raquo;',
     'interner_type' => [
-       'ywf' => "Yes, it's free wifi",
-       'ynwf' => "Yes, but it's not free",
-       'no'=> 'No'
+       'YWF' => "Yes, it's free wifi",
+       'YNWF' => "Yes, but it's not free",
+       'NO'=> 'No'
     ],
     'Parking_info' => 'Do you have parking lots for cars?',
     'next' => 'Next &raquo;',
     'Parking_type' => [
-       'ywf' => "Yes, it's free parking",
-       'ynwf' => "Yes, but it's not free",
-       'no'=> 'No'
+       'YWF' => "Yes, it's free parking",
+       'YNWF' => "Yes, but it's not free",
+       'NO'=> 'No'
     ],
      'Children_info' => 'Could you accommodate children?',
     'next' => 'Next &raquo;',
     'Children_type' => [
-       'yes' => "yes",
-       'no'=> 'No'
+       'YES' => "yes",
+       'NO'=> 'No'
     ],
-     'Pets_info' => 'Do you allow pets of Guest?',
+    'Pets_info' => 'Do you allow pets of Guest?',
     'next' => 'Next &raquo;',
     'Pets_type' => [
-        'no'=> 'No',
-        'yesap' => "Yes, allow cats only",
-        'yesbo' => "Yes, any pets"
+        'NO'=> 'No',
+        'YESAP' => "Yes, allow cats only",
+        'YESBO' => "Yes, any pets"
     ],
     'Popular_info' => 'Popular facilities',
     'next' => 'Next &raquo;',
@@ -89,5 +89,11 @@ return [
         'Diving' => "Diving",
        'Fishing' => "Fishing",
         'OPseasonal' => "Outdoor Pool (seasonal)",
-    ]
+    ],
+    'Language_info' => 'How many languages can you speak?',
+    'Language_type' => [
+        'VIETNAM'=> 'Việt Nam',
+        'nhatban' => "Nhật Bản",
+        'campuchia' => "CampuChia"
+    ],
 ];
