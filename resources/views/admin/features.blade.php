@@ -55,17 +55,16 @@
 						
                                                         <?php														
 							 $internet_type_items = InternetType::toArray();
-                                                        
+                                                
                                                          echo Form::label('interner_type', __('features.interner_info'));
-                                                         foreach ($features as $feature){
+                                                  
                                                             foreach ($internet_type_items as $key =>$translatedItems)
                                                             {
-
-                                                
-                                                            echo "<div class='radio'><label>".Form::radio('internet',$key) .$translatedItems."<br></label></div>";
-
+                                                              foreach($features as $feature)
+                                                                    {  
+                                                                        echo "<div class='radio'><label>".Form::radio('internet',$key,$feature->internet==$key ? true : false) .$translatedItems."<br></label></div>";
+                                                                    }
                                                             }
-                                                         }
 							 ?>	
                                             </div>
 					</div>
@@ -91,8 +90,9 @@
                                                             
                                                             foreach ($partking_type_items as $key =>$translatedItems)
                                                             {
-                         
-                                                                echo "<div class='radio'><label>".Form::radio('parking', $key) .$translatedItems."<br></label></div>";  
+                                                                foreach($features as $feature){
+                                                                    echo "<div class='radio'><label>".Form::radio('parking', $key,$feature->parking==$key ? true : false) .$translatedItems."<br></label></div>";  
+                                                                }
                                                             }
 							 ?>
 						</div>
@@ -121,7 +121,9 @@
                                                             echo Form::label('Children_info', __('features.Children_info'));
                                                             foreach ($children_type_items as $key =>$translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('children', $key) .$translatedItems."<br></label></div>";  
+                                                                foreach($features as $feature){
+                                                                    echo "<div class='radio'><label>".Form::radio('children', $key, $feature->children==$key ? true : false) .$translatedItems."<br></label></div>";  
+                                                                }
                                                             }
 							 ?>
 						</div>
@@ -148,7 +150,9 @@
                                                             echo Form::label('BreakFast_info', __('features.BreakFast_info'));
                                                             foreach ($breakfast_type_items as $key =>$translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('breakfast', $key) .$translatedItems."<br></label></div>";  
+                                                                foreach($features as $feature){
+                                                                    echo "<div class='radio'><label>".Form::radio('breakfast', $key,$feature->breakfast==$key ? true : false) .$translatedItems."<br></label></div>"; 
+                                                                }
                                                             }
 							 ?>
 						</div>
@@ -178,7 +182,9 @@
                                                             echo Form::label('Pets_info', __('features.Pets_info'));
                                                             foreach ($Pets_type_items as $key =>$translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('pets', $key) .$translatedItems."<br></label></div>";  
+                                                                foreach($features as $feature){
+                                                                    echo "<div class='radio'><label>".Form::radio('pets', $key,$feature->pet==$key ? true : false) .$translatedItems."<br></label></div>";  
+                                                                }
                                                             }
 //							 ?>
 						</div>
@@ -208,9 +214,8 @@
                                                                 <option value="NhatBan">Nhật Bản</option>
                                                                 <option value="Nga">Nga</option>
                                                                  <option value="Ando">Ấn độ</option> 
-							</select>
-                                                        <input type="text" class="form-control"
-								id="country" name="country">
+                                                        </select>
+
 						</div>
 					</div>
 
@@ -232,9 +237,12 @@
                             <?php														
                                $Popular_type_items= PopularType ::toArray();
                                foreach ($Popular_type_items as $key =>$translatedItems)
-                               {
-                                   echo "<div class='col-md-6'><div class='box-body'><ul class='todo-list'><li>".Form::checkbox('popular[]', $key)."<span class='text'>" .$translatedItems."<br></span></li></ul></div></div>";  
-                               }
+                                {
+                                    foreach($features as $feature){
+                                        echo "<div class='col-md-6'><div class='box-body'><ul class='todo-list'><li>".Form::checkbox('popular[]', $key,in_array ($key,explode(',',$feature->popular_facility)) ? true : false)."<span class='text'>" .$translatedItems."<br></span></li></ul></div></div>"; 
+                                       
+                                    }
+                                }
                             ?>
 			</div>
 
@@ -253,3 +261,83 @@
 
 <!-- /.box box box-default-->
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(function () {
+		$("input[name=image]").previewimage({
+			div: ".preview",
+			imgwidth: 152,
+			imgheight: 100,
+            delname: 'Delete'
+		});
+		//------------------------------------------------------------------
+	    $('#input03').filestyle({
+				input : false,
+				btnClass : 'btn-primary',
+				htmlIcon : '<span class="oi oi-folder"></span> '
+	    });
+	    //------------------------------------------------------------------
+	    $("#country").countrySelect({
+	    	defaultCountry: "us"
+	    });
+	    //------------------------------------------------------------------
+	    $('.select2').select2();
+	    
+	});
+//--------------------------------------------------------------------------
+    $(document).ready(function(){
+       $('#country').on('change',function(){
+            $countryData = $("#country").countrySelect("getSelectedCountryData");  
+	        $iso2 = $countryData['iso2'];
+	        $.ajax({
+	        	type:'get',
+	        	url: '{{URL::to('admin/get_calling_code')}}',
+	        	data:{iso2:$iso2},
+	        	success:function(data){
+	        		$('#callingCode').val('+'+data);
+	        		console.log(data);
+	        	}
+	        });
+       });
+    });
+ //------------------------------------------------------------------------
+ $(document).ready(function(){
+       $('#country').on('change',function(){
+            $countryData = $("#country").countrySelect("getSelectedCountryData");  
+	        $iso2 = $countryData['iso2'];
+	        $.ajax({
+	        	type:'get',
+	        	url: '{{URL::to('admin/get_country')}}',
+	        	data:{iso2:$iso2},
+	        	success:function(data){
+	        		$('#select_city').html(data);
+	        		console.log(data);
+	        	}
+	        });
+       });
+    });
+ //-----------------------------------------------------------------------
+ $(document).ready(function(){
+    $countryData = $("#country").countrySelect("getSelectedCountryData");  
+        $iso2 = $countryData['iso2'];
+        $.ajax({
+        	type:'get',
+        	url: '{{URL::to('admin/get_country')}}',
+        	data:{iso2:$iso2},
+        	success:function(data){
+        		$('#select_city').html(data);
+        		console.log(data);
+        	}
+        });
+
+        $.ajax({
+        	type:'get',
+        	url: '{{URL::to('admin/get_calling_code')}}',
+        	data:{iso2:$iso2},
+        	success:function(data){
+        		$('#callingCode').val('+'+data);
+        		console.log(data);
+        	}
+        });
+ });
+</script>
