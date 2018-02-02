@@ -60,14 +60,10 @@
                                                   
                                                             foreach ($internet_type_items as $key =>$translatedItems)
                                                             {
-                                                              foreach($features as $featuresss)
-                                                                  {
-                                                         ?>       
-<!--//                                                            echo "<div class='radio'><label>".Form::radio('internet',$key) .$translatedItems."<br></label></div>";-->
-<div class='radio'><label><input type="radio" name="gender" value="<?php $key ?>"><?php echo $translatedItems ?></label></div>
-<input type="text" class="form-control"id="country" name="country">
-                                                         <?php
-                                                            }
+                                                              foreach($features as $feature)
+                                                                    {  
+                                                                        echo "<div class='radio'><label>".Form::radio('internet',$key,$feature->internet==$key ? true : false) .$translatedItems."<br></label></div>";
+                                                                    }
                                                             }
 							 ?>	
                                             </div>
@@ -94,8 +90,9 @@
                                                             
                                                             foreach ($partking_type_items as $key =>$translatedItems)
                                                             {
-                         
-                                                                echo "<div class='radio'><label>".Form::radio('parking', $key) .$translatedItems."<br></label></div>";  
+                                                                foreach($features as $feature){
+                                                                    echo "<div class='radio'><label>".Form::radio('parking', $key,$feature->parking==$key ? true : false) .$translatedItems."<br></label></div>";  
+                                                                }
                                                             }
 							 ?>
 						</div>
@@ -124,7 +121,9 @@
                                                             echo Form::label('Children_info', __('features.Children_info'));
                                                             foreach ($children_type_items as $key =>$translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('children', $key) .$translatedItems."<br></label></div>";  
+                                                                foreach($features as $feature){
+                                                                    echo "<div class='radio'><label>".Form::radio('children', $key, $feature->children==$key ? true : false) .$translatedItems."<br></label></div>";  
+                                                                }
                                                             }
 							 ?>
 						</div>
@@ -151,7 +150,9 @@
                                                             echo Form::label('BreakFast_info', __('features.BreakFast_info'));
                                                             foreach ($breakfast_type_items as $key =>$translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('breakfast', $key) .$translatedItems."<br></label></div>";  
+                                                                foreach($features as $feature){
+                                                                    echo "<div class='radio'><label>".Form::radio('breakfast', $key,$feature->breakfast==$key ? true : false) .$translatedItems."<br></label></div>"; 
+                                                                }
                                                             }
 							 ?>
 						</div>
@@ -181,7 +182,9 @@
                                                             echo Form::label('Pets_info', __('features.Pets_info'));
                                                             foreach ($Pets_type_items as $key =>$translatedItems)
                                                             {
-                                                                echo "<div class='radio'><label>".Form::radio('pets', $key) .$translatedItems."<br></label></div>";  
+                                                                foreach($features as $feature){
+                                                                    echo "<div class='radio'><label>".Form::radio('pets', $key,$feature->pet==$key ? true : false) .$translatedItems."<br></label></div>";  
+                                                                }
                                                             }
 //							 ?>
 						</div>
@@ -234,9 +237,12 @@
                             <?php														
                                $Popular_type_items= PopularType ::toArray();
                                foreach ($Popular_type_items as $key =>$translatedItems)
-                               {
-                                   echo "<div class='col-md-6'><div class='box-body'><ul class='todo-list'><li>".Form::checkbox('popular[]', $key)."<span class='text'>" .$translatedItems."<br></span></li></ul></div></div>";  
-                               }
+                                {
+                                    foreach($features as $feature){
+                                        echo "<div class='col-md-6'><div class='box-body'><ul class='todo-list'><li>".Form::checkbox('popular[]', $key,in_array ($key,explode(',',$feature->popular_facility)) ? true : false)."<span class='text'>" .$translatedItems."<br></span></li></ul></div></div>"; 
+                                       
+                                    }
+                                }
                             ?>
 			</div>
 
