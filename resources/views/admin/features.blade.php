@@ -60,10 +60,11 @@
                                                   
                                                             foreach ($internet_type_items as $key =>$translatedItems)
                                                             {
-                                                              foreach($features as $feature)
-                                                                    {  
-                                                                        echo "<div class='radio'><label>".Form::radio('internet',$key,$feature->internet==$key ? true : false) .$translatedItems."<br></label></div>";
-                                                                    }
+                                                                 echo "<div class='radio'><label>".Form::radio('internet',$key) .$translatedItems."<br></label></div>";
+//                                                              foreach($features as $feature)
+//                                                                    {  
+//                                                                        echo "<div class='radio'><label>".Form::radio('internet',$key,$feature->internet==$key ? true : false) .$translatedItems."<br></label></div>";
+//                                                                    }
                                                             }
 							 ?>	
                                             </div>

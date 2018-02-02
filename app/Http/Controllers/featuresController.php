@@ -17,8 +17,10 @@ class featuresController extends Controller
      */
     public function index()
     {
-        $features = PropertyFacilitys::where('property_id', '=', Auth::user()->id)->get();
-        return view('admin.features')->with('features', $features);
+        $features = Features::where('property_id', '=', Auth::user()->id)->get();
+        foreach ($features as $featuress){
+            return view('admin.features')->with('features', $features);
+        }
     }
 
     /**
@@ -45,9 +47,10 @@ class featuresController extends Controller
                 'languages.required' => 'Bạn phải chọn language',
                 'popular.required' => 'Bạn phải chọn popular',
             ]);
-        $features = PropertyFacilitys::where('property_id', '=', Auth::user()->id)->first();
+        $features = Features::where('property_id', '=', Auth::user()->id)->first();
+       
         if($features==null){
-            $PropertyFacilitys = new PropertyFacilitys;
+            $PropertyFacilitys = new Features;
             $PropertyFacilitys->internet=$request->internet;
             $PropertyFacilitys->parking=$request->parking;
             $PropertyFacilitys->breakfast=$request->breakfast;
@@ -60,7 +63,7 @@ class featuresController extends Controller
             return redirect()->route('getfeatures')->withSuccess('Category has been created.');
         }else{
           
-            $user = PropertyFacilitys::where('property_id', '=', Auth::user()->id)->first();
+            $user = Features::where('property_id', '=', Auth::user()->id)->first();
             $user->internet=$request->internet;
             $user->parking=$request->parking;
             $user->breakfast=$request->breakfast;
