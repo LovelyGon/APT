@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Property;
 use App\PropertyGallery;
 use PragmaRX\Countries\Facade as Countries;
+use Illuminate\Support\Facades\Auth;
 
 class BasicInfoController extends Controller
 {
@@ -27,7 +28,9 @@ class BasicInfoController extends Controller
         $phonenumber = $rq->phonenumber;
         $property ->phonenumber = $callingCode.' '. $phonenumber;
         $property ->city = $rq->city;
+        $property ->user_id = Auth::user()->id;
         $property->save();
+        
         
         $id = $property->id;
         
@@ -43,8 +46,8 @@ class BasicInfoController extends Controller
             $galary->property_id = $id;
             $galary->image_name= $images;
             $galary->save();
+            return redirect()->route('getfeatures')->with('id', $id);
         }
-        return  view('admin.features', ['id' => $id]);
     }
 
     public function get_calling_code (Request $rq)

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Features;
-use App\PropertyFacilitys;
 use Illuminate\Http\Request;
 
 class featuresController extends Controller
@@ -16,11 +15,11 @@ class featuresController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+            
     {
-        $features = Features::where('property_id', '=', Auth::user()->id)->get();
-        foreach ($features as $featuress){
-            return view('admin.features')->with('features', $features);
-        }
+        $features = Features::where('property_id', '=', Auth::user()->id)->first();
+        return view('admin.features')->with('features', $features);
+       
     }
 
     /**
@@ -30,7 +29,40 @@ class featuresController extends Controller
      */
     public function create(Request $request)
     {
-        $this->validate($request, [
+        
+        $features = Features::where('property_id', '=', Auth::user()->id)->first();
+       
+        if($features==null){
+            $this->validate($request, [
+                'internets' => 'required',
+                'parkings' => 'required',
+                'breakfasts' => 'required',
+                'childrens' => 'required',
+                'petses' => 'required',
+                'languages' => 'required',
+                'populars' => 'required',
+            ], [
+                'internets.required' => 'Bạn phải chọn internet',
+                'parkings.required' => 'Bạn phải chọn parking',
+                'breakfastes.required' => 'Bạn phải chọn breakfast',
+                'childrens.required' => 'Bạn phải chọn children',
+                'petses.required' => 'Bạn phải chọn pet',
+                'languages.required' => 'Bạn phải chọn language',
+                'populars.required' => 'Bạn phải chọn popular',
+            ]);
+            $PropertyFacilitys = new Features;
+            $PropertyFacilitys->internet=$request->internets;
+            $PropertyFacilitys->parking=$request->parkings;
+            $PropertyFacilitys->breakfast=$request->breakfasts;
+            $PropertyFacilitys->children=$request->childrens;
+            $PropertyFacilitys->pet=$request->petses;
+            $PropertyFacilitys->language=implode(',',$request->languages);
+            $PropertyFacilitys->popular_facility=implode(',',$request->populars);
+            $PropertyFacilitys->property_id=Auth::user()->id;
+            $PropertyFacilitys->save();
+            return redirect()->route('getfeatures')->withSuccess('Category has been created.');
+        }else{
+            $this->validate($request, [
                 'internet' => 'required',
                 'parking' => 'required',
                 'breakfast' => 'required',
@@ -47,21 +79,6 @@ class featuresController extends Controller
                 'languages.required' => 'Bạn phải chọn language',
                 'popular.required' => 'Bạn phải chọn popular',
             ]);
-        $features = Features::where('property_id', '=', Auth::user()->id)->first();
-       
-        if($features==null){
-            $PropertyFacilitys = new Features;
-            $PropertyFacilitys->internet=$request->internet;
-            $PropertyFacilitys->parking=$request->parking;
-            $PropertyFacilitys->breakfast=$request->breakfast;
-            $PropertyFacilitys->children=$request->children;
-            $PropertyFacilitys->pet=$request->pets;
-            $PropertyFacilitys->language=implode(',',$request->languages);
-            $PropertyFacilitys->popular_facility=implode(',',$request->popular);
-            $PropertyFacilitys->property_id=Auth::user()->id;
-            $PropertyFacilitys->save();
-            return redirect()->route('getfeatures')->withSuccess('Category has been created.');
-        }else{
           
             $user = Features::where('property_id', '=', Auth::user()->id)->first();
             $user->internet=$request->internet;
