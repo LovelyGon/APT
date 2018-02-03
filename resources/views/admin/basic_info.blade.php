@@ -1,6 +1,6 @@
 <?php
 use App\Enumeration\PropertyType;
-    use App\Enumeration\starRating;
+use App\Enumeration\StarRating;
 use DeepCopy\f003\Foo;
 ?>
 @extends('admin.admin_template') 
@@ -43,7 +43,11 @@ use DeepCopy\f003\Foo;
 							   $enter_property_name=__('property.enter_property_name');
 							   echo Form::label(__('property.property_name'));
 							   echo ('<span style="color: red">*</span>');
-							   echo Form::text('property_name',null,['class'=>'form-control','placeholder'=>$enter_property_name]);
+                                                            if($basic_info!=null){
+                                                                    echo Form::text('property_name',$basic_info->property_name,['class'=>'form-control','placeholder'=>$enter_property_name]);
+                                                                }else{
+                                                                    echo Form::text('property_name',null,['class'=>'form-control','placeholder'=>$enter_property_name]);
+                                                                }
 							?>
 						</div>
 						<!-- /.form-group -->
@@ -58,22 +62,31 @@ use DeepCopy\f003\Foo;
 							$property_type_label = __('property.property_type_label');								
                                                         $translatedItems = PropertyType::toArray();
 							 echo Form::label($property_type_label);
-							 echo Form::select('property_type', $translatedItems,null, ['class' => 'form-control select2']); 
+                                                         if($basic_info!=null){
+                                                     
+                                                                    echo Form::select('property_types', $translatedItems,$basic_info->property_type,['class' => 'form-control select2']);
+                                                                }else{
+                                                   
+                                                                    echo Form::select('property_type', $translatedItems,null,['class' => 'form-control select2']);
+                                                                }
 							 ?>							
 						</div>
 					</div>
 
 					<div class="col-md-6">
 						<div class="form-group">
-							<label>@lang('property.rating')</label>
-							<select class="form-control select2" name="star_rating">
-								<option value="N/A">N/A</option>
-								<option value="1">1 ✯</option>
-								<option value ="2" class="fa-star">2 ✯ ✯</option>
-								<option value ="3" class="fa-star">3 ✯ ✯ ✯</option>
-								<option value ="4" class="fa-star">4 ✯ ✯ ✯ ✯</option>
-								<option value ="5" class="fa-star">5 ✯ ✯ ✯ ✯ ✯</option>
-							</select>
+                                                        <?php
+							   $star_rating_label = __('property.rating');								
+                                                            $star_rating_items = StarRating::toArray();
+                                                             echo Form::label($star_rating_label);
+                                                            if($basic_info!=null){
+                                                     
+                                                                    echo Form::select('star_ratings', $star_rating_items,$basic_info->star_rating, ['class' => 'form-control select2']); 
+                                                                }else{
+                                                   
+                                                                     echo Form::select('star_rating', $star_rating_items,null,['class' => 'form-control select2']); 
+                                                                }
+							?>
 						</div>
 					</div>
 
@@ -98,7 +111,11 @@ use DeepCopy\f003\Foo;
 						<div class="form-group">
 							<?php
 							echo Form::label(__('property.property_website'));
-							echo Form::text('website',null,['class'=>'form-control','placeholder'=>__('property.enter_property_website')]);
+                                                        if($basic_info!=null){
+                                                                   echo Form::text('websites',$basic_info->website,['class'=>'form-control','placeholder'=>__('property.enter_property_website')]);
+                                                                }else{
+                                                                    echo Form::text('website',null,['class'=>'form-control','placeholder'=>__('property.enter_property_website')]);
+                                                                }
 							?>
 						</div>
 					</div>
@@ -128,7 +145,11 @@ use DeepCopy\f003\Foo;
 						<div class="form-group">
 							<label>@lang('property.owner')<span style="color: red"> *</span></label> 
 							<?php
-							echo Form::text('contact_name',null,['class'=>'form-control','placeholder'=>__('property.contactName')]);
+                                                            if($basic_info!=null){
+                                                                echo Form::text('contact_names',$basic_info->contact_name,['class'=>'form-control','placeholder'=>__('property.contactName')]);
+                                                            }else{
+                                                                echo Form::text('contact_name',null,['class'=>'form-control','placeholder'=>__('property.contactName')]);
+                                                            }
 							?>
 						</div>
 					</div>
@@ -141,7 +162,11 @@ use DeepCopy\f003\Foo;
 						<div class="form-group">
 							<label>@lang('property.address')<span style="color: red"> *</span></label> 
 							<?php
-							echo Form::text('address',null,['class'=>'form-control','placeholder'=>__('property.enter_address')]);
+                                                            if($basic_info!=null){
+                                                              echo Form::text('addresses',$basic_info->address,['class'=>'form-control','placeholder'=>__('property.enter_address')]);
+                                                            }else{
+                                                                echo Form::text('address',null,['class'=>'form-control','placeholder'=>__('property.enter_address')]);
+                                                            }
 							?>
 						</div>
 
@@ -154,7 +179,12 @@ use DeepCopy\f003\Foo;
 						<div class="form-group">
 							<label>@lang('property.address2')</label> 
 							<?php
-							echo Form::text('address_line2',null,['class'=>'form-control','placeholder'=>__('property.enter_address2')]);
+							
+                                                        if($basic_info!=null){
+                                                              echo Form::text('address_line2s',$basic_info->address_line2,['class'=>'form-control','placeholder'=>__('property.enter_address2')]);
+                                                            }else{
+                                                               echo Form::text('address_line2',null,['class'=>'form-control','placeholder'=>__('property.enter_address2')]);
+                                                            }
 							?>
 						</div>
 
