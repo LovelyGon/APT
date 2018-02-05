@@ -199,7 +199,11 @@ use DeepCopy\f003\Foo;
 							<label>@lang('property.country')</label> 
 							<input type="text" class="form-control"
 								id="country" name="country">
-						</div>
+                                                        <input type="text" class="form-control"
+								id="country1s" name="country">
+                                                        
+                                                  
+    				</div>
 
 					</div>
 

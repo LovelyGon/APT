@@ -21,7 +21,7 @@ class BasicInfoController extends Controller
     {  
         
         $basic_info = Property::where('user_id', '=', Auth::user()->id)->first();
-        if($property==null){
+        if($basic_info==null){
             $property = new Property;
             $property ->property_name = $rq->property_name;
             $property ->property_type = $rq->property_type;
@@ -76,7 +76,9 @@ class BasicInfoController extends Controller
     public function get_country (Request $rq)
     {
         $iso2 = strtoupper($rq->iso2);
+        
         $results = Countries::where('cca2',$iso2);
+        dd($results);
         foreach($results as $result)
         {
             $result_citys = $result->states;
