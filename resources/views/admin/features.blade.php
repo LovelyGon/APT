@@ -222,13 +222,12 @@
 							<label>How many languages can you speak?</label>
 							<div class="form-group has-success">
 							</div>
-							<select class="form-control select2" name="languages[]"  multiple id="pre-selected-options" >
+							<select class="form-control select2" name="country[]"  multiple id="pre-selected-options" >
 								<option value="VietNam">Việt Name</option>
                                                                 <option value="NhatBan">Nhật Bản</option>
                                                                 <option value="Nga">Nga</option>
                                                                  <option value="Ando">Ấn độ</option> 
                                                         </select>
-
 						</div>
 					</div>
 
@@ -278,18 +277,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 	$(function () {
-		$("input[name=image]").previewimage({
-			div: ".preview",
-			imgwidth: 152,
-			imgheight: 100,
-            delname: 'Delete'
-		});
-		//------------------------------------------------------------------
-	    $('#input03').filestyle({
-				input : false,
-				btnClass : 'btn-primary',
-				htmlIcon : '<span class="oi oi-folder"></span> '
-	    });
 	    //------------------------------------------------------------------
 	    $("#country").countrySelect({
 	    	defaultCountry: "us"

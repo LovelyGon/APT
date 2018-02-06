@@ -58,7 +58,41 @@ class BasicInfoController extends Controller
                 return redirect()->route('getfeatures')->with('id', $id);
             }
         }else{
-            
+            $property = Property::where('user_id', '=', Auth::user()->id)->first();
+            $property ->property_name = $rq->property_names;
+            $property ->property_type = $rq->property_types;
+            $property ->star_rating = $rq->star_ratings;
+            $property ->website = $rq->websites;
+            $property ->contact_name = $rq->contact_names;
+            $property ->address = $rq->addresses;
+            $property ->address_line2 = $rq->address_line2s;
+            $property ->country = $rq->countrys;
+            $property ->city = $rq->citys;
+            $property ->zipcode = $rq->zipcodes;
+            $callingCode = $rq->callingCode;
+            $phonenumber = $rq->phonenumbers;
+            $property ->phonenumber = $callingCode.' '. $phonenumber;
+            $property ->city = $rq->city;
+            $property ->user_id = Auth::user()->id;
+            $property->save();
+
+
+            $id = $property->id;
+
+            $files = $rq->image;
+
+            for($i=1;$i<count($files);$i++)
+            {   
+                $galary = new PropertyGallery();
+                $filename = $files[$i]->getClientOriginalName();
+                $images = time(). "_" . $filename;
+                $destinationPath = public_path('images');
+                $files[$i]->move($destinationPath, $images);
+                $galary->property_id = $id;
+                $galary->image_name= $images;
+                $galary->save();
+                return redirect()->route('getfeatures')->with('id', $id);
+            }
         }
     }
 
@@ -76,9 +110,7 @@ class BasicInfoController extends Controller
     public function get_country (Request $rq)
     {
         $iso2 = strtoupper($rq->iso2);
-        
         $results = Countries::where('cca2',$iso2);
-        dd($results);
         foreach($results as $result)
         {
             $result_citys = $result->states;

@@ -44,7 +44,7 @@ use DeepCopy\f003\Foo;
 							   echo Form::label(__('property.property_name'));
 							   echo ('<span style="color: red">*</span>');
                                                             if($basic_info!=null){
-                                                                    echo Form::text('property_name',$basic_info->property_name,['class'=>'form-control','placeholder'=>$enter_property_name]);
+                                                                    echo Form::text('property_names',$basic_info->property_name,['class'=>'form-control','placeholder'=>$enter_property_name]);
                                                                 }else{
                                                                     echo Form::text('property_name',null,['class'=>'form-control','placeholder'=>$enter_property_name]);
                                                                 }
@@ -197,10 +197,13 @@ use DeepCopy\f003\Foo;
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>@lang('property.country')</label> 
-							<input type="text" class="form-control"
-								id="country" name="country">
-                                                        <input type="text" class="form-control"
-								id="country1s" name="country">
+                                                        <?php
+                                                         if($basic_info!=null){
+                                                               echo Form::text('countrys',$basic_info->country,['class'=>'form-control','id'=>'country']);
+                                                            }else{
+                                                                echo Form::text('country',null,['class'=>'form-control','id'=>'country']);
+                                                            }
+                                                        ?>
                                                         
                                                   
     				</div>
@@ -223,15 +226,30 @@ use DeepCopy\f003\Foo;
 					<div class="col-md-6">
 						<div class="form-inline">
 							<label>@lang('property.phone')<span style="color: red"> *</span></label></br>
-								<input readonly="true" class="form-control" id="callingCode" style="width: 60px" name="callingCode">
-								<input type="text" class="form-control" id="phoneNumber" min="0" style="max-width: 150px;" name="phonenumber" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+								
+								  <?php
+                                                                    if($basic_info!=null){
+                                                                        echo '<input readonly="true" class="form-control" id="callingCode" style="width: 60px" name="callingCode">';
+                                                                          echo Form::text('phonenumbers',$basic_info->phonenumber,['class'=>'form-control','id'=>'phoneNumber','style'=>'max-width: 150px;','onkeypress'=>'return event.charCode >= 48 && event.charCode <= 57']);
+                                                                    }else{
+                                                                        echo '<input readonly="true" class="form-control" id="callingCode" style="width: 60px" name="callingCode">';
+                                                                        echo Form::text('phonenumber',null,['class'=>'form-control','id'=>'phoneNumber','style'=>'max-width: 150px;','onkeypress'=>'return event.charCode >= 48 && event.charCode <= 57']);
+                                                                    }
+                                                                ?>
+                                                                
 						</div>
 
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label id="zipcode">@lang('property.zipcode')</label> 
-							<input type="text" class="form-control" name="zipcode" id="zipcode">
+                                                         <?php
+                                                         if($basic_info!=null){
+                                                               echo Form::text('zipcodes',$basic_info->zipcode,['class'=>'form-control','id'=>'zipcode']);
+                                                            }else{
+                                                                echo Form::text('zipcode',null,['class'=>'form-control','id'=>'zipcode']);
+                                                            }
+                                                        ?>
 						</div>
                         
 					</div>
@@ -352,6 +370,7 @@ use DeepCopy\f003\Foo;
         $.ajax({
         	type:'get',
         	url: '{{URL::to('admin/get_country')}}',
+        
         	data:{iso2:$iso2},
         	success:function(data){
         		$('#select_city').html(data);
