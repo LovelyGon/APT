@@ -22,6 +22,7 @@ return [
        'mhr' => 'Montly hotel room',
        'ssh' => 'Shared house'
     ],
+    'apartment'=>'Apartment type',
     'enter_property_name'=>'Enter Property name',
     'property_name'=>'Property Name',
     'rating'=>'Star rating',

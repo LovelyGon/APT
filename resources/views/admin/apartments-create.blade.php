@@ -1,3 +1,7 @@
+<?php
+use App\Enumeration\StarRating;
+?>
+
 @extends('admin.admin_template') @section('content')
 
 <!-- Content Header (Page header) -->
@@ -21,7 +25,6 @@
 	<div class="box box-default">
 		<div class="box-header with-border">
 			<h3 class="box-title">Apartment</h3>
-
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool"
 					data-widget="collapse">
@@ -34,16 +37,14 @@
 		<div class="box-body">
 			<div class="row">
 				<div class="col-md-6">
-					<div class="form-group">
-						<label>Apartment type</label> <select id="apartmentType"
-							class="form-control select2">
-							<option style="" selected="selected">N/A</option>
-							<option style="" selected="selected">1 ✯</option>
-							<option class="fa-star">2 ✯ ✯</option>
-							<option class="fa-star">3 ✯ ✯ ✯</option>
-							<option class="fa-star">4 ✯ ✯ ✯ ✯</option>
-							<option class="fa-star">5 ✯ ✯ ✯ ✯ ✯</option>
-						</select>
+					<div class="form-dgroup">
+	
+                                                    <?php
+							   $star_rating_label = __('property.apartment');								
+                                                            $star_rating_items = StarRating::toArray();
+                                                             echo Form::label($star_rating_label);
+                                                            echo Form::select('star_ratings', $star_rating_items,null, ['class' => 'form-control select2']); 
+                                                    ?>
 					</div>
 				</div>
 			</div>
@@ -56,12 +57,12 @@
 						<div class="alert alert-info alert-dismissible">You can choose one
 							of suggested name from the list. If there's no name like your
 							apartment. Please enter a custom name</div>
-						<select class="form-control select2">
-
-							<option selected="selected">Apartment</option>
-							<option>Monthly Rental Hotel</option>
-							<option>Shared house</option>
-						</select>
+                                                <?php
+                                                    $star_rating_label1 = __('property.apartment');								
+                                                    $star_rating_items1 = App\Enumeration\PropertyType::toArray();
+                                                    echo Form::label($star_rating_label1);
+                                                    echo Form::select('star_ratings', $star_rating_items1,null, ['class' => 'form-control select2']); 
+                                                ?>
 					</div>
 				</div>
 
@@ -105,7 +106,7 @@
 						onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 				</div>
 				<div class="col-md-3">
-					<label>Number of living rooms</label> <input id=livingroomNumber
+					<label>Number of living rooms</label> <input id="livingroomNumber"
 						type="number" min="0" class="form-control"
 						onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 				</div>
@@ -136,102 +137,11 @@
 
 		<!-- /.box-header -->
 		<div class="box-body">
+                    <div class="box box-widget widget-user-2 " id='bedroomNumber111'>
+                    </div>
+                    <div class="box box-widget widget-user-2" id='livingroomNumber1111'>
 
-			<div class="box box-widget widget-user-2">
-				<!-- Add the bg color to the header using any of the bg-* classes -->
-				<div class="widget-user-header"
-					style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">
-					<div class="widget-user-image">
-						<img class="img-circle" src="{{asset('dist/img/bedicon.jpg')}}"
-							alt="User Avatar">
-					</div>
-
-					<!-- /.widget-user-image -->
-					<h3 class="widget-user-username">Bedroom 1</h3>
-					<h5 class="badge bg-gray">How many bed do you have in this bedroom</h5>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Kind of beds</label> <select id="apartmentType"
-									class="form-control select2">
-									<option style="" selected="selected">N/A</option>
-									<option style="" selected="selected">1 ✯</option>
-									<option class="fa-star">2 ✯ ✯</option>
-									<option class="fa-star">3 ✯ ✯ ✯</option>
-									<option class="fa-star">4 ✯ ✯ ✯ ✯</option>
-									<option class="fa-star">5 ✯ ✯ ✯ ✯ ✯</option>
-								</select>
-							</div>
-
-						</div>
-
-
-						<div class="col-md-2">
-							<div class="form-group">
-								<label>Number of beds</label> <input id="bedroomNumber"
-									type="number" min="1" class="form-control"
-									onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
-							</div>
-						</div>
-
-					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<label>How many guests can stay</label> <input id=bathroomNumber
-								type="number" min="1" class="form-control"
-								onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
-						</div>
-					</div>
-						
-					<div class="row" style="margin-top:30px">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Private room</label> <input type="checkbox" value="">
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-
-
-			<div class="box box-widget widget-user-2">
-				<!-- Add the bg color to the header using any of the bg-* classes -->
-				<div class="widget-user-header"
-					style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">
-					<div class="widget-user-image">
-						<img class="img-circle" src="{{asset('dist/img/livingroom.jpg')}}"
-							alt="User Avatar">
-					</div>
-
-					<!-- /.widget-user-image -->
-					<h3 class="widget-user-username">Living room</h3>
-					<h5 class="badge bg-gray">How many sofa beds do you have in the room</h5>
-					<div class="row">
-						<div class="col-md-3">
-							<div class="form-group">
-								<label>Number of sofa beds</label> <input id=bathroomNumber
-								type="number" min="1" class="form-control"
-								onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
-							</div>
-
-						</div>
-
-						<div class="col-md-3">
-							<div class="form-group">
-								<label>How many guests can stay in the room</label> <input id=bathroomNumber
-								type="number" min="1" class="form-control"
-								onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
+                    </div>
 
 		</div>
 
@@ -240,3 +150,98 @@
 </section>
 
 @endsection
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+        
+        $("#bedroomNumber").change(function(){
+            $(".bedroom").remove();
+            var numberBedoomNumber = $("#bedroomNumber").val();
+            for(var i = 0; i < parseInt(numberBedoomNumber); i++){
+               
+                $("#bedroomNumber111").append(
+                            '<div class="widget-user-header bedroom" style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">'+
+                                    '<div class="widget-user-image">'+
+                                            '<img class="img-circle" src="http://127.0.0.1:8000/dist/img/bedicon.jpg" alt="User Avatar">'+
+                                    '</div>'+
+                                    '<h3 class="widget-user-username">Bedroom 1</h3>'+
+                                    '<h5 class="badge bg-gray">How many bed do you have in this bedroom</h5>'+
+                                    '<div class="row">'+
+                                            '<div class="col-md-6">'+
+                                                    '<div class="form-group">'+
+                                                            '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2">'+
+                                                                    '<option style="" selected="selected" value="N/A">N/A</option>'+
+                                                                    '<option style="" selected="selected" value="1 ✯">1 ✯</option>'+
+                                                                    '<option class="fa-star" value="2 ✯ ✯">2 ✯ ✯</option>'+
+                                                                    '<option class="fa-star" value="3 ✯ ✯ ✯">3 ✯ ✯ ✯</option>'+
+                                                                    '<option class="fa-star" value="4 ✯ ✯ ✯ ✯">4 ✯ ✯ ✯ ✯</option>'+
+                                                                    '<option class="fa-star" value="5 ✯ ✯ ✯ ✯ ✯">5 ✯ ✯ ✯ ✯ ✯</option>'+
+                                                           ' </select>'+
+                                                    '</div>'+
+
+                                            '</div>'+
+
+
+                                            '<div class="col-md-2">'+
+                                                    '<div class="form-group">'+
+                                                            '<label>Number of beds</label> <input id="bedroomNumber" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                    '</div>'+
+                                            '</div>'+
+
+                                    '</div>'+
+                                    '<div class="row">'+
+                                            '<div class="col-md-3">'+
+                                                    '<label>How many guests can stay</label> <input id="bathroomNumber" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                            '</div>'+
+                                    '</div>'+
+
+                                    '<div class="row" style="margin-top:30px">'+
+                                            '<div class="col-md-6">'+
+                                                    '<div class="form-group">'+
+                                                            '<label>Private room</label> <input type="checkbox" value="">'+
+                                                    '</div>'+
+                                            '</div>'+
+                                    '</div>'+
+
+                            '</div>'
+                );
+            }
+            });
+        
+        $("#livingroomNumber").change(function(){
+            $(".livingroom").remove();
+            var livingroomNumber = $("#livingroomNumber").val();
+            for(var i = 0; i < parseInt(livingroomNumber); i++){
+                $("#livingroomNumber1111").append(
+				'<div class="widget-user-header livingroom"style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">'+
+					'<div class="widget-user-image">'+
+						'<img class="img-circle" src="{{asset("dist/img/livingroom.jpg")}}"alt="User Avatar">'+
+					'</div>'+
+					'<h3 class="widget-user-username">Living room</h3>'+
+					'<h5 class="badge bg-gray">How many sofa beds do you have in the room</h5>'+
+					'<div class="row">'+
+						'<div class="col-md-3">'+
+							'<div class="form-group">'+
+								'<label>Number of sofa beds</label> <input id=bathroomNumber type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
+							'</div>'+
+                                                '</div>'+
+
+						'<div class="col-md-3">'+
+							'<div class="form-group">'+
+								'<label>How many guests can stay in the room</label> <input id=bathroomNumber type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
+							'</div>'+
+
+						'</div>'+
+
+					'</div>'+
+
+				'</div>'
+                );
+            }
+            });
+       
+    });
+    
+</script>

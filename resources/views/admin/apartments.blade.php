@@ -1,3 +1,6 @@
+<?php
+use App\Enumeration\StarRating;
+?>
 @extends('admin.admin_template') @section('content')
 
 <!-- Content Header (Page header) -->
@@ -58,7 +61,6 @@
 					</div>
 					<div class="box-footer no-padding">
 						<ul class="nav nav-stacked">
-							
 							<li><a href="#">Living room <span
 									class="pull-right badge bg-aqua">1</span></a></li>
 							<li><a href="#">Bed room <span class="pull-right badge bg-green">2</span></a></li>
