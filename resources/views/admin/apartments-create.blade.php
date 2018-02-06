@@ -20,7 +20,7 @@ use App\Enumeration\StarRating;
 <!-- Main content -->
 <section class="content">
 
-
+ {!! Form::open(['route' => 'postApartment']) !!}
 
 	<div class="box box-default">
 		<div class="box-header with-border">
@@ -146,7 +146,13 @@ use App\Enumeration\StarRating;
 		</div>
 
 	</div>
+ <div class="row">
+	<div class="col-md-12">
+                {!! Form::submit('Save and continue', ['class' => 'btn btn-block btn-primary btn-lg']) !!}
+	</div>
 
+</div>
+{!! Form::close() !!}
 </section>
 
 @endsection
@@ -172,7 +178,7 @@ use App\Enumeration\StarRating;
                                             '<div class="col-md-6">'+
                                                     '<div class="form-group">'+
                                                             '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2">'+
-                                                                    '<option style="" selected="selected" value="N/A">N/A</option>'+
+                                                                    '<option style="" selected="selected"  value="N/A">N/A</option>'+
                                                                     '<option style="" selected="selected" value="1 ✯">1 ✯</option>'+
                                                                     '<option class="fa-star" value="2 ✯ ✯">2 ✯ ✯</option>'+
                                                                     '<option class="fa-star" value="3 ✯ ✯ ✯">3 ✯ ✯ ✯</option>'+
@@ -186,7 +192,7 @@ use App\Enumeration\StarRating;
 
                                             '<div class="col-md-2">'+
                                                     '<div class="form-group">'+
-                                                            '<label>Number of beds</label> <input id="bedroomNumber" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                            '<label>Number of beds</label> <input id="bedroomNumber" name="apartmentType[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
                                                     '</div>'+
                                             '</div>'+
 

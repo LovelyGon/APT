@@ -13,16 +13,14 @@
 
 Route::get('admin/get_calling_code','BasicInfoController@get_calling_code');   
 Route::get('admin/get_country','BasicInfoController@get_country');   
-Route::group(['prefix' => 'admin','middleware' => ['auth']], function () { 
+Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
+    Route::get('/apartments/create', 'ApartmentController@createAparrtment')->name('getApartment');
+    Route::post('/apartments/create', 'ApartmentController@storeAparrtment')->name('postApartment');
     Route::get('/basicinfo', 'BasicInfoController@index')->name('getBasicinfo');
     Route:: post('addproperty','BasicInfoController@store');
     
     Route::get('/features', 'featuresController@index')->name('getfeatures');
     Route::post('/', 'featuresController@create')->name('features');
-    Route::get('apartments/create', function () {
-        return view('admin.apartments-create');
-    });
-    
     Route::get('apartments', function () {
         return view('admin.apartments');
     });
