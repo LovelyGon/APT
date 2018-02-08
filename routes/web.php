@@ -11,7 +11,7 @@
  * |
  */
 
-Route::get('admin/get_calling_code','BasicInfoController@get_calling_code');   
+Route::get('admin/get_calliang_code','BasicInfoController@get_calling_code');   
 Route::get('admin/get_country','BasicInfoController@get_country');   
 Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
     Route::get('/apartments/create', 'ApartmentController@createAparrtment')->name('getApartment');

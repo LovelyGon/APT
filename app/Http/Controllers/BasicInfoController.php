@@ -100,6 +100,7 @@ class BasicInfoController extends Controller
     {
         $iso2 = strtoupper($rq->iso2);
         $results = Countries::where('cca2',$iso2);
+      
         foreach($results as $result)
         {
             $result_callingCode = $result->callingCode;

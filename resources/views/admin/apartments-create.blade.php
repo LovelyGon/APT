@@ -3,7 +3,22 @@ use App\Enumeration\StarRating;
 ?>
 
 @extends('admin.admin_template') @section('content')
-
+<style>
+    .Addbed {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top:5px;
+    }
+    .widget-user-username span{
+        margin-left: 5px;
+    }
+</style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
@@ -40,10 +55,10 @@ use App\Enumeration\StarRating;
 					<div class="form-dgroup">
 	
                                                     <?php
-							   $star_rating_label = __('property.apartment');								
-                                                            $star_rating_items = StarRating::toArray();
-                                                             echo Form::label($star_rating_label);
-                                                            echo Form::select('star_ratings', $star_rating_items,null, ['class' => 'form-control select2']); 
+                                                        $star_rating_label = __('property.apartment');								
+                                                        $star_rating_items = StarRating::toArray();
+                                                        echo Form::label($star_rating_label);
+                                                        echo Form::select('star_ratings', $star_rating_items,null, ['class' => 'form-control select2']); 
                                                     ?>
 					</div>
 				</div>
@@ -137,9 +152,9 @@ use App\Enumeration\StarRating;
 
 		<!-- /.box-header -->
 		<div class="box-body">
-                    <div class="box box-widget widget-user-2 " id='bedroomNumber111'>
+                    <div  id='bedroomNumber111'>
                     </div>
-                    <div class="box box-widget widget-user-2" id='livingroomNumber1111'>
+                    <div  id='livingroomNumber1111'>
 
                     </div>
 
@@ -166,13 +181,14 @@ use App\Enumeration\StarRating;
             $(".bedroom").remove();
             var numberBedoomNumber = $("#bedroomNumber").val();
             for(var i = 0; i < parseInt(numberBedoomNumber); i++){
-               
+               var e=i+1;
                 $("#bedroomNumber111").append(
+                           '<div class="box box-widget widget-user-2 ">'+
                             '<div class="widget-user-header bedroom" style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">'+
                                     '<div class="widget-user-image">'+
                                             '<img class="img-circle" src="http://127.0.0.1:8000/dist/img/bedicon.jpg" alt="User Avatar">'+
                                     '</div>'+
-                                    '<h3 class="widget-user-username">Bedroom 1</h3>'+
+                                    '<h3 class="widget-user-username">Bedroom'+'<span>'+e +'</span>'+' </h3>' +
                                     '<h5 class="badge bg-gray">How many bed do you have in this bedroom</h5>'+
                                     '<div class="row">'+
                                             '<div class="col-md-6">'+
@@ -190,12 +206,17 @@ use App\Enumeration\StarRating;
                                             '</div>'+
 
 
-                                            '<div class="col-md-2">'+
-                                                    '<div class="form-group">'+
+                                            '<div class="col-md-2 ">'+
+                                                    '<div class="form-group ">'+
                                                             '<label>Number of beds</label> <input id="bedroomNumber" name="apartmentType[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
                                                     '</div>'+
                                             '</div>'+
-
+                                            '<div class="col-md-2">'+
+                                                '<div class="form-group">'+
+                                                       '<button type="button" class="Addbed">ADD BED</button>'+
+                                                '</div>'+
+                                                   
+                                            '</div>'+
                                     '</div>'+
                                     '<div class="row">'+
                                             '<div class="col-md-3">'+
@@ -204,13 +225,14 @@ use App\Enumeration\StarRating;
                                     '</div>'+
 
                                     '<div class="row" style="margin-top:30px">'+
-                                            '<div class="col-md-6">'+
+                                            '<div class="col-md-6 bed">'+
                                                     '<div class="form-group">'+
                                                             '<label>Private room</label> <input type="checkbox" value="">'+
                                                     '</div>'+
                                             '</div>'+
                                     '</div>'+
 
+                            '</div>'+
                             '</div>'
                 );
             }
@@ -220,34 +242,64 @@ use App\Enumeration\StarRating;
             $(".livingroom").remove();
             var livingroomNumber = $("#livingroomNumber").val();
             for(var i = 0; i < parseInt(livingroomNumber); i++){
+                var e=i+1;
                 $("#livingroomNumber1111").append(
-				'<div class="widget-user-header livingroom"style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">'+
-					'<div class="widget-user-image">'+
-						'<img class="img-circle" src="{{asset("dist/img/livingroom.jpg")}}"alt="User Avatar">'+
-					'</div>'+
-					'<h3 class="widget-user-username">Living room</h3>'+
-					'<h5 class="badge bg-gray">How many sofa beds do you have in the room</h5>'+
-					'<div class="row">'+
-						'<div class="col-md-3">'+
-							'<div class="form-group">'+
-								'<label>Number of sofa beds</label> <input id=bathroomNumber type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
-							'</div>'+
-                                                '</div>'+
+                    '<div class="box box-widget widget-user-2 ">'+
+                    '<div class="widget-user-header livingroom"style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">'+
+                            '<div class="widget-user-image">'+
+                                    '<img class="img-circle" src="{{asset("dist/img/livingroom.jpg")}}"alt="User Avatar">'+
+                            '</div>'+
+                            '<h3 class="widget-user-username">Living room'+'<span>'+e +'</span>'+' </h3>'+
+                            '<h5 class="badge bg-gray">How many sofa beds do you have in the room</h5>'+
+                            '<div class="row">'+
+                                    '<div class="col-md-3">'+
+                                            '<div class="form-group">'+
+                                                    '<label>Number of sofa beds</label> <input id=bathroomNumber type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
+                                            '</div>'+
+                                    '</div>'+
 
-						'<div class="col-md-3">'+
-							'<div class="form-group">'+
-								'<label>How many guests can stay in the room</label> <input id=bathroomNumber type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
-							'</div>'+
+                                    '<div class="col-md-3">'+
+                                            '<div class="form-group">'+
+                                                    '<label>How many guests can stay in the room</label> <input id=bathroomNumber type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
+                                            '</div>'+
 
-						'</div>'+
+                                    '</div>'+
 
-					'</div>'+
+                            '</div>'+
 
-				'</div>'
+                    '</div>'+
+                    '</div>'
+                                
                 );
             }
             });
+           
        
     });
-    
+    $(document).on("click",".Addbed",function(){
+        $(this).closest(".bedroom").append(   
+           '<div class="row">'+
+                                            '<div class="col-md-6">'+
+                                                    '<div class="form-group">'+
+                                                            '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2">'+
+                                                                    '<option style="" selected="selected"  value="N/A">N/A</option>'+
+                                                                    '<option style="" selected="selected" value="1 ✯">1 ✯</option>'+
+                                                                    '<option class="fa-star" value="2 ✯ ✯">2 ✯ ✯</option>'+
+                                                                    '<option class="fa-star" value="3 ✯ ✯ ✯">3 ✯ ✯ ✯</option>'+
+                                                                    '<option class="fa-star" value="4 ✯ ✯ ✯ ✯">4 ✯ ✯ ✯ ✯</option>'+
+                                                                    '<option class="fa-star" value="5 ✯ ✯ ✯ ✯ ✯">5 ✯ ✯ ✯ ✯ ✯</option>'+
+                                                           ' </select>'+
+                                                    '</div>'+
+
+                                            '</div>'+
+
+
+                                            '<div class="col-md-2 ">'+
+                                                    '<div class="form-group ">'+
+                                                            '<label>Number of beds</label> <input id="bedroomNumber" name="apartmentType[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                    '</div>'+
+                                            '</div>'+
+                                    '</div>'
+        )
+    });
 </script>

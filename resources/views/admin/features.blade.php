@@ -222,12 +222,13 @@
 							<label>How many languages can you speak?</label>
 							<div class="form-group has-success">
 							</div>
-							<select class="form-control select2" name="country[]"  multiple id="pre-selected-options" >
+							<select class="form-control select2" name="languages[]"  multiple id="pre-selected-options" >
 								<option value="VietNam">Việt Name</option>
                                                                 <option value="NhatBan">Nhật Bản</option>
                                                                 <option value="Nga">Nga</option>
                                                                  <option value="Ando">Ấn độ</option> 
                                                         </select>
+                                                        
 						</div>
 					</div>
 
@@ -288,7 +289,8 @@
 //--------------------------------------------------------------------------
     $(document).ready(function(){
        $('#country').on('change',function(){
-            $countryData = $("#country").countrySelect("getSelectedCountryData");  
+            $countryData = $("#country").countrySelect("getSelectedCountryData"); 
+               
 	        $iso2 = $countryData['iso2'];
 	        $.ajax({
 	        	type:'get',
@@ -296,7 +298,6 @@
 	        	data:{iso2:$iso2},
 	        	success:function(data){
 	        		$('#callingCode').val('+'+data);
-	        		console.log(data);
 	        	}
 	        });
        });
@@ -304,7 +305,8 @@
  //------------------------------------------------------------------------
  $(document).ready(function(){
        $('#country').on('change',function(){
-            $countryData = $("#country").countrySelect("getSelectedCountryData");  
+            $countryData = $("#country").countrySelect("getSelectedCountryData"); 
+          
 	        $iso2 = $countryData['iso2'];
 	        $.ajax({
 	        	type:'get',
@@ -312,14 +314,13 @@
 	        	data:{iso2:$iso2},
 	        	success:function(data){
 	        		$('#select_city').html(data);
-	        		console.log(data);
 	        	}
 	        });
        });
     });
  //-----------------------------------------------------------------------
  $(document).ready(function(){
-    $countryData = $("#country").countrySelect("getSelectedCountryData");  
+    $countryData = $("#country").countrySelect("getSelectedCountryData");
         $iso2 = $countryData['iso2'];
         $.ajax({
         	type:'get',
@@ -327,7 +328,6 @@
         	data:{iso2:$iso2},
         	success:function(data){
         		$('#select_city').html(data);
-        		console.log(data);
         	}
         });
 
