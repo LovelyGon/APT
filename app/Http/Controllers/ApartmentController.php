@@ -15,6 +15,6 @@ class ApartmentController extends Controller
     
      public function storeAparrtment(Request $request)
     {
-       dd($request->apartmentType);
+       dd($request->all());
     }
 }
