@@ -30,4 +30,9 @@ class Property extends Model
     {
         return $this->hasMany('App\PropertyGallery');
     }
+    
+    public function Apartment()
+    {
+        return $this->belongsTo('App\Apartment');
+    }
 }
