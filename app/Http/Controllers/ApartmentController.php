@@ -26,7 +26,7 @@ class ApartmentController extends Controller
         $aparrtment ->living_room_number = $rq->number_of_livingroom;
         $aparrtment ->bathroom_number = $rq->number_of_bathrooms;
         $aparrtment ->bedroom_number = $rq->number_of_bedrooms;
-        $aparrtment ->apartment_size = 111;
+        $aparrtment ->apartment_size = 22;
         $aparrtment ->property_id = Auth::user()->id;
         $aparrtment->save();
         dd($aparrtment->id);
