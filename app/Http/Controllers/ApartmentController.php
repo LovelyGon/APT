@@ -29,6 +29,11 @@ class ApartmentController extends Controller
         $aparrtment ->apartment_size = 22;
         $aparrtment ->property_id = Auth::user()->id;
         $aparrtment->save();
-        dd($aparrtment->id);
+        $room= new Room;
+        $room ->sofa_bed_number = $rq->bedroom_kind_of_beds;
+        $room ->bed_option = $rq->private_room;
+        $room ->sofa_bed_number = $rq->bedroom_kind_of_beds;
+        $room ->bed_option = $rq->private_room;
+        $room ->apartment_id =$aparrtment->id;
     }
 }
