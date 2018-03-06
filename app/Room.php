@@ -12,13 +12,10 @@ class Room extends Model
         'guest_number',
         'sofa_bed_number',
         'bed_option ',
-        'smoking_policy ',
-        'apartment_id ',
-        'bathroom_number ',
-        'bedroom_number ',
-        'apartment_size ',
-        'property_id '
+        'number_of_beds ',
+        'apartment_id '
     ];
+    
     public function Apartment()
     {
         return $this->hasMany('App\Apartment');

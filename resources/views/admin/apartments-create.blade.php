@@ -202,27 +202,27 @@ use App\Enumeration\StarRating;
                                     '</div>'+
                                     '<h3 class="widget-user-username">Bedroom'+'<span>'+e +'</span>'+' </h3>' +
                                     '<h5 class="badge bg-gray">How many bed do you have in this bedroom</h5>'+
-                                    '<div class="row">'+
-                                            '<div class="col-md-6">'+
-                                                    '<div class="form-group">'+
-                                                            '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2" name="bedroom_kind_of_beds[]">'+
-                                                                    '<option style="" selected="selected"  value="N/A">N/A</option>'+
-                                                                    '<option style="" selected="selected" value="1 ✯">1 ✯</option>'+
-                                                                    '<option class="fa-star" value="2 ✯ ✯">2 ✯ ✯</option>'+
-                                                                    '<option class="fa-star" value="3 ✯ ✯ ✯">3 ✯ ✯ ✯</option>'+
-                                                                    '<option class="fa-star" value="4 ✯ ✯ ✯ ✯">4 ✯ ✯ ✯ ✯</option>'+
-                                                                    '<option class="fa-star" value="5 ✯ ✯ ✯ ✯ ✯">5 ✯ ✯ ✯ ✯ ✯</option>'+
-                                                           ' </select>'+
-                                                    '</div>'+
+                                    '<div class="row bedroom">'+
+                                                '<div class="col-md-6">'+
+                                                        '<div class="form-group">'+
+                                                                '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2" name="bedroom_kind_of_beds[]">'+
+                                                                        '<option style="" selected="selected"  value="N/A">N/A</option>'+
+                                                                        '<option style="" selected="selected" value="1 ✯">1 ✯</option>'+
+                                                                        '<option class="fa-star" value="2 ✯ ✯">2 ✯ ✯</option>'+
+                                                                        '<option class="fa-star" value="3 ✯ ✯ ✯">3 ✯ ✯ ✯</option>'+
+                                                                        '<option class="fa-star" value="4 ✯ ✯ ✯ ✯">4 ✯ ✯ ✯ ✯</option>'+
+                                                                        '<option class="fa-star" value="5 ✯ ✯ ✯ ✯ ✯">5 ✯ ✯ ✯ ✯ ✯</option>'+
+                                                               ' </select>'+
+                                                        '</div>'+
 
-                                            '</div>'+
+                                                '</div>'+
 
 
-                                            '<div class="col-md-2 ">'+
-                                                    '<div class="form-group ">'+
-                                                            '<label>Number of beds</label> <input id="bedroomNumber" name="number_of_beds[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
-                                                    '</div>'+
-                                            '</div>'+
+                                                '<div class="col-md-2 ">'+
+                                                        '<div class="form-group ">'+
+                                                                '<label>Number of beds</label> <input id="bedroomNumber" name="number_of_beds[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                        '</div>'+
+                                                '</div>'+
                                             '<div class="col-md-2">'+
                                                 '<div class="form-group">'+
                                                        '<button type="button" class="Addbed">ADD BED</button>'+
@@ -266,13 +266,13 @@ use App\Enumeration\StarRating;
                             '<div class="row">'+
                                     '<div class="col-md-3">'+
                                             '<div class="form-group">'+
-                                                    '<label>Number of sofa beds</label> <input id=bathroomNumber name="livingroom_number_of_sofa_beds[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
+                                                    '<label>Number of sofa beds</label> <input id=bathroomNumber name="number_of_beds[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
                                             '</div>'+
                                     '</div>'+
 
                                     '<div class="col-md-3">'+
                                             '<div class="form-group">'+
-                                                    '<label>How many guests can stay in the room</label> <input id=bathroomNumber  name="livingroom_guests_can_stay[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
+                                                    '<label>How many guests can stay in the room</label> <input id=bathroomNumber  name="guests_can_stay[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
                                             '</div>'+
 
                                     '</div>'+
@@ -296,7 +296,7 @@ use App\Enumeration\StarRating;
     });
     $(document).on("click",".Addbed",function(){
         $(this).closest(".bedroom").append(   
-           '<div class="row">'+
+     
                                             '<div class="col-md-6">'+
                                                     '<div class="form-group">'+
                                                             '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2" name="bedroom_kind_of_beds[]">'+
@@ -317,8 +317,7 @@ use App\Enumeration\StarRating;
                                                             '<label>Number of beds</label> <input id="bedroomNumber" name="number_of_beds[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
                                                     '</div>'+
                                             '</div>'+
-                                    '</div>'+
-                            '</div>'
+                                    '</div>'
         )
     });
     $(document).on("click",".Addlivingroom",function(){
@@ -326,13 +325,13 @@ use App\Enumeration\StarRating;
            '<div class="row">'+
                                     '<div class="col-md-3">'+
                                             '<div class="form-group">'+
-                                                    '<label>Number of sofa beds</label> <input id=bathroomNumber type="number" name="livingroom_number_of_sofa_beds[]" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
+                                                    '<label>Number of sofa beds</label> <input id=bathroomNumber type="number" name="number_of_beds[]" min="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
                                             '</div>'+
                                     '</div>'+
 
                                     '<div class="col-md-3">'+
                                             '<div class="form-group">'+
-                                                    '<label>How many guests can stay in the room</label> <input id=bathroomNumber type="number" min="1" class="form-control" name="livingroom_guests_can_stay[]" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
+                                                    '<label>How many guests can stay in the room</label> <input id=bathroomNumber type="number" min="1" class="form-control" name="guests_can_stay[]" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
                                             '</div>'+
 
                                     '</div>'+

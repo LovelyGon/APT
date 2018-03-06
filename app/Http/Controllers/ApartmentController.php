@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Apartment;
+use App\Room;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -9,6 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
+    public function index()       
+    {
+        return view('admin.apartments');
+       
+    }
+    
     public function createAparrtment()       
     {
         return view('admin.apartments-create');
@@ -30,10 +37,13 @@ class ApartmentController extends Controller
         $aparrtment ->property_id = Auth::user()->id;
         $aparrtment->save();
         $room= new Room;
-        $room ->sofa_bed_number = $rq->bedroom_kind_of_beds;
-        $room ->bed_option = $rq->private_room;
-        $room ->sofa_bed_number = $rq->bedroom_kind_of_beds;
-        $room ->bed_option = $rq->private_room;
+        $room ->sofa_bed_number = json_encode($rq->bedroom_kind_of_beds);
+        $room ->guest_number = json_encode($rq->guests_can_stay);
+        $room ->number_of_beds = json_encode($rq->number_of_beds);
+        $room ->kind_of_room = json_encode($rq->bedroom_kind_of_beds);
         $room ->apartment_id =$aparrtment->id;
+        $room ->bed_option =$aparrtment->id;
+        $room->save();
+        return redirect()->route('apartments');
     }
 }

@@ -20,8 +20,12 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
     Route::post('addproperty','BasicInfoController@store');
     Route::get('/features', 'featuresController@index')->name('getfeatures');
     Route::post('/', 'featuresController@create')->name('features');
-    Route::get('apartments', function () {
-        return view('admin.apartments');
+    Route::get('/apartments', 'ApartmentController@index')->name('apartments');
+    Route::get('facilities', function () {
+        return view('admin.facilities');
+    });
+    Route::get('galleries', function () {
+        return view('admin.galleries');
     });
 });
 Auth::routes();
