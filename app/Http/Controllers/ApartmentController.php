@@ -38,12 +38,13 @@ class ApartmentController extends Controller
         $aparrtment->save();
         $room= new Room;
         $room ->sofa_bed_number = json_encode($rq->bedroom_kind_of_beds);
-        $room ->guest_number = json_encode($rq->guests_can_stay);
-        $room ->number_of_beds = json_encode($rq->number_of_beds);
-        $room ->kind_of_room = json_encode($rq->bedroom_kind_of_beds);
-        $room ->apartment_id =$aparrtment->id;
-        $room ->bed_option =$aparrtment->id;
+
+
+        $room ->bed_option = json_encode($rq->private_room);
+        $room ->guest_number =json_encode( $rq->bedroom_kind_of_beds);
+        $room ->bed_option = json_encode($rq->private_room);
+        $room ->apartment_id =json_encode($aparrtment->id);
+        $room ->kind_of_room =json_encode($aparrtment->id);
         $room->save();
-        return redirect()->route('apartments');
     }
 }
