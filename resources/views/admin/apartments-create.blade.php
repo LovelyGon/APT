@@ -29,6 +29,9 @@ use App\Enumeration\StarRating;
     .widget-user-username span{
         margin-left: 5px;
     }
+    #Room{
+        Display: None;
+    }
 </style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -48,7 +51,7 @@ use App\Enumeration\StarRating;
 
  {!! Form::open(['route' => 'postApartment']) !!}
 
-	<div class="box box-default">
+	<div class="box box-default postApartment">
 		<div class="box-header with-border">
 			<h3 class="box-title">Apartment</h3>
 			<div class="box-tools pull-right">
@@ -87,7 +90,7 @@ use App\Enumeration\StarRating;
                                                     $star_rating_label1 = __('property.apartment');								
                                                     $star_rating_items1 = App\Enumeration\PropertyType::toArray();
                                     
-                                                    echo Form::select('apartment _name', $star_rating_items1,null, ['class' => 'form-control select2']); 
+                                                    echo Form::select('apartment_name', $star_rating_items1,null, ['class' => 'form-control apartment_name']); 
                                                 ?>
 					</div>
 				</div>
@@ -149,8 +152,16 @@ use App\Enumeration\StarRating;
 
 	</div>
 
+ <div class="row">
+	<div class="col-md-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-block btn-primary btn-lg">ADD BED</button>
+                </div>
+	</div>
 
-	<div class="box box-default">
+</div>
+{!! Form::close() !!}
+	<div class="box box-default " id="Room">
 		<div class="box-header with-border">
 			<h3 class="box-title">Room options</h3>
 
@@ -173,22 +184,20 @@ use App\Enumeration\StarRating;
 		</div>
 
 	</div>
- <div class="row">
-	<div class="col-md-12">
-                {!! Form::submit('Save and continue', ['class' => 'btn btn-block btn-primary btn-lg']) !!}
-	</div>
-
-</div>
-{!! Form::close() !!}
 </section>
 
 @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+    $(document).on("click",".btn-block",function(){
+        $(".postApartment").hide();
+        $("#Room").show();
+        $(".btn-block").hide();
 
+        alert($(".apartment_name").val());
+    });
     $(document).ready(function(){
-        
         $("#bedroomNumber").change(function(){
             $(".bedroom").remove();
             var numberBedoomNumber = $("#bedroomNumber").val();
