@@ -101,7 +101,7 @@ use App\Enumeration\StarRating;
 						<div class="alert alert-info alert-dismissible">Just enter a
 							custom name in case there's really nothing like your apartment
 							from Apartment name</div>
-						<input type="text" class="form-control" id="customName" name="custom_name"
+						<input type="text" class="form-control custom_name" id="customName" name="custom_name"
 							placeholder="Enter custom name">
 					</div>
 				</div>
@@ -116,12 +116,12 @@ use App\Enumeration\StarRating;
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Number of apartment(of this type)</label> <input
-							id="numberApartment" type="number" class="form-control" name="number_of_apartment"></input>
+							id="numberApartment" type="number" class="form-control number_of_apartment" name="number_of_apartment"></input>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<label>Smoking policy</label>
-                                                <select id="apartmentType" class="form-control select2" name="smoking_policy">
+                                                <select id="apartmentType" class="form-control smoking_policy" name="smoking_policy">
                                                     <option selected="selected" value="nonesmoking">Non-smoking</option>
                                                     <option value="smoking">Smoking</option>
                                                 </select>
@@ -132,12 +132,12 @@ use App\Enumeration\StarRating;
 			<div class="row">
 				<div class="col-md-3">
 					<label>Number of bedrooms</label> <input id="bedroomNumber"
-						type="number" min="1" class="form-control" name="number_of_bedrooms"
+						type="number" min="1" class="form-control number_of_bedrooms" name="number_of_bedrooms"
 						onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 				</div>
 				<div class="col-md-3">
 					<label>Number of living rooms</label> <input id="livingroomNumber" name="number_of_livingroom"
-						type="number" min="0" class="form-control"
+						type="number" min="0" class="form-control number_of_livingroom"
 						onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 				</div>
 				<div class="col-md-3">
@@ -155,7 +155,7 @@ use App\Enumeration\StarRating;
  <div class="row">
 	<div class="col-md-12">
                 <div class="form-group">
-                    <button type="button" class="btn btn-block btn-primary btn-lg">ADD BED</button>
+                    <button type="submit" class="btn btn-block btn-primary btn-lg">ADD BED</button>
                 </div>
 	</div>
 
@@ -190,12 +190,30 @@ use App\Enumeration\StarRating;
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-    $(document).on("click",".btn-block",function(){
-        $(".postApartment").hide();
-        $("#Room").show();
-        $(".btn-block").hide();
+    $(document).on("click",".btn-block",function(e){
+//        $(".postApartment").hide();
+//        $("#Room").show();
+//        $(".btn-block").hide();
+         e.preventDefault();
+        var apartment_type = $(".select2").val();
+        var apartment_name = $(".apartment_name").val();
+        var custom_name = $(".custom_name").val();
+        var number_of_apartment = $(".number_of_apartment").val();
+        var smoking_policy = $(".smoking_policy").val();
+        var number_of_bedrooms = $(".number_of_bedrooms").val();
+        var number_of_livingroom = $(".number_of_livingroom").val();
+        var number_of_bathrooms = $(".number_of_bathrooms").val();
+        var token=$("input[name='_token']").val();
+        $.ajax({
+            url:'/admin/apartments/create',
+            type:"POST",
+            datatType : 'json',
+            data:{"_token":token,"apartment_type":"apartment_type","apartment_name":"apartment_name","custom_name":"custom_name","number_of_apartment":"number_of_apartment","smoking_policy":"smoking_policy","number_of_bedrooms":"number_of_bedrooms","number_of_livingroom":"number_of_livingroom","number_of_bathrooms":"number_of_bathrooms"},
+            success:function(data) {
+                   console.log(data);
 
-        alert($(".apartment_name").val());
+            }
+        });
     });
     $(document).ready(function(){
         $("#bedroomNumber").change(function(){
