@@ -155,7 +155,7 @@ use App\Enumeration\StarRating;
  <div class="row">
 	<div class="col-md-12">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-block btn-primary btn-lg">ADD BED</button>
+                    <button type="type" class="btn btn-block btn-primary btn-lg">ADD BED</button>
                 </div>
 	</div>
 
@@ -194,7 +194,7 @@ use App\Enumeration\StarRating;
 //        $(".postApartment").hide();
 //        $("#Room").show();
 //        $(".btn-block").hide();
-         e.preventDefault();
+        e.preventDefault();
         var apartment_type = $(".select2").val();
         var apartment_name = $(".apartment_name").val();
         var custom_name = $(".custom_name").val();
@@ -207,12 +207,18 @@ use App\Enumeration\StarRating;
         $.ajax({
             url:'/admin/apartments/create',
             type:"POST",
-            datatType : 'json',
+            datatType : 'JSON',
             data:{"_token":token,"apartment_type":"apartment_type","apartment_name":"apartment_name","custom_name":"custom_name","number_of_apartment":"number_of_apartment","smoking_policy":"smoking_policy","number_of_bedrooms":"number_of_bedrooms","number_of_livingroom":"number_of_livingroom","number_of_bathrooms":"number_of_bathrooms"},
-            success:function(data) {
-                   console.log(data);
-
-            }
+        })
+        .done(function(data) {
+            console.log("success");
+            console.log(data);
+        }).
+        fail(function(error) {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
         });
     });
     $(document).ready(function(){

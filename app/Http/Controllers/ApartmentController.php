@@ -24,6 +24,6 @@ class ApartmentController extends Controller
     
      public function storeAparrtment(Request $rq)
     {
- 
+       print_r(json_decode($rq));
     }
 }
