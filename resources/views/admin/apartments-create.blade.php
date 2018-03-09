@@ -191,9 +191,9 @@ use App\Enumeration\StarRating;
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
     $(document).on("click",".btn-block",function(e){
-//        $(".postApartment").hide();
-//        $("#Room").show();
-//        $(".btn-block").hide();
+        $(".postApartment").hide();
+        $("#Room").show();
+        $(".btn-block").hide();
         e.preventDefault();
         var apartment_type = $(".select2").val();
         var apartment_name = $(".apartment_name").val();
@@ -208,7 +208,7 @@ use App\Enumeration\StarRating;
             url:'/admin/apartments/create',
             type:"POST",
             datatType : 'JSON',
-            data:{"_token":token,"apartment_type":"apartment_type","apartment_name":"apartment_name","custom_name":"custom_name","number_of_apartment":"number_of_apartment","smoking_policy":"smoking_policy","number_of_bedrooms":"number_of_bedrooms","number_of_livingroom":"number_of_livingroom","number_of_bathrooms":"number_of_bathrooms"},
+            data:{"_token":token,"apartment_type":apartment_type,"apartment_name":apartment_name,"custom_name":custom_name,"number_of_apartment":number_of_apartment,"smoking_policy":smoking_policy,"number_of_bedrooms":number_of_bedrooms,"number_of_livingroom":number_of_livingroom,"number_of_bathrooms":number_of_bathrooms},
         })
         .done(function(data) {
             console.log("success");
