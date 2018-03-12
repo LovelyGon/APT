@@ -32,6 +32,17 @@ use App\Enumeration\StarRating;
     #Room{
         Display: None;
     }
+    .addBedroom{
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top:5px;
+    }
 </style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -142,7 +153,7 @@ use App\Enumeration\StarRating;
 				</div>
 				<div class="col-md-3">
 					<label>Number bathrooms</label> <input id=bathroomNumber
-						type="number" min="0" class="form-control" name="number_of_bathrooms"
+						type="number" min="0" class="form-control number_of_bathrooms" name="number_of_bathrooms"
 						onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 				</div>
 			</div>
@@ -175,8 +186,12 @@ use App\Enumeration\StarRating;
 
 		<!-- /.box-header -->
 		<div class="box-body">
+                    
                     <div  id='bedroomNumber111'>
+                        
+                        
                     </div>
+                    
                     <div  id='livingroomNumber1111'>
 
                     </div>
@@ -228,7 +243,8 @@ use App\Enumeration\StarRating;
             for(var i = 0; i < parseInt(numberBedoomNumber); i++){
                var e=i+1;
                 $("#bedroomNumber111").append(
-                           '<div class="box box-widget widget-user-2 ">'+
+                        '{!! Form::open(["route" => "postroomApartment"]) !!}'+
+                           '<div class="box box-widget widget-user-2">'+
                             '<div class="widget-user-header bedroom" style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">'+
                                     '<div class="widget-user-image">'+
                                             '<img class="img-circle" src="http://127.0.0.1:8000/dist/img/bedicon.jpg" alt="User Avatar">'+
@@ -238,7 +254,7 @@ use App\Enumeration\StarRating;
                                     '<div class="row bedroom">'+
                                                 '<div class="col-md-6">'+
                                                         '<div class="form-group">'+
-                                                                '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2" name="bedroom_kind_of_beds[]">'+
+                                                                '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2 bedroom_kind_of_beds" name="bedroom_kind_of_beds[]">'+
                                                                         '<option style="" selected="selected"  value="N/A">N/A</option>'+
                                                                         '<option style="" selected="selected" value="1 ✯">1 ✯</option>'+
                                                                         '<option class="fa-star" value="2 ✯ ✯">2 ✯ ✯</option>'+
@@ -253,7 +269,7 @@ use App\Enumeration\StarRating;
 
                                                 '<div class="col-md-2 ">'+
                                                         '<div class="form-group ">'+
-                                                                '<label>Number of beds</label> <input id="bedroomNumber" name="number_of_beds[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                                '<label>Number of beds</label> <input id="bedroomNumbe number_of_bedsr" name="number_of_beds[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
                                                         '</div>'+
                                                 '</div>'+
                                             '<div class="col-md-2">'+
@@ -265,20 +281,29 @@ use App\Enumeration\StarRating;
                                     '</div>'+
                                     '<div class="row">'+
                                             '<div class="col-md-3">'+
-                                                    '<label>How many guests can stay</label> <input id="bathroomNumber" name="guests_can_stay[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                    '<label>How many guests can stay</label> <input id="bathroomNumber" name="guests_can_stay" type="number" min="1" class="form-control guests_can_stay" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
                                             '</div>'+
                                     '</div>'+
 
                                     '<div class="row" style="margin-top:30px">'+
-                                            '<div class="col-md-6 bed">'+
-                                                    '<div class="form-group">'+
-                                                            '<label>Private room</label> <input type="checkbox" nam="private_room[]"value="">'+
-                                                    '</div>'+
-                                            '</div>'+
+                                        '<div class="col-md-12 bed">'+
+                                                '<div class="form-group">'+
+                                                        '<label>Private room</label> <input  class="private_room" type="checkbox" nam="private_room"value="">'+
+                                                '</div>'+
+                                        '</div>'+
+                                             '<div class="col-md-6">'+
+                                        '<div class="form-group">'+
+                                               '<button type="button" class="addBedroom">Thêm phòng</button>'+
+                                        '</div>'+
+                                                   
                                     '</div>'+
-
+                                    '</div>'+
+                                   
+                              
                             '</div>'+
-                            '</div>'
+                            
+                            '</div>'+
+                            '{!! Form::close() !!}'
                 );
             }
             });
@@ -332,7 +357,7 @@ use App\Enumeration\StarRating;
      
                                             '<div class="col-md-6">'+
                                                     '<div class="form-group">'+
-                                                            '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2" name="bedroom_kind_of_beds[]">'+
+                                                            '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2 bedroom_kind_of_beds" name="bedroom_kind_of_beds[]">'+
                                                                     '<option style="" selected="selected"  value="N/A">N/A</option>'+
                                                                     '<option style="" selected="selected" value="1 ✯">1 ✯</option>'+
                                                                     '<option class="fa-star" value="2 ✯ ✯">2 ✯ ✯</option>'+
@@ -347,7 +372,7 @@ use App\Enumeration\StarRating;
 
                                             '<div class="col-md-2 ">'+
                                                     '<div class="form-group ">'+
-                                                            '<label>Number of beds</label> <input id="bedroomNumber" name="number_of_beds[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                            '<label>Number of beds</label> <input id="bedroomNumber number_of_beds" name="number_of_beds[]" type="number" min="1" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
                                                     '</div>'+
                                             '</div>'+
                                     '</div>'
@@ -370,5 +395,11 @@ use App\Enumeration\StarRating;
                                     '</div>'+
                             '</div>'
         )
+    });
+    $(document).on("click",".addBedroom",function(e){
+         e.preventDefault();
+        var guests_can_stay = $(".guests_can_stay").val();
+        $(".bedroom").hide();
+        alert(12332);
     });
 </script>
