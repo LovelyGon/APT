@@ -250,6 +250,8 @@ use App\Enumeration\StarRating;
                                             '<img class="img-circle" src="http://127.0.0.1:8000/dist/img/bedicon.jpg" alt="User Avatar">'+
                                     '</div>'+
                                     '<h3 class="widget-user-username">Bedroom'+'<span>'+e +'</span>'+' </h3>' +
+                                    '<input type="hidden" name="room_id" value="'+ e +'"/>' +
+
                                     '<h5 class="badge bg-gray">How many bed do you have in this bedroom</h5>'+
                                     '<div class="row bedroom">'+
                                                 '<div class="col-md-6">'+
@@ -397,9 +399,11 @@ use App\Enumeration\StarRating;
         )
     });
     $(document).on("click",".addBedroom",function(e){
-         e.preventDefault();
-        var guests_can_stay = $(".guests_can_stay").val();
-        $(".bedroom").hide();
-        alert(12332);
+         //e.preventDefault();
+        var bedroom ;
+        var guests_can_stay;
+        $bedroom= $(this).closest(".bedroom");
+        $guests_can_stay=$bedroom.find(".guests_can_stay").val();
+        $bedroom.hide();
     });
 </script>
