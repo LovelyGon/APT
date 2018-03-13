@@ -404,6 +404,8 @@ use App\Enumeration\StarRating;
         var guests_can_stay;
         $bedroom= $(this).closest(".bedroom");
         $guests_can_stay=$bedroom.find(".guests_can_stay").val();
+        console.log(x);
         $bedroom.hide();
+        console.log(bedroom_kind_of_beds);
     });
 </script>
