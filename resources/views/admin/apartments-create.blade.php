@@ -400,10 +400,16 @@ use App\Enumeration\StarRating;
     });
     $(document).on("click",".addBedroom",function(e){
          //e.preventDefault();
-        var bedroom ;
-        var guests_can_stay;
-        $bedroom= $(this).closest(".bedroom");
-        $guests_can_stay=$bedroom.find(".guests_can_stay").val();
-        $bedroom.hide();
+         var bedroom ;
+         var guests_can_stay;
+         $bedroom= $(this).closest(".bedroom");
+         $("#apartmentType").each(function()
+        {
+         
+         $guests_can_stay=$(this).closest(".bedroom").find(".bedroom_kind_of_beds").val();
+         alert($guests_can_stay);
+        });
+         $bedroom.hide();
+            alert($guests_can_stay);
     });
 </script>
