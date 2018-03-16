@@ -402,10 +402,14 @@ use App\Enumeration\StarRating;
          //e.preventDefault();
          var bedroom ;
          var guests_can_stay;
-        $bedroom= $(this).closest(".bedroom");
-        $guests_can_stay=$bedroom.find(".bedroom_kind_of_beds").array();
-        console.log($guests_can_stay);
+         $bedroom= $(this).closest(".bedroom");
+         var ar = [];
+         $bedroom.find(".bedroom_kind_of_beds").each(function(i, sel)
+         {
+         var selectedVal = $(sel).val();
+         ar.push(selectedVal);
+         });
+        alert(ar);
          $bedroom.hide();
-
     });
 </script>
