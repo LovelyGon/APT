@@ -405,11 +405,11 @@ use App\Enumeration\StarRating;
          $bedroom= $(this).closest(".bedroom");
          $("#apartmentType").each(function()
         {
-         
          $guests_can_stay=$(this).closest(".bedroom").find(".bedroom_kind_of_beds").val();
          alert($guests_can_stay);
         });
          $bedroom.hide();
             alert($guests_can_stay);
+
     });
 </script>
