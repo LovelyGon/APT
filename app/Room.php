@@ -12,8 +12,8 @@ class Room extends Model
         'guest_number',
         'sofa_bed_number',
         'bed_option ',
-        'number_of_beds ',
-        'apartment_id '
+        'apartment_id ',
+        'option'
     ];
     
     public function Apartment()

@@ -39,39 +39,15 @@ use App\Enumeration\StarRating;
 	<!-- /.box-header -->
 	<div class="box-body">
 		<div class="row">
-			<div class="col-md-6">
-				<!-- Widget: user widget style 1 -->
-				<div class="box box-widget widget-user-2">
-					<!-- Add the bg color to the header using any of the bg-* classes -->
-					<div class="widget-user-header"
-						style="padding-left: 10px; padding-right: 10px;background-color: #f5f5f0">
-						<div class="widget-user-image">
-							<img class="img-circle" src="../dist/img/2bedroom.jpg"
-								alt="User Avatar">
-						</div>
-						<div style="float: right">
-								<button type="button" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> Edit</button>
-								<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-trash-o"></i> Delete</button>
-								
-							</div>
-						<!-- /.widget-user-image -->
-						<h3 class="widget-user-username">Two-bedrom Aparment</h3>
-						<h5 class="badge bg-green">$600/month - Number of this type: 5</h5>
-						
-					</div>
-					<div class="box-footer no-padding">
-						<ul class="nav nav-stacked">
-							<li><a href="#">Living room <span
-									class="pull-right badge bg-aqua">1</span></a></li>
-							<li><a href="#">Bed room <span class="pull-right badge bg-green">2</span></a></li>
-							<li><a href="#">Bathroom <span class="pull-right badge bg-red">1</span></a></li>
-						</ul>
-					</div>
-				</div>
+                    {!! Form::open(["route" => "apartmentsDelete"]) !!}
 				<!-- /.widget-user -->
-			</div>
-			
-			<div class="col-md-6">
+                                <?php
+							$stt=0;
+							?>
+                        @foreach($apartment as $apartments)
+                        <?php $stt=$stt+1 ?>
+			<div class="col-md-6 apartment">
+                            <input type="hidden" name="room_id"  class="room_id" value="<?php echo  $stt ?>"/>
 				<!-- Widget: user widget style 1 -->
 				<div class="box box-widget widget-user-2">
 					<!-- Add the bg color to the header using any of the bg-* classes -->
@@ -83,44 +59,11 @@ use App\Enumeration\StarRating;
 						</div>
 						<div style="float: right">
 								<button type="button" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> Edit</button>
-								<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-trash-o"></i> Delete</button>
+								<button type="button" class="btn btn-primary delete-a"  value="{{$apartments->id}}"><i class="fa fa-trash-o"></i> Delete</button>
 								
 							</div>
 						<!-- /.widget-user-image -->
-						<h3 class="widget-user-username">Two-bedrom Aparment</h3>
-						<h5 class="badge bg-green">$600/month - Number of this type: 5</h5>
-						
-					
-						
-					</div>
-					<div class="box-footer no-padding">
-						<ul class="nav nav-stacked">
-							 
-							<li><a href="#">Living room <span
-									class="pull-right badge bg-aqua">1</span></a></li>
-							<li><a href="#">Bed room <span class="pull-right badge bg-green">2</span></a></li>
-							<li><a href="#">Bathroom <span class="pull-right badge bg-red">1</span></a></li>
-						</ul>
-					</div>
-				</div>
-				<!-- /.widget-user -->
-			</div><div class="col-md-6">
-				<!-- Widget: user widget style 1 -->
-				<div class="box box-widget widget-user-2">
-					<!-- Add the bg color to the header using any of the bg-* classes -->
-					<div class="widget-user-header"
-						style="padding-left: 10px; padding-right: 10px;background-color: #f5f5f0">
-						<div class="widget-user-image">
-							<img class="img-circle" src="../dist/img/2bedroom.jpg"
-								alt="User Avatar">
-						</div>
-						<div style="float: right">
-								<button type="button" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> Edit</button>
-								<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-trash-o"></i> Delete</button>
-								
-							</div>
-						<!-- /.widget-user-image -->
-						<h3 class="widget-user-username">Two-bedrom Aparment</h3>
+						<h3 class="widget-user-username">bedrom Aparment-{{ $stt }}</h3>
 						<h5 class="badge bg-green">$600/month - Number of this type: 5</h5>
 						
 					</div>
@@ -128,46 +71,18 @@ use App\Enumeration\StarRating;
 						<ul class="nav nav-stacked">
 							
 							<li><a href="#">Living room <span
-									class="pull-right badge bg-aqua">1</span></a></li>
-							<li><a href="#">Bed room <span class="pull-right badge bg-green">2</span></a></li>
-							<li><a href="#">Bathroom <span class="pull-right badge bg-red">1</span></a></li>
+									class="pull-right badge bg-aqua">{!! $apartments->living_room_number !!}</span></a></li>
+							<li><a href="#">Bed room <span class="pull-right badge bg-green">{!! $apartments->bathroom_number !!}</span></a></li>
+							<li><a href="#">Bathroom <span class="pull-right badge bg-red">{!! $apartments->bedroom_number !!}</span></a></li>
 						</ul>
 					</div>
 				</div>
 				<!-- /.widget-user -->
-			</div><div class="col-md-6">
-				<!-- Widget: user widget style 1 -->
-				<div class="box box-widget widget-user-2">
-					<!-- Add the bg color to the header using any of the bg-* classes -->
-					<div class="widget-user-header"
-						style="padding-left: 10px; padding-right: 10px;background-color: #f5f5f0">
-						<div class="widget-user-image">
-							<img class="img-circle" src="../dist/img/2bedroom.jpg"
-								alt="User Avatar">
-						</div>
-						<div style="float: right">
-								<button type="button" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> Edit</button>
-								<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-trash-o"></i> Delete</button>
-								
-							</div>
-						<!-- /.widget-user-image -->
-						<h3 class="widget-user-username">Two-bedrom Aparment</h3>
-						<h5 class="badge bg-green">$600/month - Number of this type: 5</h5>
-						
-					</div>
-					<div class="box-footer no-padding">
-						<ul class="nav nav-stacked">
-							
-							<li><a href="#">Living room <span
-									class="pull-right badge bg-aqua">1</span></a></li>
-							<li><a href="#">Bed room <span class="pull-right badge bg-green">2</span></a></li>
-							<li><a href="#">Bathroom <span class="pull-right badge bg-red">1</span></a></li>
-						</ul>
-					</div>
-				</div>
 				<!-- /.widget-user -->
 			</div>
-		
+                        @endforeach
+                         '{!! Form::close() !!}'
+                    </div>
 		</div>
 
 	</div>
@@ -177,3 +92,30 @@ use App\Enumeration\StarRating;
 </section>
 
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).on("click",".delete-a",function(e){
+        e.preventDefault();
+         var id = $(this).val();
+         var room_id=$(".room_id").val();
+         var token=$("input[name='_token']").val();
+         $bedroom= $(this).closest(".apartment");
+         $bedroom.hide();
+         $.ajax({
+            url:'/admin/apartments/delete',
+            type:"delete",
+            datatType : 'JSON',
+            data:{"_token":token,"id":id,"room_id":room_id},
+        })
+        .done(function(data) {
+            console.log("success");
+            console.log(data);
+        }).
+        fail(function(error) {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+    });
+</script>
