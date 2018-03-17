@@ -43,6 +43,17 @@ use App\Enumeration\StarRating;
         font-size: 16px;
         margin-top:5px;
     }
+    .addLiving{
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top:5px;
+    }
 </style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -466,6 +477,7 @@ use App\Enumeration\StarRating;
          living.push(guests_can_stay);
          
         });
+        $bedroom.hide();
         var token=$("input[name='_token']").val();
         $.ajax({
             url:'/admin/apartments/living/create',
