@@ -380,6 +380,7 @@ use App\Enumeration\StarRating;
 
                                             '<div class="col-md-2 ">'+
                                                     '<div class="form-group ">'+
+
                                                             '<label>Number of beds</label> <input id="bedroomNumber " name="number_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" required>'+
                                                     '</div>'+
                                             '</div>'+
