@@ -16,6 +16,8 @@ Route::get('admin/get_country','BasicInfoController@get_country');
 Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
     
     Route::get('/apartments/create', 'ApartmentController@createAparrtment')->name('getApartment');
+    Route::get('/apartments/{id}/edit', 'ApartmentController@editAparrtment')->name('editApartment');
+    Route::post('/apartments/{id}', 'ApartmentController@storeEditAparrtment')->name('storeEditAparrtment');
     Route::post('/apartments/create', 'ApartmentController@storeAparrtment')->name('postApartment');
     Route::post('/apartments/create/bedroom', 'ApartmentController@storeBedroomAparrtment')->name('postApartmentBedroom');
     Route::post('/apartments/room/create', 'ApartmentController@storeAparrtmentRoom')->name('postroomApartment');
@@ -26,9 +28,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
     Route::post('/', 'featuresController@create')->name('features');
     Route::get('/apartments', 'ApartmentController@index')->name('apartments');
     Route::delete('/apartments/delete', 'ApartmentController@delete')->name('apartmentsDelete');
-    Route::get('facilities', function () {
-        return view('admin.facilities');
-    });
+    Route::get('/facilities', 'facilitiesController@index')->name('facilities');
+    
     Route::get('galleries', function () {
         return view('admin.galleries');
     });

@@ -16,11 +16,33 @@ class ApartmentController extends Controller
         return view('admin.apartments')->with('apartment', $apartment);
        
     }
-    
+    public function editAparrtment($id)       
+    {
+        $apartment = Apartment::find($id);
+        return view('admin.apartments-update')->with('apartment', $apartment);
+       
+    }
+    public function storeEditAparrtment($id,Request $request)       
+    {
+        $apartment = Apartment::where('id', '=', $id)->first();
+        $apartment->apartment_type = $request->apartment_type;
+        $apartment->apartment_name = $request->apartment_name;
+        $apartment->apartment_custom_name = $request->custom_name;	
+        $apartment->apartment_type_number = $request->number_of_apartment;
+        $apartment->smoking_policy = $request->smoking_policy;
+        $apartment->living_room_number =$request->number_of_livingroom;
+        $apartment->bathroom_number =  $request->number_of_bathrooms;
+        $apartment->bedroom_number = $request->number_of_bedrooms;
+        $apartment->apartment_size = 22;
+        $apartment->property_id = Auth::user()->id;
+        $apartment->save();
+        return redirect()->route('apartments');
+       
+    }
     public function createAparrtment()       
     {
         return view('admin.apartments-create');
-       
+        
     }
     
      public function storeAparrtment(Request $rq)
@@ -73,13 +95,13 @@ class ApartmentController extends Controller
     public function delete(Request $rq)
     {
   
-          $Room= Room::where('apartment_id', $rq->input('id'))->get();
-          foreach ($Room as $Rooms){
-            $Room1 = Room::findOrFail($Rooms->id);
-            $Room1->delete();
-          }
-          $aparrtment = Apartment::findOrFail( $rq->input('id'));
-          $aparrtment->delete();
-         return response()->json($rq->input('room_id')); 
+        $Room= Room::where('apartment_id', $rq->input('id'))->get();
+        foreach ($Room as $Rooms){
+          $Room1 = Room::findOrFail($Rooms->id);
+          $Room1->delete();
         }
+        $aparrtment = Apartment::findOrFail( $rq->input('id'));
+        $aparrtment->delete();
+        return response()->json($Room); 
+    }
 }

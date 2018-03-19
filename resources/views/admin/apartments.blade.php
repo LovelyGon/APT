@@ -58,7 +58,7 @@ use App\Enumeration\StarRating;
 								alt="User Avatar">
 						</div>
 						<div style="float: right">
-								<button type="button" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> Edit</button>
+                                                    <a href="{{ url('/admin/apartments/'.$apartments->id.'/edit') }}"> <button type="button" class="btn btn-primary btn-sm"> Edit</button></a>
 								<button type="button" class="btn btn-primary delete-a"  value="{{$apartments->id}}"><i class="fa fa-trash-o"></i> Delete</button>
 								
 							</div>
