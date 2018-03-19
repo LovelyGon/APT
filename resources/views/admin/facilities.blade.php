@@ -1,6 +1,11 @@
 <?php
 use App\Enumeration\PropertyType;
+ use App\Enumeration\FoodType;
 use DeepCopy\f003\Foo;
+ use App\Enumeration\ServcieType;
+  use App\Enumeration\FamilyType;
+  use App\Enumeration\ViewType;
+   use App\Enumeration\AccessibilityType;
 ?>
 
 @extends('admin.admin_template') @section('content')
@@ -74,78 +79,7 @@ use DeepCopy\f003\Foo;
 							<div id="collapseOne" class="panel-collapse collapse in">
 								<div class="box box-default collapsed-box box-solid">
 									<div class="box-header with-border">
-										<h3 class="box-title">Bath room</h3>
-
-										<div class="box-tools pull-right">
-											<button type="button" class="btn btn-box-tool"
-												data-widget="collapse">
-												<i class="fa fa-plus"></i>
-											</button>
-										</div>
-										<!-- /.box-tools -->
-									</div>
-									<!-- /.box-header -->
-									<div class="box-body">
-										<ul class="todo-list">
-											<li>
-												<!-- checkbox --> <input type="checkbox" value=""> <!-- todo text -->
-												<span class="text">Design a nice theme</span> <!-- Emphasis label -->
-
-											</li>
-											<li><input type="checkbox" value=""> <span class="text">Make
-													the theme responsive</span></li>
-											<li><input type="checkbox" value=""> <span class="text">Let
-													theme shine like a star</span></li>
-											<li><input type="checkbox" value=""> <span class="text">Let
-													theme shine like a star</span></li>
-											<li><input type="checkbox" value=""> <span class="text">Check
-													your messages and notifications</span></li>
-											<li><input type="checkbox" value=""> <span class="text">Let
-													theme shine like a star</span></li>
-										</ul>
-									</div>
-									<!-- /.box-body -->
-
-								</div>
-								<div class="box box-default collapsed-box box-solid"
-									>
-									<div class="box-header with-border">
-										<h3 class="box-title">Servcie and Extras</h3>
-
-										<div class="box-tools pull-right">
-											<button type="button" class="btn btn-box-tool"
-												data-widget="collapse">
-												<i class="fa fa-plus"></i>
-											</button>
-										</div>
-										<!-- /.box-tools -->
-									</div>
-									<!-- /.box-header -->
-									<div class="box-body">
-										<ul class="todo-list">
-											<li>
-												<!-- checkbox --> <input type="checkbox" value=""> <!-- todo text -->
-												<span class="text">Design a nice theme</span> <!-- Emphasis label -->
-
-											</li>
-											<li><input type="checkbox" value=""> <span class="text">Make
-													the theme responsive</span></li>
-											<li><input type="checkbox" value=""> <span class="text">Let
-													theme shine like a star</span></li>
-											<li><input type="checkbox" value=""> <span class="text">Let
-													theme shine like a star</span></li>
-											<li><input type="checkbox" value=""> <span class="text">Check
-													your messages and notifications</span></li>
-											<li><input type="checkbox" value=""> <span class="text">Let
-													theme shine like a star</span></li>
-										</ul>
-									</div>
-									<!-- /.box-body -->
-
-								</div>
-								<div class="box box-default collapsed-box box-solid">
-									<div class="box-header with-border">
-										<h3 class="box-title">Food and Drink</h3>
+										<h3 class="box-title"><?php echo Form::label('Entertainment_info', __('facilities.Entertainment_info'));?> </h3>
 
 										<div class="box-tools pull-right" style="float: left">
 											<button type="button" class="btn btn-box-tool"
@@ -156,6 +90,35 @@ use DeepCopy\f003\Foo;
 										<!-- /.box-tools -->
 									</div>
 									<!-- /.box-header -->
+								
+                                                                                 <?php														
+                                                                                $Entertainment_and_Family= FamilyType ::toArray();
+                                                                                foreach ($Entertainment_and_Family as $key =>$translatedItems)
+                                                                                 {
+                                                                           
+                                                                                     echo "<div class='box-body'><ul class='todo-list'><li>".Form::checkbox('Entertainment_and_Family[]', $key)."<span class='text'>" .$translatedItems."<br></span></li></ul></div>"; 
+                                                                                    
+                                                                                       
+                                                                                 }
+                            ?>
+						
+									<!-- /.box-body -->
+
+								</div>
+								<div class="box box-default collapsed-box box-solid"
+									>
+									<div class="box-header with-border">
+										<h3 class="box-title"><?php echo Form::label('Servcie_info', __('facilities.Servcie_info'));?> </h3>
+
+										<div class="box-tools pull-right">
+											<button type="button" class="btn btn-box-tool"
+												data-widget="collapse">
+												<i class="fa fa-plus"></i>
+											</button>
+										</div>
+										<!-- /.box-tools -->
+									</div>
+									<!-- /.box-header -->
 									<div class="box-body">
 										<ul class="todo-list">
 											<li>
@@ -175,10 +138,103 @@ use DeepCopy\f003\Foo;
 													theme shine like a star</span></li>
 										</ul>
 									</div>
+                                                                         <?php														
+                                                                                $Servcie_and_Extras= ServcieType ::toArray();
+                                                                                foreach ($Servcie_and_Extras as $key =>$translatedItems)
+                                                                                 {
+                                                                           
+                                                                                     echo "<div class='box-body'><ul class='todo-list'><li>".Form::checkbox('Servcie_and_Extras[]', $key)."<span class='text'>" .$translatedItems."<br></span></li></ul></div>"; 
+                                                                                    
+                                                                                       
+                                                                                 }
+                            ?>
 									<!-- /.box-body -->
 
 								</div>
+								<div class="box box-default collapsed-box box-solid">
+									<div class="box-header with-border">
+										<h3 class="box-title"><?php echo Form::label('Food_info', __('facilities.Food_info'));?> </h3>
 
+										<div class="box-tools pull-right" style="float: left">
+											<button type="button" class="btn btn-box-tool"
+												data-widget="collapse" style="float: left">
+												<i class="fa fa-plus" style="float: left"></i>
+											</button>
+										</div>
+										<!-- /.box-tools -->
+									</div>
+									<!-- /.box-header -->
+								
+                                                                                 <?php														
+                                                                                $Food_and_Drink= FoodType ::toArray();
+                                                                                foreach ($Food_and_Drink as $key =>$translatedItems)
+                                                                                 {
+                                                                           
+                                                                                     echo "<div class='box-body'><ul class='todo-list'><li>".Form::checkbox('Food_and_Drink[]', $key)."<span class='text'>" .$translatedItems."<br></span></li></ul></div>"; 
+                                                                                    
+                                                                                       
+                                                                                 }
+                            ?>
+						
+									<!-- /.box-body -->
+
+								</div>
+<div class="box box-default collapsed-box box-solid">
+									<div class="box-header with-border">
+										<h3 class="box-title"><?php echo Form::label('View_info', __('facilities.View_info'));?> </h3>
+
+										<div class="box-tools pull-right" style="float: left">
+											<button type="button" class="btn btn-box-tool"
+												data-widget="collapse" style="float: left">
+												<i class="fa fa-plus" style="float: left"></i>
+											</button>
+										</div>
+										<!-- /.box-tools -->
+									</div>
+									<!-- /.box-header -->
+								
+                                                                                 <?php														
+                                                                                $View= ViewType ::toArray();
+                                                                                foreach ($View as $key =>$translatedItems)
+                                                                                 {
+                                                                           
+                                                                                     echo "<div class='box-body'><ul class='todo-list'><li>".Form::checkbox('View[]', $key)."<span class='text'>" .$translatedItems."<br></span></li></ul></div>"; 
+                                                                                    
+                                                                                       
+                                                                                 }
+                            ?>
+						
+									<!-- /.box-body -->
+
+								</div>
+                                                            <div class="box box-default collapsed-box box-solid">
+									<div class="box-header with-border">
+										<h3 class="box-title"><?php echo Form::label('Accessibility_info', __('facilities.Accessibility_info'));?> </h3>
+
+										<div class="box-tools pull-right" style="float: left">
+											<button type="button" class="btn btn-box-tool"
+												data-widget="collapse" style="float: left">
+												<i class="fa fa-plus" style="float: left"></i>
+											</button>
+										</div>
+										<!-- /.box-tools -->
+									</div>
+									<!-- /.box-header -->
+								
+                                                                                 <?php														
+                                                                                $Accessibility= AccessibilityType ::toArray();
+                                                                                foreach ($Accessibility as $key =>$translatedItems)
+                                                                                 {
+                                                                           
+                                                                                     echo "<div class='box-body'><ul class='todo-list'><li>".Form::checkbox('Accessibility[]', $key)."<span class='text'>" .$translatedItems."<br></span></li></ul></div>"; 
+                                                                                    
+                                                                                       
+                                                                                 }
+                            ?>
+						
+									<!-- /.box-body -->
+
+								</div>
 
 
 								

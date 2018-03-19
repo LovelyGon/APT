@@ -355,10 +355,14 @@ use App\Enumeration\StarRating;
                                                        '<button type="button" class="Addlivingroom">ADD BED</button>'+
                                                 '</div>'+
                                                    
-                                            '</div>'+
-                                     '<div class="form-group">'+
+                                    '</div>'+
+
+                                        '<div class="col-md-12">'+
+                                        '<div class="form-group">'+
                                                '<button type="button" class="addLiving">Thêm phòng</button>'+
                                         '</div>'+
+                                                   
+                                    '</div>'+
 
                             '</div>'+
 
