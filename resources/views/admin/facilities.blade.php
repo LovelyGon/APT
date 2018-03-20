@@ -46,7 +46,6 @@ use DeepCopy\f003\Foo;
 </style>
 <section class="content">
 
-	{!! Form::open(['url' => 'apartment/facilities/save']) !!}
 
      
     
@@ -67,9 +66,10 @@ use DeepCopy\f003\Foo;
 
 
 					<div class="box-group" id="accordion">
-                                            @foreach($apartment as $apartments)   
+                                            @foreach($apartment as $apartments)
+                                            {!! Form::open(["route" => "postFacilities"]) !!}
 						<!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-						<div class="panel box box-primary">
+						<div class="panel box box-primary apartments">
 							<div class="box-header with-border">
 								<h4 class="box-title">
 									<a data-toggle="collapse" data-parent="#accordion"
@@ -80,7 +80,7 @@ use DeepCopy\f003\Foo;
 								<div class="box box-default collapsed-box box-solid">
 									<div class="box-header with-border">
 										<h3 class="box-title"><?php echo Form::label('Entertainment_info', __('facilities.Entertainment_info'));?> </h3>
-
+                                                                                <input type="hidden" name="apartments_id"  class="apartments_id" value="<?php echo $apartments->id ?>"/>
 										<div class="box-tools pull-right" style="float: left">
 											<button type="button" class="btn btn-box-tool"
 												data-widget="collapse" style="float: left">
@@ -96,7 +96,7 @@ use DeepCopy\f003\Foo;
                                                                                 foreach ($Entertainment_and_Family as $key =>$translatedItems)
                                                                                  {
                                                                            
-                                                                                     echo "<div class='box-body'><ul class='todo-list'><li>".Form::checkbox('Entertainment_and_Family[]', $key)."<span class='text'>" .$translatedItems."<br></span></li></ul></div>"; 
+                                                                                     echo "<div class='box-body'><ul class='todo-list'><li>".Form::checkbox('Entertainment_and_Family[]', $key,null,['class' => 'Entertainment_and_Family'])."<span class='text'>" .$translatedItems."<br></span></li></ul></div>"; 
                                                                                     
                                                                                        
                                                                                  }
@@ -240,7 +240,7 @@ use DeepCopy\f003\Foo;
 								
 									<div class="row">
 										<div class="col-md-2" style="float:left;margin:5px 0px 5px 0px">
-											<a href="" class="btn btn-block btn-primary btn-lg">Save</a>
+                                                                                          <button type="submit" class="btn btn-block btn-primary btn-lg">ADD BED</button>
 										</div>
 
 									</div>
@@ -250,6 +250,7 @@ use DeepCopy\f003\Foo;
 							</div>
                                                      
 						</div>
+                                                {!! Form::close() !!}
                                        @endforeach         
 					</div>
 					<a href="features" class="btn btn-block btn-primary btn-lg" style="margin-top:5px">Continue</a>
@@ -273,3 +274,59 @@ use DeepCopy\f003\Foo;
 </section>
 <!-- /.box box box-default-->
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).on("click",".btn-lg",function(e){
+       e.preventDefault();
+       var Entertainment_info = [];
+       var id=$(this).closest(".apartments").find(".apartments_id").val();
+       alert(id);
+       $(this).closest(".apartments").find('input[name^="Entertainment_and_Family"]:checked').each(function() {
+            
+            var entertainment = $(this).val();
+            Entertainment_info.push(entertainment);
+        });
+       var Servcie_and_Extras = [];
+       $(this).closest(".apartments").find('input[name^="Servcie_and_Extras"]:checked').each(function() {
+            
+            var Servcie = $(this).val();
+            Servcie_and_Extras.push(Servcie);
+        });
+        var Food_and_Drink = [];
+       $(this).closest(".apartments").find('input[name^="Food_and_Drink"]:checked').each(function() {
+            
+            var Food = $(this).val();
+            Food_and_Drink.push(Food);
+        });
+       var View = [];
+       $(this).closest(".apartments").find('input[name^="View"]:checked').each(function() {
+            
+            var View_type = $(this).val();
+            View.push(View_type);
+        });
+        var Accessibility = [];
+       $(this).closest(".apartments").find('input[name^="Accessibility"]:checked').each(function() {
+            
+            var Accessibility_type = $(this).val();
+            Accessibility.push(Accessibility_type);
+        });
+        var token=$("input[name='_token']").val();
+        $.ajax({
+            url:'/admin/facilities/create',
+            type:"POST",
+            datatType : 'JSON',
+            data:{"_token":token,"Entertainment_info":Entertainment_info,"Servcie_and_Extras":Servcie_and_Extras,"Food_and_Drink":Food_and_Drink,"View":View,"Accessibility":Accessibility,"id":id},
+        })
+        .done(function(data) {
+            console.log("success");
+            console.log(data);
+            
+        }).
+        fail(function(error) {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+    });
+</script>

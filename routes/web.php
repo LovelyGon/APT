@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
     Route::get('/apartments', 'ApartmentController@index')->name('apartments');
     Route::delete('/apartments/delete', 'ApartmentController@delete')->name('apartmentsDelete');
     Route::get('/facilities', 'facilitiesController@index')->name('facilities');
+    Route::post('/facilities/create', 'facilitiesController@store')->name('postFacilities');
     
     Route::get('galleries', function () {
         return view('admin.galleries');
