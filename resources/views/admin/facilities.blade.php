@@ -6,6 +6,7 @@ use DeepCopy\f003\Foo;
   use App\Enumeration\FamilyType;
   use App\Enumeration\ViewType;
    use App\Enumeration\AccessibilityType;
+   use App\facilities;
 ?>
 
 @extends('admin.admin_template') @section('content')
@@ -68,6 +69,7 @@ use DeepCopy\f003\Foo;
 					<div class="box-group" id="accordion">
                                             @foreach($apartment as $apartments)
                                             {!! Form::open(["route" => "postFacilities"]) !!}
+             
 						<!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
 						<div class="panel box box-primary apartments">
 							<div class="box-header with-border">
