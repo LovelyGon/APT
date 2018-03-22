@@ -14,4 +14,9 @@ class galleriesController extends Controller
         return view('admin.galleries')->with('apartment', $apartment);
        
     }
+    public function store(Request $request)       
+    {
+      
+       
+    }
 }

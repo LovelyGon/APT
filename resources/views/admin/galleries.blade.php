@@ -42,7 +42,7 @@ use DeepCopy\f003\Foo;
 </style>
 <section class="content">
 
-	{!! Form::open(['url' => 'apartment/facilities/save']) !!}
+	
 
 
 
@@ -91,7 +91,7 @@ use DeepCopy\f003\Foo;
 											<div class="col-md-2">
 												<div class="box box-solid">
 
-													<img width="100%" height="100%"
+													<img width="100px" height="100px"
 														src="http://placehold.it/150x100" alt="..."> <img>
 
 													<!-- /.box-body -->
@@ -103,9 +103,17 @@ use DeepCopy\f003\Foo;
 													<!-- /.box-footer-->
 												</div>
 											</div>
-										
-
-
+										 {!! Form::open(["route" => "galleriesStore"]) !!}
+                                                                                                <div class="col-md-6">
+                                                                                                            <div class="form-group">
+                                                                                                                {{ Form::file('image[]',['class' => 'control','id' => 'files', 'multiple' => 'multiple']) }}
+                                                                                                            </div>
+                                                                                                            <div id="selectedFiles"></div> 
+                                                                                                </div>
+                                                                                    <div class="form-group col-sm-12" style="margin-top: 15px;">
+                                                                                        {!! Form::submit('Save', ['class' => 'btn btn-primary uploadImgae']) !!}
+                                                                                    </div>
+                                                                                  {!! Form::close() !!}
 										</div>
 
 										<!-- /.box -->
@@ -130,21 +138,46 @@ use DeepCopy\f003\Foo;
 			<a href="features" class="btn btn-block btn-primary btn-lg"
 				style="margin-top: 5px">Continue</a>
 		</div>
-		<!-- /.box-body -->
-		<!-- 			</div> -->
-		<!-- /.box -->
-		<!-- 		</div> -->
-		<!-- 	</div> -->
-		<!-- /.col -->
-
-		<!-- 	<div class="row"> -->
-		<!-- 		<div class="col-md-12"> -->
-		<!-- 			<a href="features" class="btn btn-block btn-primary btn-lg">Continue</a> -->
-		<!-- 		</div> -->
-
-		<!-- 	</div> -->
-		{!! Form::close() !!}
 
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="{{ url('/js/displayimages.js')}}"></script>
+    <script src="{{ url('/js/selectize.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#subject').selectize({
+                maxItems: 5
+            });
+        });
+    $(document).on("click",".uploadImgae",function(e){
+       e.preventDefault();
+       var uploadImgae=[];
+       $(this).closest(".timeline-item").find('input[name^="image"]').each(function(i, sel) {
+            var uploadImgae_type = $( this ).val();
+            alert(uploadImgae_type);
+        });
+        
+        var token=$("input[name='_token']").val();
+       
+//        $.ajax({
+//            url:'/admin/facilities/create',
+//            type:"POST",
+//            datatType : 'JSON',
+//            data:{"_token":token,"Entertainment_info":Entertainment_info,"Servcie_and_Extras":Servcie_and_Extras,"Food_and_Drink":Food_and_Drink,"View":View,"Accessibility":Accessibility,"id":id},
+//        })
+//        .done(function(data) {
+//            console.log("success");
+//            console.log(data);
+//            
+//        }).
+//        fail(function(error) {
+//            console.log("error");
+//        })
+//        .always(function() {
+//            console.log("complete");
+//        });
+    });
+</script>
 <!-- /.box box box-default-->
 @endsection
+

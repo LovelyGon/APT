@@ -31,5 +31,6 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
     Route::get('/facilities', 'facilitiesController@index')->name('facilities');
     Route::post('/facilities/create', 'facilitiesController@store')->name('postFacilities');
     Route::get('/galleries', 'galleriesController@index')->name('galleries');
+    Route::post('/galleries', 'galleriesController@store')->name('galleriesStore');
 });
 Auth::routes();
