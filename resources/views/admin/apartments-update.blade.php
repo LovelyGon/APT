@@ -154,12 +154,12 @@ use App\Enumeration\StarRating;
 				<div class="col-md-3">
 					<label>Number of bedrooms</label> <input id="bedroomNumber"
 						type="number" min="1" class="form-control number_of_bedrooms" name="number_of_bedrooms"
-						onkeypress='return event.charCode >= 48 && event.charCode <= 57' required value="<?php echo $apartment->living_room_number ?>"></input>
+						onkeypress='return event.charCode >= 48 && event.charCode <= 57' required value="<?php echo $apartment->living_room_number ?>" disabled></input>
 				</div>
 				<div class="col-md-3">
 					<label>Number of living rooms</label> <input id="livingroomNumber" name="number_of_livingroom"
 						type="number" min="0" class="form-control number_of_livingroom"
-						onkeypress='return event.charCode >= 48 && event.charCode <= 57' required value="<?php echo $apartment->bathroom_number ?>"></input>
+						onkeypress='return event.charCode >= 48 && event.charCode <= 57' required value="<?php echo $apartment->bathroom_number ?>" disabled></input>
 				</div>
 				<div class="col-md-3">
 					<label>Number bathrooms</label> <input id=bathroomNumber

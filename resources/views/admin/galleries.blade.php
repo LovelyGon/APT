@@ -42,8 +42,6 @@ use DeepCopy\f003\Foo;
 </style>
 <section class="content">
 
-	{!! Form::open(['url' => 'apartment/facilities/save']) !!}
-
 
 
 
@@ -62,12 +60,13 @@ use DeepCopy\f003\Foo;
 
 
 			<div class="box-group" id="accordion">
+                            @foreach($apartment as $apartments)
 				<!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
 				<div class="panel box box-primary">
 					<div class="box-header with-border">
 						<h4 class="box-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapseOne">Two bed room apartment</a>
+								href="#collapseOne"><?php echo $apartments->apartment_name ?></a>
 						</h4>
 						<button type="button" class="btn btn-block btn-primary"
 							style="float: right; width: 100px">
@@ -102,126 +101,7 @@ use DeepCopy\f003\Foo;
 													<!-- /.box-footer-->
 												</div>
 											</div>
-											<div class="col-md-2">
-												<div class="box box-solid">
-
-													<img width="100%" height="100%"
-														src="http://placehold.it/150x100" alt="..."> <img>
-
-													<!-- /.box-body -->
-													<div class="box-footer">
-														<a href=""> <i class="fa fa-trash-o"></i>Delete
-														</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-														</a>
-													</div>
-													<!-- /.box-footer-->
-												</div>
-											</div>
-											<div class="col-md-2">
-												<div class="box box-solid">
-
-													<img width="100%" height="100%"
-														src="http://placehold.it/150x100" alt="..."> <img>
-
-													<!-- /.box-body -->
-													<div class="box-footer">
-														<a href=""> <i class="fa fa-trash-o"></i>Delete
-														</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-														</a>
-													</div>
-													<!-- /.box-footer-->
-												</div>
-											</div>
-											<div class="col-md-2">
-												<div class="box box-solid">
-
-													<img width="100%" height="100%"
-														src="http://placehold.it/150x100" alt="..."> <img>
-
-													<!-- /.box-body -->
-													<div class="box-footer">
-														<a href=""> <i class="fa fa-trash-o"></i>Delete
-														</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-														</a>
-													</div>
-													<!-- /.box-footer-->
-												</div>
-											</div>
-											<div class="col-md-2">
-												<div class="box box-solid">
-
-													<img width="100%" height="100%"
-														src="http://placehold.it/150x100" alt="..."> <img>
-
-													<!-- /.box-body -->
-													<div class="box-footer">
-														<a href=""> <i class="fa fa-trash-o"></i>Delete
-														</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-														</a>
-													</div>
-													<!-- /.box-footer-->
-												</div>
-											</div>
-											<div class="col-md-2">
-												<div class="box box-solid">
-
-													<img width="100%" height="100%"
-														src="http://placehold.it/150x100" alt="..."> <img>
-
-													<!-- /.box-body -->
-													<div class="box-footer">
-														<a href=""> <i class="fa fa-trash-o"></i>Delete
-														</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-														</a>
-													</div>
-													<!-- /.box-footer-->
-												</div>
-											</div>
-											<div class="col-md-2">
-												<div class="box box-solid">
-
-													<img width="100%" height="100%"
-														src="http://placehold.it/150x100" alt="..."> <img>
-
-													<!-- /.box-body -->
-													<div class="box-footer">
-														<a href=""> <i class="fa fa-trash-o"></i>Delete
-														</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-														</a>
-													</div>
-													<!-- /.box-footer-->
-												</div>
-											</div>
-											<div class="col-md-2">
-												<div class="box box-solid">
-
-													<img width="100%" height="100%"
-														src="http://placehold.it/150x100" alt="..."> <img>
-
-													<!-- /.box-body -->
-													<div class="box-footer">
-														<a href=""> <i class="fa fa-trash-o"></i>Delete
-														</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-														</a>
-													</div>
-													<!-- /.box-footer-->
-												</div>
-											</div>
-											<div class="col-md-2">
-												<div class="box box-solid">
-
-													<img width="100%" height="100%"
-														src="http://placehold.it/150x100" alt="..."> <img>
-
-													<!-- /.box-body -->
-													<div class="box-footer">
-														<a href=""> <i class="fa fa-trash-o"></i>Delete
-														</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
-														</a>
-													</div>
-													<!-- /.box-footer-->
-												</div>
-											</div>
+										
 
 
 										</div>
@@ -238,60 +118,21 @@ use DeepCopy\f003\Foo;
 
 							</div>
 						</div>
-
+                                  
+                                
+					<div class="field" align="left">
+      <h3>Upload your images</h3>
+      <input type="file" id="files" name="files[]" multiple />
+    </div>
+					<br><br>
+		
+                                        {!! Form::submit('Upload', ['class' => 'btn btn-primary']) !!}
+                                    {!! Form::close() !!}
 
 					</div>
-
+                                             @endforeach 
 				</div>
-				<div class="panel box box-danger">
-					<div class="box-header with-border">
-						<h4 class="box-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapseTwo">One bed room apartment</a>
-						</h4>
-						<button type="button" class="btn btn-block btn-primary"
-							style="float: right; width: 100px">
-							<i class="fa fa-image"></i> Add photo
-						</button>
-					</div>
-					<div id="collapseTwo" class="panel-collapse collapse">
-						<div class="box-body">Anim pariatur cliche reprehenderit, enim
-							eiusmod high life accusamus terry richardson ad squid. 3 wolf
-							moon officia aute, non cupidatat skateboard dolor brunch. Food
-							truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-							sunt aliqua put a bird on it squid single-origin coffee nulla
-							assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-							beer labore wes anderson cred nesciunt sapiente ea proident. Ad
-							vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-							farm-to-table, raw denim aesthetic synth nesciunt you probably
-							haven't heard of them accusamus labore sustainable VHS.</div>
-
-					</div>
-				</div>
-				<div class="panel box box-success">
-					<div class="box-header with-border">
-						<h4 class="box-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapseThree"> Apartment with pool view </a>
-						</h4>
-						<button type="button" class="btn btn-block btn-primary"
-							style="float: right; width: 100px">
-							<i class="fa fa-image"></i> Add photo
-						</button>
-					</div>
-					<div id="collapseThree" class="panel-collapse collapse">
-						<div class="box-body">Anim pariatur cliche reprehenderit, enim
-							eiusmod high life accusamus terry richardson ad squid. 3 wolf
-							moon officia aute, non cupidatat skateboard dolor brunch. Food
-							truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-							sunt aliqua put a bird on it squid single-origin coffee nulla
-							assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-							beer labore wes anderson cred nesciunt sapiente ea proident. Ad
-							vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-							farm-to-table, raw denim aesthetic synth nesciunt you probably
-							haven't heard of them accusamus labore sustainable VHS.</div>
-					</div>
-				</div>
+				
 			</div>
 			<a href="features" class="btn btn-block btn-primary btn-lg"
 				style="margin-top: 5px">Continue</a>
@@ -309,8 +150,46 @@ use DeepCopy\f003\Foo;
 		<!-- 		</div> -->
 
 		<!-- 	</div> -->
-		{!! Form::close() !!}
 
 </section>
 <!-- /.box box box-default-->
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+var count =0;
+$(document).ready(function() {
+  if (window.File && window.FileList && window.FileReader) {
+    $("#files").on("change", function(e) {
+      var files = e.target.files,
+        filesLength = files.length;
+        count++;
+      for (var i = 0; i < count; i++) {
+        var f = files[i]
+        var fileReader = new FileReader();
+        fileReader.onload = (function(e) {
+          var file = e.target;
+          $("<span class=\"pip\">" +
+            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+            "<br/><span class=\"removeImg\">Remove image</span>" +
+            "</span>").insertAfter("#files");
+          $(".removeImg").click(function(){
+            $(this).parent(".pip").remove();
+          });
+
+          // Old code here
+          /*$("<img></img>", {
+            class: "imageThumb",
+            src: e.target.result,
+            title: file.name + " | Click to remove"
+          }).insertAfter("#files").click(function(){$(this).remove();});*/
+
+        });
+        fileReader.readAsDataURL(f);
+      }
+    });
+  } else {
+    alert("Your browser doesn't support to File API")
+  }
+});
+</script>
+

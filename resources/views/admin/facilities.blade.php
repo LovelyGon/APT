@@ -281,6 +281,7 @@ use DeepCopy\f003\Foo;
     $(document).on("click",".btn-lg",function(e){
        e.preventDefault();
        var Entertainment_info = [];
+       $(this).closest(".apartments").hide();
        var id=$(this).closest(".apartments").find(".apartments_id").val();
        alert(id);
        $(this).closest(".apartments").find('input[name^="Entertainment_and_Family"]:checked').each(function() {
