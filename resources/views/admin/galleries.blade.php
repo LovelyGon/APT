@@ -42,8 +42,11 @@ use DeepCopy\f003\Foo;
 </style>
 <section class="content">
 
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> 6e74703ec946d7ca845f510b95f664b3fe83075d
 
 
 
@@ -128,7 +131,16 @@ use DeepCopy\f003\Foo;
 
 							</div>
 						</div>
-
+                                  
+                                
+					<div class="field" align="left">
+      <h3>Upload your images</h3>
+      <input type="file" id="files" name="files[]" multiple />
+    </div>
+					<br><br>
+		
+                                        {!! Form::submit('Upload', ['class' => 'btn btn-primary']) !!}
+                                    {!! Form::close() !!}
 
 					</div>
                                              @endforeach 
@@ -138,6 +150,22 @@ use DeepCopy\f003\Foo;
 			<a href="features" class="btn btn-block btn-primary btn-lg"
 				style="margin-top: 5px">Continue</a>
 		</div>
+<<<<<<< HEAD
+=======
+		<!-- /.box-body -->
+		<!-- 			</div> -->
+		<!-- /.box -->
+		<!-- 		</div> -->
+		<!-- 	</div> -->
+		<!-- /.col -->
+
+		<!-- 	<div class="row"> -->
+		<!-- 		<div class="col-md-12"> -->
+		<!-- 			<a href="features" class="btn btn-block btn-primary btn-lg">Continue</a> -->
+		<!-- 		</div> -->
+
+		<!-- 	</div> -->
+>>>>>>> 6e74703ec946d7ca845f510b95f664b3fe83075d
 
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -180,4 +208,45 @@ use DeepCopy\f003\Foo;
 </script>
 <!-- /.box box box-default-->
 @endsection
+<<<<<<< HEAD
+=======
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+var count =0;
+$(document).ready(function() {
+  if (window.File && window.FileList && window.FileReader) {
+    $("#files").on("change", function(e) {
+      var files = e.target.files,
+        filesLength = files.length;
+        count++;
+      for (var i = 0; i < count; i++) {
+        var f = files[i]
+        var fileReader = new FileReader();
+        fileReader.onload = (function(e) {
+          var file = e.target;
+          $("<span class=\"pip\">" +
+            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+            "<br/><span class=\"removeImg\">Remove image</span>" +
+            "</span>").insertAfter("#files");
+          $(".removeImg").click(function(){
+            $(this).parent(".pip").remove();
+          });
+
+          // Old code here
+          /*$("<img></img>", {
+            class: "imageThumb",
+            src: e.target.result,
+            title: file.name + " | Click to remove"
+          }).insertAfter("#files").click(function(){$(this).remove();});*/
+
+        });
+        fileReader.readAsDataURL(f);
+      }
+    });
+  } else {
+    alert("Your browser doesn't support to File API")
+  }
+});
+</script>
+>>>>>>> 6e74703ec946d7ca845f510b95f664b3fe83075d
 
