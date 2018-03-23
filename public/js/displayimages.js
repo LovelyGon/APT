@@ -22,7 +22,7 @@ var selDiv = "";
     
             var reader = new FileReader();
             reader.onload = function (e) {
-                var html = "<div class=\"" + "col-sm-4" + "\">" + "<img src=\"" + e.target.result + "\"" + "style=\""+"width:300px;height:200px;margin-bottom:10px;"+"\">" + "</div>";
+                var html = "<div class=\"" + "col-sm-2" + "\">" + "<img src=\"" + e.target.result + "\"" + "style=\""+"width:200px;height:150px;padding-bottom:20px;padding-right:20px;class='imageUpload'"+"\">" + "</div>";
                 selDiv.innerHTML += html;               
             }
             reader.readAsDataURL(f); 

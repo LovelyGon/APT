@@ -278,7 +278,7 @@ use DeepCopy\f003\Foo;
 							ra tai can ho cua ban</span>
 					</div>
 					<div class="col-md-2">
-						<input type="file"  id="input03" multiple="true" name="image" 
+						<input type="file"  id="input03" multiple name="image" 
 							style="float: right; width: 100px">
 					</div>
 				</div>

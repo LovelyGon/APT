@@ -16,11 +16,8 @@ class galleriesController extends Controller
     }
     public function store(Request $request)       
     {
-<<<<<<< HEAD
-      
-=======
+
         dd($request->all());
->>>>>>> 6e74703ec946d7ca845f510b95f664b3fe83075d
        
     }
 }
