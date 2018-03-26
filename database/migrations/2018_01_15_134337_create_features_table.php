@@ -29,7 +29,7 @@ class CreateFeaturesTable extends Migration
             $table->Text('popular_facility');
             $table->integer('property_id')->unsigned()->nullable();
 
-            $table->foreign('property_id')->references('id')->on('properties');
+            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
             
         });
     }
