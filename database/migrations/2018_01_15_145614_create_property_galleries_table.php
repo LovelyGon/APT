@@ -18,7 +18,7 @@ class CreatePropertyGalleriesTable extends Migration
             $table->timestamps();
             $table->String('image_name')->nullable();
             $table->integer('property_id')->unsigned()->nullable();
-            $table->foreign('property_id')->references('id')->on('properties');
+            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
         });
     }
 

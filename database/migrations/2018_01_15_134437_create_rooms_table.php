@@ -20,8 +20,9 @@ class CreateRoomsTable extends Migration
             $table->String('guest_number');
             $table->String('sofa_bed_number');
             $table->String('bed_option');
+            $table->string('option');
             $table->integer('apartment_id')->unsigned()->nullable();
-            $table->foreign('apartment_id')->references('id')->on('apartments');
+            $table->foreign('apartment_id')->references('id')->on('apartments') ->onDelete('cascade');
         });
     }
 

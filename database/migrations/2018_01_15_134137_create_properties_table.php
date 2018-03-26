@@ -30,7 +30,7 @@ class CreatePropertiesTable extends Migration
             $table->String('phonenumber');
             $table->Integer('property_size')->nullable();
             $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
         });
     }

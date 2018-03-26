@@ -38,7 +38,7 @@ use App\Enumeration\StarRating;
 	</div>
 	<!-- /.box-header -->
 	<div class="box-body">
-		<div class="row">
+		<div class="row apartment_row">
                     {!! Form::open(["route" => "apartmentsDelete"]) !!}
 				<!-- /.widget-user -->
                                 <?php
@@ -63,7 +63,7 @@ use App\Enumeration\StarRating;
 								
 							</div>
 						<!-- /.widget-user-image -->
-						<h3 class="widget-user-username">bedrom Aparment-{{ $stt }}</h3>
+						<h3 class="widget-user-username">{{$apartments->apartment_name}}</h3>
 						<h5 class="badge bg-green">$600/month - Number of this type: 5</h5>
 						
 					</div>
@@ -110,6 +110,39 @@ use App\Enumeration\StarRating;
         .done(function(data) {
             console.log("success");
             console.log(data);
+            $(".apartment").remove();
+            $.each(data,function(index,item){
+                var i=1;
+                var html = '<div class="col-md-6 apartment">'+
+                            '<input type="hidden" name="room_id"  class="room_id" value=""/>'+
+				'<div class="box box-widget widget-user-2">'+
+					'<div class="widget-user-header"style="padding-left: 10px; padding-right: 10px;background-color: #f5f5f0">'+
+						'<div class="widget-user-image">'+
+							'<img class="img-circle" src="../dist/img/2bedroom.jpg"alt="User Avatar">'+
+						'</div>'+
+						'<div style="float: right">'+
+                                                    '<a href="{!! url("/admin/apartments/'+item.id+'/edit") !!}">'+' <button type="button" class="btn btn-primary btn-sm"> Edit</button></a>'+
+								'<button type="button" class="btn btn-primary delete-a"  value="'+item.id+'"><i class="fa fa-trash-o"></i> Delete</button>'+
+								
+							'</div>'+
+						'<h3 class="widget-user-username">'+item.apartment_name+i+'</h3>'+
+						'<h5 class="badge bg-green">$600/month - Number of this type: 5</h5>'+
+						
+					'</div>'+
+					'<div class="box-footer no-padding">'+
+						'<ul class="nav nav-stacked">'+
+							
+							'<li><a href="#">Living room <span class="pull-right badge bg-aqua">'+item.living_room_number+'</span></a></li>'+
+							'<li><a href="#">Bed room <span class="pull-right badge bg-green">'+item.bathroom_number+'</span></a></li>'+
+							'<li><a href="#">Bathroom <span class="pull-right badge bg-red">'+item.bedroom_number+'</span></a></li>'+
+						'</ul>'+
+					'</div>'+
+				'</div>'
+				
+			'</div>';
+                         i++;
+                $(".apartment_row").append(html);
+            })
         }).
         fail(function(error) {
             console.log("error");

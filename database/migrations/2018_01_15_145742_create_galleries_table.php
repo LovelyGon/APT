@@ -18,7 +18,7 @@ class CreateGalleriesTable extends Migration
             $table->timestamps();
             $table->String('image_name')->nullable();
             $table->integer('apartment_id')->unsigned()->nullable();
-            $table->foreign('apartment_id')->references('id')->on('apartments');
+            $table->foreign('apartment_id')->references('id')->on('apartments')->onDelete('cascade');
         });
     }
 
