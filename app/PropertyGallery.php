@@ -8,7 +8,9 @@ class PropertyGallery extends Model
 {
     protected $table = 'property_galleries';
     protected $fillable = [
-        'image_name'
+        'image_name',
+		'property_id'
+		
     ];
     
     

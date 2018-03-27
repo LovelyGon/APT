@@ -75,7 +75,7 @@ use DeepCopy\f003\Foo;
 						</button>
 					</div>
 
-
+                                        <input type="hidden" name="galleries_id" class="galleries_id" value="<?php echo $apartments->id; ?>"/>
 					<div id="collapseOne" class="panel-collapse collapse in">
 
 						<div class="row">
@@ -162,6 +162,7 @@ use DeepCopy\f003\Foo;
 
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
   <script src="{{ url('/js/displayimages.js')}}"></script>
     <script src="{{ url('/js/selectize.min.js') }}"></script>
     <script>
@@ -175,19 +176,15 @@ use DeepCopy\f003\Foo;
         });
     $(document).on("click",".uploadImgae",function(e){
        e.preventDefault();
-       var uploadImgae=[];
-       $('input[name^="image"]').each(function(i, sel) {
-            var uploadImgae_type = $(sel).val();
-           console.log(uploadImgae_type);
-        });
-        
-        var token=$("input[name='_token']").val();
-       
-//        $.ajax({
-//            url:'/admin/facilities/create',
+       var files = $('#files').prop("files");
+       var id=$(this).closest(".box-primary").find(".galleries_id").val();
+       var names = $.map(files, function(val) { return val.name; });
+       var token=$("input[name='_token']").val();
+//       $.ajax({
+//            url:'/admin/galleries',
 //            type:"POST",
 //            datatType : 'JSON',
-//            data:{"_token":token,"Entertainment_info":Entertainment_info,"Servcie_and_Extras":Servcie_and_Extras,"Food_and_Drink":Food_and_Drink,"View":View,"Accessibility":Accessibility,"id":id},
+//            data:{"_token":token,"names":names,"id":id},
 //        })
 //        .done(function(data) {
 //            console.log("success");
@@ -200,10 +197,11 @@ use DeepCopy\f003\Foo;
 //        .always(function() {
 //            console.log("complete");
 //        });
+       
     });
 </script>
 <!-- /.box box box-default-->
 @endsection
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 
 

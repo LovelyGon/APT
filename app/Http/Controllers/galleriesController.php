@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Apartment;
 use App\Room;
+use App\PropertyGallery;
+use App\Http\Controllers\Input;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,8 +18,10 @@ class galleriesController extends Controller
     }
     public function store(Request $request)       
     {
-
-        dd($request->all());
+//        $galleries = new PropertyGallery();
+//        $galleries ->property_id = $request->id;
+ 
+        dd($request->file('image'));
        
     }
 }
