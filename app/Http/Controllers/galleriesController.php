@@ -21,7 +21,7 @@ class galleriesController extends Controller
 //        $galleries = new PropertyGallery();
 //        $galleries ->property_id = $request->id;
  
-        dd($request->file('image'));
+        dd($request->formData);
        
     }
 }
