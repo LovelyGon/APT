@@ -161,9 +161,10 @@ use DeepCopy\f003\Foo;
 		<!-- 	</div> -->
 
 </section>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <script src="{{ url('/js/displayimages.js')}}"></script>
     <script src="{{ url('/js/selectize.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
       
         $(document).ready(function() {
@@ -173,55 +174,8 @@ use DeepCopy\f003\Foo;
                 imgheight: 100,
             });
         });
-        $(document).ready(function (e) {
-        $('form#imageUploadForm').submit((function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-        console.log(formData);
-//        $.ajax({
-//            type:'POST',
-//            url:'/admin/galleries',
-//            data:formData,
-//            cache:false,
-//            contentType: false,
-//            processData: false,
-//            success:function(data){
-//                console.log("success");
-//                console.log(data);
-//            },
-//            error: function(data){
-//                console.log("error");
-//                console.log(data);
-//            }
-//        });
     }));
 });
-//       $(document).on("click",".uploadImgae",function(e){
-//       e.preventDefault();
-//       var files = $('#files').prop("files");
-//       var id=$(this).closest(".box-primary").find(".galleries_id").val();
-//       var names = $.map(files, function(val) { return val.name; });
-//       console.log(names);
-//       var token=$("input[name='_token']").val();
-//       $.ajax({
-//            url:'/admin/galleries',
-//            type:"POST",
-//            datatType : 'JSON',
-//            data:{"_token":token,"names":names,"id":id},
-//        })
-//        .done(function(data) {
-//            console.log("success");
-//            console.log(data);
-//            
-//        }).
-//        fail(function(error) {
-//            console.log("error");
-//        })
-//        .always(function() {
-//            console.log("complete");
-//        });
-//       
-//    });
 
 </script>
 <!-- /.box box box-default-->
