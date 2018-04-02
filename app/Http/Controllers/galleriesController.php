@@ -39,4 +39,11 @@ class galleriesController extends Controller
         }
        
     }
+    public function delete(Request $request)       
+    {
+ 
+          $images_id = galleries::findOrFail($request->images_id);
+          $images_id->delete();
+       
+    }
 }

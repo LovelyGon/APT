@@ -1,6 +1,7 @@
 <?php
 use App\Enumeration\PropertyType;
 use DeepCopy\f003\Foo;
+use App\galleries;
 ?>
 
 @extends('admin.admin_template') @section('content')
@@ -62,6 +63,10 @@ use DeepCopy\f003\Foo;
 			<div class="box-group" id="accordion">
                             @foreach($apartment as $apartments)
                             {!! Form::open(['files' => 'true','id' => 'imageUploadForm']) !!}
+                            <?php 
+                                $gallerie = DB::table('galleries')->where('apartment_id', $apartments->id)->get();
+                                
+                            ?>
 				<!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
 				<div class="panel box box-primary">
 					<div class="box-header with-border">
@@ -74,8 +79,8 @@ use DeepCopy\f003\Foo;
 							<i class="fa fa-image"></i> Add photo
 						</button>
 					</div>
-
-                                        <input type="hidden" name="galleries_id" class="galleries_id" value="<?php echo $apartments->id; ?>"/>
+                                        
+                                        
 					<div id="collapseOne" class="panel-collapse collapse in">
 
 						<div class="row">
@@ -88,21 +93,28 @@ use DeepCopy\f003\Foo;
 										<!-- 					<div class="timeline-body"> -->
 										<div class="row ">
 											<div class="col-md-12">
+                                                                                             @foreach($gallerie as $galleries)
+                                                                                               {!! Form::open(['route' => 'galleriesDelete']) !!}
                                                                                             <div class="col-md-2">
-												<div class="box box-solid">
-
-													<img width="100px" height="100px"
-														src="http://placehold.it/150x100" alt="..."> <img>
-
+                                                                                               
+												<div class="box box-solid galleries_images">
+                                                                                                
+													<img width="200px" height="150px"
+														src="/upload_images/{!! $galleries->image_name !!}" alt="..."> <img>
+<input type="type" name="images_id" class="images_id" value="<?php echo $galleries->id; ?>"/>
 													<!-- /.box-body -->
 													<div class="box-footer">
-														<a href=""> <i class="fa fa-trash-o"></i>Delete
+														<a href="" class="deleteImages"> <i class="fa fa-trash-o"></i>Delete
 														</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
 														</a>
 													</div>
+                                                                                                
 													<!-- /.box-footer-->
 												</div>
+                                                                                               
                                                                                             </div>
+                                                                                              {!! Form::close() !!}
+                                                                                              @endforeach
 											</div>
                                                                        
                                                                                     <div class="col-md-12">
@@ -131,6 +143,8 @@ use DeepCopy\f003\Foo;
 
 							</div>
 						</div>
+                                  
+                                   
                                   
           
 					<br><br>
@@ -166,7 +180,6 @@ use DeepCopy\f003\Foo;
     <script src="{{ url('/js/selectize.min.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      
         $(document).ready(function() {
             $('#subject').selectize({
                 maxItems: 5,
@@ -174,8 +187,30 @@ use DeepCopy\f003\Foo;
                 imgheight: 100,
             });
         });
-    }));
-});
+        $(document).on("click",".deleteImages",function(e){
+        var images_id = $(this).closest(".galleries_images").find(".images_id").val();
+        $(this).closest(".galleries_images").hide();
+        var token=$("input[name='_token']").val();
+            $.ajax({
+                url:'/admin/galleries/delete',
+                type:"POST",
+                datatType : 'JSON',
+                data:{"_token":token,"images_id":images_id},
+            })
+            .done(function(data) {
+                console.log("success");
+                console.log(data);
+                
+            }).
+            fail(function(error) {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+        });
+   
+
 
 </script>
 <!-- /.box box box-default-->
