@@ -19,6 +19,36 @@ use App\galleries;
 	</ol>
 </section>
 <style>
+		/* styles unrelated to zoom */
+		* { border:0; margin:0; padding:0; }
+		p { position:absolute; top:3px; right:28px; color:#555; font:bold 13px/1 sans-serif;}
+
+		/* these styles are for the demo, but are not required for the plugin */
+		.zoom {
+			display:inline-block;
+			position: relative;
+		}
+		
+		/* magnifying glass icon */
+		.zoom:after {
+			content:'';
+			display:block; 
+			width:33px; 
+			height:33px; 
+			position:absolute; 
+			top:0;
+			right:0;
+			background:url(icon.png);
+		}
+
+		.zoom img {
+			display: block;
+		}
+
+		.zoom img::selection { background-color: transparent; }
+
+		#ex2 img:hover { cursor: url(grab.cur), default; }
+		#ex2 img:active { cursor: url(grabbed.cur), default; }
 #accordion .panel-collapse {
 	margin: 5px 5px 0 5px;
 }
@@ -79,7 +109,7 @@ use App\galleries;
 							<i class="fa fa-image"></i> Add photo
 						</button>
 					</div>
-                                        
+                                         <input type="hidden" name="galleries_id" class="galleries_id" value="<?php echo $apartments->id; ?>"/>
                                         
 					<div id="collapseOne" class="panel-collapse collapse in">
 
@@ -98,10 +128,11 @@ use App\galleries;
                                                                                             <div class="col-md-2">
                                                                                                
 												<div class="box box-solid galleries_images">
-                                                                                                
-													<img width="200px" height="150px"
-														src="/upload_images/{!! $galleries->image_name !!}" alt="..."> <img>
-<input type="type" name="images_id" class="images_id" value="<?php echo $galleries->id; ?>"/>
+                                                                                                        <span class='zoom' id='ex1'>
+                                                                                                            <img width="200px" height="150px"
+                                                                                                                    src="/upload_images/{!! $galleries->image_name !!}" alt="..." > <img>
+                                                                                                        </span>
+<input type="hidden" name="images_id" class="images_id" value="<?php echo $galleries->id; ?>"/>
 													<!-- /.box-body -->
 													<div class="box-footer">
 														<a href="" class="deleteImages"> <i class="fa fa-trash-o"></i>Delete
@@ -175,11 +206,15 @@ use App\galleries;
 		<!-- 	</div> -->
 
 </section>
-
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
   <script src="{{ url('/js/displayimages.js')}}"></script>
     <script src="{{ url('/js/selectize.min.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ url('/js/jquery.zoom.js') }}"></script>
+    	
     <script>
+        $(document).ready(function(){
+                $('#ex1').zoom();
+        });
         $(document).ready(function() {
             $('#subject').selectize({
                 maxItems: 5,

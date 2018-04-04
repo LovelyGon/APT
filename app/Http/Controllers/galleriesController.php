@@ -19,7 +19,6 @@ class galleriesController extends Controller
     }
     public function store(Request $request)       
     {
- 
          if($request->hasFile('image')) {
             $images = $request->file('image');
             $number = 0;
