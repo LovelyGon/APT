@@ -200,6 +200,7 @@ use App\Enumeration\StarRating;
 		<div class="box-body">
                     
                     <div  id='bedroomNumber111'>
+                        
                     </div>
                     
                     <div  id='livingroomNumber1111'>
@@ -217,10 +218,9 @@ use App\Enumeration\StarRating;
 <script>
     $(document).on("click",".btn-block",function(e){
         e.preventDefault();
-        $(".postApartment").hide();
+        $(".postApartment").show();
         $("#Room").show();
-        $(".btn-block").hide();
-        e.preventDefault();
+        $(".btn-block").show();
         var apartment_type = $(".select2").val();
         var apartment_name = $(".apartment_name").val();
         var custom_name = $(".custom_name").val();
@@ -251,7 +251,6 @@ use App\Enumeration\StarRating;
     });
     $(document).ready(function(){
         $("#bedroomNumber").change(function(){
-            $(".bedroom").remove();
             var numberBedoomNumber = $("#bedroomNumber").val();
             for(var i = 0; i < parseInt(numberBedoomNumber); i++){
                var e=i+1;
@@ -324,7 +323,6 @@ use App\Enumeration\StarRating;
             });
         
         $("#livingroomNumber").change(function(){
-            $(".livingroom").remove();
             var livingroomNumber = $("#livingroomNumber").val();
             for(var i = 0; i < parseInt(livingroomNumber); i++){
                 var e=i+1;
@@ -442,7 +440,6 @@ use App\Enumeration\StarRating;
          living.push(number_of_beds);
          
         });
-        $bedroom.hide();
          var token=$("input[name='_token']").val();
         $.ajax({
             url:'/admin/apartments/create/bedroom',
@@ -481,7 +478,6 @@ use App\Enumeration\StarRating;
          living.push(guests_can_stay);
          
         });
-        $bedroom.hide();
         var token=$("input[name='_token']").val();
         $.ajax({
             url:'/admin/apartments/living/create',
