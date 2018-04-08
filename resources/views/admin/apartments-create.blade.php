@@ -152,17 +152,12 @@ use App\Enumeration\StarRating;
 			</div>
 
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<label>Number of bedrooms</label> <input id="bedroomNumber"
 						type="number" min="1" class="form-control number_of_bedrooms" name="number_of_bedrooms"
 						onkeypress='return event.charCode >= 48 && event.charCode <= 57' required></input>
 				</div>
-				<div class="col-md-3">
-					<label>Number of living rooms</label> <input id="livingroomNumber" name="number_of_livingroom"
-						type="number" min="0" class="form-control number_of_livingroom"
-						onkeypress='return event.charCode >= 48 && event.charCode <= 57' required></input>
-				</div>
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<label>Number bathrooms</label> <input id=bathroomNumber
 						type="number" min="0" class="form-control number_of_bathrooms" name="number_of_bathrooms"
 						onkeypress='return event.charCode >= 48 && event.charCode <= 57' required></input>
@@ -174,15 +169,7 @@ use App\Enumeration\StarRating;
 
 	</div>
 
- <div class="row">
-	<div class="col-md-12">
-                <div class="form-group">
-                    <button type="submit" class="btn btn-block btn-primary btn-lg">ADD BED</button>
-                </div>
-	</div>
 
-</div>
-{!! Form::close() !!}
 	<div class="box box-default " id="Room">
 		<div class="box-header with-border">
 			<h3 class="box-title">Room options</h3>
@@ -197,65 +184,40 @@ use App\Enumeration\StarRating;
 		</div>
 
 		<!-- /.box-header -->
-		<div class="box-body">
-                    
-                    <div  id='bedroomNumber111'>
-                        
-                    </div>
-                    
-                    <div  id='livingroomNumber1111'>
 
-                    </div>
+                    
+  
+      </div>
+ <div class="box-body">
+                    
+                <div  id='bedroomNumber111'>
+
+                </div>
 
 		</div>
-
+ <div class="row">
+	<div class="col-md-12">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-primary btn-lg">ADD BED</button>
+                </div>
 	</div>
+
+</div>
+      {!! Form::close() !!}
 </section>
 
 @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-    $(document).on("click",".btn-block",function(e){
-        e.preventDefault();
-        $(".postApartment").show();
-        $("#Room").show();
-        $(".btn-block").show();
-        var apartment_type = $(".select2").val();
-        var apartment_name = $(".apartment_name").val();
-        var custom_name = $(".custom_name").val();
-        var number_of_apartment = $(".number_of_apartment").val();
-        var smoking_policy = $(".smoking_policy").val();
-        var number_of_bedrooms = $(".number_of_bedrooms").val();
-        var number_of_livingroom = $(".number_of_livingroom").val();
-        var number_of_bathrooms = $(".number_of_bathrooms").val();
-        var token=$("input[name='_token']").val();
-        $.ajax({
-            url:'/admin/apartments/create',
-            type:"POST",
-            datatType : 'JSON',
-            data:{"_token":token,"apartment_type":apartment_type,"apartment_name":apartment_name,"custom_name":custom_name,"number_of_apartment":number_of_apartment,"smoking_policy":smoking_policy,"number_of_bedrooms":number_of_bedrooms,"number_of_livingroom":number_of_livingroom,"number_of_bathrooms":number_of_bathrooms},
-        })
-        .done(function(data) {
-            console.log("success");
-            console.log(data);
-            $(".bedroom").append('<input type="hidden" name="room_id"  class="room_id" value="'+data+'"/>');
-             $(".livingroom").append('<input type="hidden" name="room_id"  class="room_id" value="'+data+'"/>');
-        }).
-        fail(function(error) {
-            console.log("error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
-    });
     $(document).ready(function(){
         $("#bedroomNumber").change(function(){
             var numberBedoomNumber = $("#bedroomNumber").val();
+            $("#Room").show();
+            $(".bedroom").remove();
             for(var i = 0; i < parseInt(numberBedoomNumber); i++){
                var e=i+1;
                 $("#bedroomNumber111").append(
-                        '{!! Form::open(["route" => "postApartmentBedroom"]) !!}'+
                            '<div class="box box-widget widget-user-2">'+
                             '<div class="widget-user-header bedroom" style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">'+
                                     '<div class="widget-user-image">'+
@@ -266,234 +228,77 @@ use App\Enumeration\StarRating;
 
                                     '<h5 class="badge bg-gray">How many bed do you have in this bedroom</h5>'+
                                     '<div class="row bedroom">'+
-                                                '<div class="col-md-6">'+
-                                                        '<div class="form-group">'+
-                                                                '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2 bedroom_kind_of_beds" name="bedroom_kind_of_beds[]">'+
-                                                                        '<option style="" selected="selected"  value="N/A">N/A</option>'+
-                                                                        '<option style="" selected="selected" value="1 ✯">1 ✯</option>'+
-                                                                        '<option class="fa-star" value="2 ✯ ✯">2 ✯ ✯</option>'+
-                                                                        '<option class="fa-star" value="3 ✯ ✯ ✯">3 ✯ ✯ ✯</option>'+
-                                                                        '<option class="fa-star" value="4 ✯ ✯ ✯ ✯">4 ✯ ✯ ✯ ✯</option>'+
-                                                                        '<option class="fa-star" value="5 ✯ ✯ ✯ ✯ ✯">5 ✯ ✯ ✯ ✯ ✯</option>'+
-                                                               ' </select>'+
-                                                        '</div>'+
-
-                                                '</div>'+
-
-
-                                                '<div class="col-md-2 ">'+
-                                                        '<div class="form-group ">'+
-                                                                '<label>Number of beds</label> <input id="bedroomNumbe number_of_bedsr" name="number_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
-                                                        '</div>'+
-                                                '</div>'+
-                                            '<div class="col-md-2">'+
-                                                '<div class="form-group">'+
-                                                       '<button type="button" class="Addbed">ADD BED</button>'+
-                                                '</div>'+
-                                                   
+                                        '<div class="row" style="margin-top:30px">'+
+                                           ' <div class="col-md-12">'+
+                                                   '<div class="col-md-1">'+
+                                                            '<i class="fa fa-columns" style="font-size:50px"></i>'+
+                                                    '</div>'+
+                                                    '<div class="col-md-2">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<label style="font-size:20px;padding-right:100px " >Double </label>'+
+                                                            '</div>'+
+                                                    '</div>'+
+                                                    '<div class="col-md-4">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<input id="bedroomNumbe number_of_bedsr" name="double_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                           ' </div>'+
+                                                    '</div>'+
                                             '</div>'+
-                                    '</div>'+
-                                    '<div class="row">'+
-                                            '<div class="col-md-3">'+
-                                                    '<label>How many guests can stay</label> <input id="bathroomNumber" name="guests_can_stay" type="number" min="1" class="form-control guests_can_stay" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                        '</div>'+
+                                        '<div class="row" style="margin-top:30px">'+
+                                            '<div class="col-md-12">'+
+                                                   '<div class="col-md-1">'+
+                                                            '<i class="fa fa-columns" style="font-size:50px"></i>'+
+                                                    '</div>'+
+                                                   ' <div class="col-md-2">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<label style="font-size:20px;" >Single</label>'+
+                                                            '</div>'+
+                                                    '</div>'+
+                                                    '<div class="col-md-4">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<input id="bedroomNumbe number_of_bedsr" name="single_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                            '</div>'+
+                                                   ' </div>'+
                                             '</div>'+
-                                    '</div>'+
-
-                                    '<div class="row" style="margin-top:30px">'+
-                                        '<div class="col-md-12 bed">'+
-                                                '<div class="form-group">'+
-                                                        '<label>Private room</label> <input  class="private_room" type="checkbox" nam="private_room"value="">'+
-                                                '</div>'+
                                         '</div>'+
-                                             '<div class="col-md-6">'+
-                                        '<div class="form-group">'+
-                                               '<button type="button" class="addBedroom">Thêm phòng</button>'+
+                                        '<div class="row" style="margin-top:30px">'+
+                                            '<div class="col-md-12">'+
+                                                  '<div class="col-md-1">'+
+                                                          ' <i class="fa fa-columns" style="font-size:50px"></i>'+
+                                                   '</div>'+
+                                                   '<div class="col-md-2">'+
+                                                           '<div class="form-group ">'+
+                                                                   '<label style="font-size:20px;" >Sofa</label>'+
+                                                           '</div>'+
+                                                   '</div>'+
+                                                   '<div class="col-md-4">'+
+                                                           '<div class="form-group ">'+
+                                                                  ' <input id="bedroomNumbe number_of_bedsr" name="sofa_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                          ' </div>'+
+                                                   '</div>'+
+                                          ' </div>'+
+                                       ' </div>'+
+                                       ' <div class="row" style="margin-top:30px;margin-left: 5px;">'+
+                                            '<div class="col-md-7">'+
+                                                    ' <label>How many guests can stay</label> <input id="bathroomNumber" name="guests_can_stay[]" type="number" min="1" class="form-control guests_can_stay" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                            ' </div>'+
+                                         '</div>'+
+                                        '<div class="row" style="margin-top:30px;margin-left: 5px;">'+
+                                            '<div class="col-md-12 bed">'+
+                                                   ' <div class="form-group">'+
+                                                            '<label>Private room</label> <input  class="private_room" type="checkbox" name="private_room[]" value="">'+
+                                                    '</div>'+
+                                            '</div>'+
                                         '</div>'+
-                                                   
-                                    '</div>'+
-                                    '</div>'+
+                                    
                                    
                               
                             '</div>'+
                             
-                            '</div>'+
-                            '{!! Form::close() !!}'
+                            '</div>'
                 );
             }
             });
-        
-        $("#livingroomNumber").change(function(){
-            var livingroomNumber = $("#livingroomNumber").val();
-            for(var i = 0; i < parseInt(livingroomNumber); i++){
-                var e=i+1;
-                $("#livingroomNumber1111").append(
-                    '{!! Form::open(["route" => "postlivingApartment"]) !!}'+
-                    '<div class="box box-widget widget-user-2 ">'+
-                    '<div class="widget-user-header livingroom"style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">'+
-                            '<div class="widget-user-image">'+
-                                    '<img class="img-circle" src="{{asset("dist/img/livingroom.jpg")}}"alt="User Avatar">'+
-                            '</div>'+
-                            '<h3 class="widget-user-username">Living room'+'<span>'+e +'</span>'+' </h3>'+
-                            '<h5 class="badge bg-gray">How many sofa beds do you have in the room</h5>'+
-                            '<div class="row">'+
-                                    '<div class="col-md-3">'+
-                                            '<div class="form-group">'+
-                                                    '<label>Number of sofa beds</label> <input id=bathroomNumber name="number_of_beds_living[]" type="number" min="1" class="form-control number_of_beds_living" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
-                                            '</div>'+
-                                    '</div>'+
-
-                                    '<div class="col-md-3">'+
-                                            '<div class="form-group">'+
-                                                    '<label>How many guests can stay in the room</label> <input id=bathroomNumber  name="guests_can_stay_living[]" type="number" min="1" class="form-control guests_can_stay_living" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required></input>'+
-                                            '</div>'+
-
-                                    '</div>'+
-                                    '<div class="col-md-2">'+
-                                                '<div class="form-group">'+
-                                                       '<button type="button" class="Addlivingroom">ADD BED</button>'+
-                                                '</div>'+
-                                                   
-                                    '</div>'+
-
-                                        '<div class="col-md-12">'+
-                                        '<div class="form-group">'+
-                                               '<button type="button" class="addLiving">Thêm phòng</button>'+
-                                        '</div>'+
-                                                   
-                                    '</div>'+
-
-                            '</div>'+
-
-                    '</div>'+
-                    '</div>'+
-                    '{!! Form::close() !!}'            
-                );
-            }
-            });
-           
-       
-    });
-    $(document).on("click",".Addbed",function(){
-        $(this).closest(".bedroom").append(   
-     
-                                            '<div class="col-md-6">'+
-                                                    '<div class="form-group">'+
-                                                            '<label>Kind of beds</label> <select id="apartmentType" class="form-control select2 bedroom_kind_of_beds" name="bedroom_kind_of_beds[]">'+
-                                                                    '<option style="" selected="selected"  value="N/A">N/A</option>'+
-                                                                    '<option style="" selected="selected" value="1 ✯">1 ✯</option>'+
-                                                                    '<option class="fa-star" value="2 ✯ ✯">2 ✯ ✯</option>'+
-                                                                    '<option class="fa-star" value="3 ✯ ✯ ✯">3 ✯ ✯ ✯</option>'+
-                                                                    '<option class="fa-star" value="4 ✯ ✯ ✯ ✯">4 ✯ ✯ ✯ ✯</option>'+
-                                                                    '<option class="fa-star" value="5 ✯ ✯ ✯ ✯ ✯">5 ✯ ✯ ✯ ✯ ✯</option>'+
-                                                           ' </select>'+
-                                                    '</div>'+
-
-                                            '</div>'+
-
-
-                                            '<div class="col-md-2 ">'+
-                                                    '<div class="form-group ">'+
-
-                                                            '<label>Number of beds</label> <input id="bedroomNumber " name="number_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" required>'+
-                                                    '</div>'+
-                                            '</div>'+
-                                    '</div>'
-        )
-    });
-    $(document).on("click",".Addlivingroom",function(){
-        $(this).closest(".livingroom").append(   
-           '<div class="row">'+
-                 '<div class="col-md-3">'+
-                    '<div class="form-group">'+
-                            '<label>Number of sofa beds</label> <input id=bathroomNumber name="number_of_beds_living[]" type="number" min="1" class="form-control number_of_beds_living" onkeypress="return event.charCode >= 48 && event.charCode <= 57"></input>'+
-                    '</div>'+
-            '</div>'+
-
-            '<div class="col-md-3">'+
-                    '<div class="form-group">'+
-                            '<label>How many guests can stay in the room</label> <input id=bathroomNumber  name="guests_can_stay_living[]" type="number" min="1" class="form-control guests_can_stay_living" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required></input>'+
-                    '</div>'+
-
-            '</div>'+
-            '</div>'
-        )
-    });
-    $(document).on("click",".addBedroom",function(e){
-         e.preventDefault();
-        var bedroom ;
-        $bedroom= $(this).closest(".bedroom");
-        var room_id=$bedroom.find(".room_id").val();
-        
-        var guests_can_stay=$bedroom.find(".guests_can_stay").val();
-
-        var private_room=$bedroom.find(".private_room").val();
-        var bedroom = [];
-        $bedroom.find(".bedroom_kind_of_beds").each(function(i, sel)
-        {
-         var selectedVal = $(sel).val();
-         bedroom.push(selectedVal);
-        });
-        var living = [];
-        $bedroom.find(".number_of_beds").each(function(i, sel)
-        {
-         var number_of_beds = $(sel).val();
-         living.push(number_of_beds);
-         
-        });
-         var token=$("input[name='_token']").val();
-        $.ajax({
-            url:'/admin/apartments/create/bedroom',
-            type:"POST",
-            datatType : 'JSON',
-            data:{"_token":token,"bedroom":bedroom,"living":living,"guests_can_stay":guests_can_stay,"private_room":private_room,"room_id":room_id},
-        })
-        .done(function(data) {
-            console.log("success");
-            console.log(data);
-        }).
-        fail(function(error) {
-            console.log("error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
-    });
-    $(document).on("click",".addLiving",function(e){
-        e.preventDefault();
-        var bedroom ;
-        $bedroom= $(this).closest(".livingroom");
-        var room_id=$bedroom.find(".room_id").val();
-        var guests_can_stay=$bedroom.find(".guests_can_stay_living").val();
-        var private_room=$bedroom.find(".number_of_beds_living").val();
-        var bedroom = [];
-        $bedroom.find(".guests_can_stay_living").each(function(i, sel)
-        {
-         var selectedVal = $(sel).val();
-          bedroom.push(selectedVal);
-        });
-        var living = [];
-        $bedroom.find(".number_of_beds_living").each(function(i, sel)
-        {
-         var guests_can_stay = $(sel).val();
-         living.push(guests_can_stay);
-         
-        });
-        var token=$("input[name='_token']").val();
-        $.ajax({
-            url:'/admin/apartments/living/create',
-            type:"POST",
-            datatType : 'JSON',
-            data:{"_token":token,"bedroom":bedroom,"living":living,"room_id":room_id},
-        })
-        .done(function(data) {
-            console.log("success");
-            console.log(data);
-        }).
-        fail(function(error) {
-            console.log("error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
     });
 </script>

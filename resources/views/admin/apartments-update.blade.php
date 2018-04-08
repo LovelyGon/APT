@@ -154,12 +154,14 @@ use App\Enumeration\StarRating;
 				<div class="col-md-3">
 					<label>Number of bedrooms</label> <input id="bedroomNumber"
 						type="number" min="1" class="form-control number_of_bedrooms" name="number_of_bedrooms"
-						onkeypress='return event.charCode >= 48 && event.charCode <= 57' required value="<?php echo $apartment->living_room_number ?>" disabled></input>
+						onkeypress='return event.charCode >= 48 && event.charCode <= 57' required value="<?php echo $apartment->bedroom_number ?>"></input>
+                                        <input id="bedroomNumber_living"
+						type="hidden" value="<?php echo $apartment->bedroom_number ?>"></input>
 				</div>
 				<div class="col-md-3">
 					<label>Number of living rooms</label> <input id="livingroomNumber" name="number_of_livingroom"
 						type="number" min="0" class="form-control number_of_livingroom"
-						onkeypress='return event.charCode >= 48 && event.charCode <= 57' required value="<?php echo $apartment->bathroom_number ?>" disabled></input>
+						onkeypress='return event.charCode >= 48 && event.charCode <= 57' required value="<?php echo $apartment->bathroom_number ?>" ></input>
 				</div>
 				<div class="col-md-3">
 					<label>Number bathrooms</label> <input id=bathroomNumber
@@ -172,7 +174,105 @@ use App\Enumeration\StarRating;
 
 
 	</div>
+        <div class="box box-default " id="Room">
+		<div class="box-header with-border">
+			<h3 class="box-title">Room options</h3>
+                        
+			<div class="box-tools pull-right">
+				<button type="button" class="btn btn-box-tool"
+					data-widget="collapse">
+					<i class="fa fa-minus"></i>
+                             
+				</button>
+			</div>
+		</div>
+         </div>
+         <div class="box-body">
+                <div  id='bedroomNumber111'>
+                    @foreach($room as $rooms)
+                    <div class="box box-widget widget-user-2">
+                            <div class="widget-user-header " style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">
+                                    <div class="widget-user-image">
+                                        <img class="img-circle" src="http://127.0.0.1:8000/dist/img/bedicon.jpg" alt="User Avatar">
+                                    </div>
+                                    <h3 class="widget-user-username">Bedroom<span></span></h3>
+                                    <input type="hidden" name="room_id" value="'+e +'"/>
 
+                                    <h5 class="badge bg-gray">How many bed do you have in this bedroom</h5>
+                                    <div class="row">
+                                        <div class="row" style="margin-top:30px">
+                                           <div class="col-md-12">
+                                                   <div class="col-md-1">
+                                                            <i class="fa fa-columns" style="font-size:50px"></i>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                            <div class="form-group ">
+                                                                    <label style="font-size:20px;padding-right:100px " >Double </label>
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                            <div class="form-group ">
+                                  
+                                                                <input id="bedroomNumbe number_of_bed" name="double_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" value="<?php echo $rooms->kind_of_room; ?>">
+                                                           </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top:30px">
+                                            <div class="col-md-12">
+                                                   <div class="col-md-1">
+                                                            <i class="fa fa-columns" style="font-size:50px"></i>
+                                                    </div>
+                                                   <div class="col-md-2">
+                                                           <div class="form-group ">
+                                                                    <label style="font-size:20px;" >Single</label>
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                            <div class="form-group ">
+                                                                    <input id="bedroomNumbe number_of_bedsr" name="single_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" value="<?php echo $rooms->guest_number; ?>">
+                                                            </div>
+                                                   </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top:30px">
+                                            <div class="col-md-12">
+                                                  <div class="col-md-1">
+                                                          <i class="fa fa-columns" style="font-size:50px"></i>
+                                                   </div>
+                                                   <div class="col-md-2">
+                                                           <div class="form-group ">
+                                                                <label style="font-size:20px;" >Sofa</label>
+                                                           </div>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                           <div class="form-group ">
+                                                                <input id="bedroomNumbe number_of_bedsr" name="sofa_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" value="<?php echo $rooms->sofa_bed_number; ?>">
+                                                          </div>
+                                                   </div>
+                                            </div>
+                                       </div>
+                                       <div class="row" style="margin-top:30px;margin-left: 5px;">
+                                            <div class="col-md-7">
+                                                <label>How many guests can stay</label> <input id="bathroomNumber" name="guests_can_stay[]" type="number" min="1" class="form-control guests_can_stay" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" value="<?php echo $rooms->bed_option; ?>">
+                                            </div>
+                                         </div>
+                                        <div class="row" style="margin-top:30px;margin-left: 5px;">
+                                            <div class="col-md-12 bed">
+                                                   <div class="form-group">
+                                                       <label>Private room</label> <input  class="private_room" type="checkbox" name="private_room[]" <?php $rooms->option ? true : false?> >
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    
+                                   
+                              
+                            </div>
+                            
+                            </div>    
+                    </div>
+                    @endforeach    
+		</div>
  <div class="row">
 	<div class="col-md-12">
                 <div class="form-group">
@@ -186,4 +286,186 @@ use App\Enumeration\StarRating;
 </section>
 
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#bedroomNumber").change(function(){
+            var numberBedoomNumber_living = $("#bedroomNumber_living").val();
+            var numberBedoomNumber = $("#bedroomNumber").val();
+            alert(numberBedoomNumber_living);
+            $("#Room").show();
+            $(".bedroom").remove();
+            if(parseInt(numberBedoomNumber_living) <numberBedoomNumber){
+            for(var i = parseInt(numberBedoomNumber_living); i < parseInt(numberBedoomNumber); i++){
+  
+               var e=i+1;
+                $("#bedroomNumber111").append(
+                           '<div class="box box-widget widget-user-2">'+
+                            '<div class="widget-user-header bedroom" style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">'+
+                                    '<div class="widget-user-image">'+
+                                            '<img class="img-circle" src="http://127.0.0.1:8000/dist/img/bedicon.jpg" alt="User Avatar">'+
+                                    '</div>'+
+                                    '<h3 class="widget-user-username">Bedroom'+'<span>'+e +'</span>'+' </h3>' +
+                                    '<input type="hidden" name="room_id" value="'+e +'"/>' +
 
+                                    '<h5 class="badge bg-gray">How many bed do you have in this bedroom</h5>'+
+                                    '<div class="row bedroom">'+
+                                        '<div class="row" style="margin-top:30px">'+
+                                           ' <div class="col-md-12">'+
+                                                   '<div class="col-md-1">'+
+                                                            '<i class="fa fa-columns" style="font-size:50px"></i>'+
+                                                    '</div>'+
+                                                    '<div class="col-md-2">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<label style="font-size:20px;padding-right:100px " >Double </label>'+
+                                                            '</div>'+
+                                                    '</div>'+
+                                                    '<div class="col-md-4">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<input id="bedroomNumbe number_of_bedsr" name="double_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                           ' </div>'+
+                                                    '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="row" style="margin-top:30px">'+
+                                            '<div class="col-md-12">'+
+                                                   '<div class="col-md-1">'+
+                                                            '<i class="fa fa-columns" style="font-size:50px"></i>'+
+                                                    '</div>'+
+                                                   ' <div class="col-md-2">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<label style="font-size:20px;" >Single</label>'+
+                                                            '</div>'+
+                                                    '</div>'+
+                                                    '<div class="col-md-4">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<input id="bedroomNumbe number_of_bedsr" name="single_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                            '</div>'+
+                                                   ' </div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="row" style="margin-top:30px">'+
+                                            '<div class="col-md-12">'+
+                                                  '<div class="col-md-1">'+
+                                                          ' <i class="fa fa-columns" style="font-size:50px"></i>'+
+                                                   '</div>'+
+                                                   '<div class="col-md-2">'+
+                                                           '<div class="form-group ">'+
+                                                                   '<label style="font-size:20px;" >Sofa</label>'+
+                                                           '</div>'+
+                                                   '</div>'+
+                                                   '<div class="col-md-4">'+
+                                                           '<div class="form-group ">'+
+                                                                  ' <input id="bedroomNumbe number_of_bedsr" name="sofa_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                          ' </div>'+
+                                                   '</div>'+
+                                          ' </div>'+
+                                       ' </div>'+
+                                       ' <div class="row" style="margin-top:30px;margin-left: 5px;">'+
+                                            '<div class="col-md-7">'+
+                                                    ' <label>How many guests can stay</label> <input id="bathroomNumber" name="guests_can_stay[]" type="number" min="1" class="form-control guests_can_stay" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                            ' </div>'+
+                                         '</div>'+
+                                        '<div class="row" style="margin-top:30px;margin-left: 5px;">'+
+                                            '<div class="col-md-12 bed">'+
+                                                   ' <div class="form-group">'+
+                                                            '<label>Private room</label> <input  class="private_room" type="checkbox" name="private_room[]" value="">'+
+                                                    '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    
+                                   
+                              
+                            '</div>'+
+                            
+                            '</div>'
+                );
+            }}else{
+                for(var i = parseInt(numberBedoomNumber_living); i > parseInt(numberBedoomNumber); i){
+                var e=i+1;
+                $("#bedroomNumber111").append(
+                           '<div class="box box-widget widget-user-2">'+
+                            '<div class="widget-user-header bedroom" style="padding-left: 10px; padding-right: 10px; background-color: #f5f5f0">'+
+                                    '<div class="widget-user-image">'+
+                                            '<img class="img-circle" src="http://127.0.0.1:8000/dist/img/bedicon.jpg" alt="User Avatar">'+
+                                    '</div>'+
+                                    '<h3 class="widget-user-username">Bedroom'+'<span>'+e +'</span>'+' </h3>' +
+                                    '<input type="hidden" name="room_id" value="'+e +'"/>' +
+
+                                    '<h5 class="badge bg-gray">How many bed do you have in this bedroom</h5>'+
+                                    '<div class="row bedroom">'+
+                                        '<div class="row" style="margin-top:30px">'+
+                                           ' <div class="col-md-12">'+
+                                                   '<div class="col-md-1">'+
+                                                            '<i class="fa fa-columns" style="font-size:50px"></i>'+
+                                                    '</div>'+
+                                                    '<div class="col-md-2">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<label style="font-size:20px;padding-right:100px " >Double </label>'+
+                                                            '</div>'+
+                                                    '</div>'+
+                                                    '<div class="col-md-4">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<input id="bedroomNumbe number_of_bedsr" name="double_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                           ' </div>'+
+                                                    '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="row" style="margin-top:30px">'+
+                                            '<div class="col-md-12">'+
+                                                   '<div class="col-md-1">'+
+                                                            '<i class="fa fa-columns" style="font-size:50px"></i>'+
+                                                    '</div>'+
+                                                   ' <div class="col-md-2">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<label style="font-size:20px;" >Single</label>'+
+                                                            '</div>'+
+                                                    '</div>'+
+                                                    '<div class="col-md-4">'+
+                                                            '<div class="form-group ">'+
+                                                                    '<input id="bedroomNumbe number_of_bedsr" name="single_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                            '</div>'+
+                                                   ' </div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="row" style="margin-top:30px">'+
+                                            '<div class="col-md-12">'+
+                                                  '<div class="col-md-1">'+
+                                                          ' <i class="fa fa-columns" style="font-size:50px"></i>'+
+                                                   '</div>'+
+                                                   '<div class="col-md-2">'+
+                                                           '<div class="form-group ">'+
+                                                                   '<label style="font-size:20px;" >Sofa</label>'+
+                                                           '</div>'+
+                                                   '</div>'+
+                                                   '<div class="col-md-4">'+
+                                                           '<div class="form-group ">'+
+                                                                  ' <input id="bedroomNumbe number_of_bedsr" name="sofa_of_beds[]" type="number" min="1" class="form-control number_of_beds" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                                          ' </div>'+
+                                                   '</div>'+
+                                          ' </div>'+
+                                       ' </div>'+
+                                       ' <div class="row" style="margin-top:30px;margin-left: 5px;">'+
+                                            '<div class="col-md-7">'+
+                                                    ' <label>How many guests can stay</label> <input id="bathroomNumber" name="guests_can_stay[]" type="number" min="1" class="form-control guests_can_stay" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">'+
+                                            ' </div>'+
+                                         '</div>'+
+                                        '<div class="row" style="margin-top:30px;margin-left: 5px;">'+
+                                            '<div class="col-md-12 bed">'+
+                                                   ' <div class="form-group">'+
+                                                            '<label>Private room</label> <input  class="private_room" type="checkbox" name="private_room[]" value="">'+
+                                                    '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    
+                                   
+                              
+                            '</div>'+
+                            
+                            '</div>'
+                );
+            }
+            }
+            });
+    });
+</script>

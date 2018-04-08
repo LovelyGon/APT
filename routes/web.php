@@ -20,9 +20,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
     Route::get('/apartments/{id}/edit', 'ApartmentController@editAparrtment')->name('editApartment');
     Route::post('/apartments/{id}', 'ApartmentController@storeEditAparrtment')->name('storeEditAparrtment');
     
-    Route::post('/apartments/create/bedroom', 'ApartmentController@storeBedroomAparrtment')->name('postApartmentBedroom');
+   
     Route::post('/apartments/room/create', 'ApartmentController@storeAparrtmentRoom')->name('postroomApartment');
-    Route::post('/apartments/living/create', 'ApartmentController@storeAparrtmentLiving')->name('postlivingApartment');
     Route::get('/basicinfo', 'BasicInfoController@index')->name('getBasicinfo');
     Route::post('addproperty','BasicInfoController@store');
     Route::get('/features', 'featuresController@index')->name('getfeatures');

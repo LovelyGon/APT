@@ -19,7 +19,8 @@ class ApartmentController extends Controller
     public function editAparrtment($id)       
     {
         $apartment = Apartment::find($id);
-        return view('admin.apartments-update')->with('apartment', $apartment);
+        $room = Room::where('apartment_id',$id)->get();
+        return view('admin.apartments-update',['apartment'=>$apartment,'room'=>$room]);
        
     }
     public function storeEditAparrtment($id,Request $request)       
@@ -46,51 +47,35 @@ class ApartmentController extends Controller
     }
     
      public function storeAparrtment(Request $rq)
-    {
+    {   
             $aparrtment = new Apartment();	
             $aparrtment->apartment_type = $rq->input('apartment_type');
             $aparrtment->apartment_name = $rq->input('apartment_name');
             $aparrtment->apartment_custom_name = $rq->input('custom_name');	
             $aparrtment->apartment_type_number = $rq->input('number_of_apartment');
             $aparrtment->smoking_policy = $rq->input('smoking_policy');
-            $aparrtment->living_room_number =$rq->input('number_of_livingroom');
+            $aparrtment->living_room_number =1;
             $aparrtment->bathroom_number =  $rq->input('number_of_bathrooms');;
             $aparrtment->bedroom_number = $rq->input('number_of_bedrooms');
             $aparrtment->apartment_size = 22;
             $aparrtment->property_id = Auth::user()->id;
             $aparrtment->save(); 
-            $id=$aparrtment->id;
-            return response()->json($id);
-    }
-    public function storeBedroomAparrtment(Request $rq)
-    {
-        $living = $rq->input('living');
-        $bedroom = $rq->input('bedroom');
-        $guests_can_stay = $rq->input('guests_can_stay');
-        $private_room = $rq->input('private_room');
-        for ($i=0;$i<count($living);$i++) {
-            $Room = new Room();
-            $Room ->kind_of_room = $bedroom[$i];
-            $Room ->guest_number = $living[$i];
-            $Room ->sofa_bed_number = $guests_can_stay;
-            $Room ->bed_option = $private_room;
-            $Room ->option = 'bedrooom';
-            $Room ->apartment_id = $rq->input('room_id');
-            $Room ->save();   
-        }
-    }
-    public function storeAparrtmentLiving(Request $rq)
-    {
-        $living = $rq->input('living');
-        $bedroom = $rq->input('bedroom');
-        for ($i=0;$i<count($living);$i++) {
-            $Room = new Room();
-            $Room ->kind_of_room = $bedroom[$i];
-            $Room ->guest_number = $living[$i];
-            $Room ->option = 'living';
-            $Room ->apartment_id = $rq->input('room_id');
-            $Room ->save();   
-        }
+            $double_of_beds = $rq->input('double_of_beds');
+            $single_of_beds = $rq->input('single_of_beds');
+            $sofa_of_beds = $rq->input('sofa_of_beds');
+            $guests_can_stay = $rq->input('guests_can_stay');
+            $private_room = $rq->input('private_room');
+            for ($i=0;$i<count($rq->input('double_of_beds'));$i++) {
+                $Room = new Room();
+                $Room ->kind_of_room = $double_of_beds[$i];
+                $Room ->guest_number = $single_of_beds[$i];
+                $Room ->sofa_bed_number = $sofa_of_beds[$i];
+                $Room ->bed_option = $private_room[$i];
+                $Room ->option = $guests_can_stay[$i];
+                $Room ->apartment_id = $aparrtment->id;
+                $Room ->save();   
+            }
+            return redirect()->route('facilities');
     }
     public function delete(Request $rq)
     {
