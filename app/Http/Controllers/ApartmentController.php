@@ -90,4 +90,11 @@ class ApartmentController extends Controller
         $apartment =Apartment::limit(10)->get();
         return response()->json($apartment); 
     }
+    public function roomDelete(Request $rq)
+    {
+        $Room = Room::findOrFail($rq->input('bedroom_room'));
+        $Room->delete();
+        $Room_1 =Room::where('apartment_id',$rq->input('apartment_id'))->get();
+        return response()->json($Room_1);
+    }
 }

@@ -30,9 +30,10 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
     Route::delete('/apartments/delete', 'ApartmentController@delete')->name('apartmentsDelete');
     Route::get('/facilities', 'facilitiesController@index')->name('facilities');
     Route::post('/facilities/create', 'facilitiesController@store')->name('postFacilities');
-     Route::post('/galleries/delete', 'galleriesController@delete')->name('galleriesDelete');
+    Route::post('/galleries/delete', 'galleriesController@delete')->name('galleriesDelete');
     Route::get('/galleries', 'galleriesController@index')->name('galleries');
     Route::post('/galleries', 'galleriesController@store')->name('galleriesStore');
+    Route::post('/apartments/room/delete', 'ApartmentController@roomDelete')->name('apartmentsRoomDelete');
    
 });
 Auth::routes();
