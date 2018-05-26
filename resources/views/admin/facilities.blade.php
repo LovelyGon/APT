@@ -52,20 +52,7 @@ use DeepCopy\f003\Foo;
     
 
 	<div class="row">
-         
 		<div class="col-md-12">
-
-
-
-<!-- 			<div class="box box-solid"> -->
-<!-- 				<div class="box-header with-border"> -->
-<!-- 					<h3 class="box-title">Please add facilities to following aparments</h3> -->
-<!-- 				</div> -->
-				<!-- /.box-header -->
-<!-- 				<div class="box-body"> -->
-
-
-
 					<div class="box-group" id="accordion">
                                             @foreach($apartment as $apartments)
                                             {!! Form::open(["route" => "postFacilities"]) !!}
@@ -256,21 +243,8 @@ use DeepCopy\f003\Foo;
                                        @endforeach         
 					</div>
 					<a href="features" class="btn btn-block btn-primary btn-lg" style="margin-top:5px">Continue</a>
-				</div>
-				<!-- /.box-body -->
-<!-- 			</div> -->
-			<!-- /.box -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-	<!-- /.col -->
-
-<!-- 	<div class="row"> -->
-<!-- 		<div class="col-md-12"> -->
-<!-- 			<a href="features" class="btn btn-block btn-primary btn-lg">Continue</a> -->
-<!-- 		</div> -->
-
-<!-- 	</div> -->
-       
+				</div>   
+        </div>
 	{!! Form::close() !!}
         
 </section>
@@ -283,9 +257,7 @@ use DeepCopy\f003\Foo;
        var Entertainment_info = [];
        $(this).closest(".apartments").hide();
        var id=$(this).closest(".apartments").find(".apartments_id").val();
-       alert(id);
        $(this).closest(".apartments").find('input[name^="Entertainment_and_Family"]:checked').each(function() {
-            
             var entertainment = $(this).val();
             Entertainment_info.push(entertainment);
         });
@@ -313,12 +285,17 @@ use DeepCopy\f003\Foo;
             var Accessibility_type = $(this).val();
             Accessibility.push(Accessibility_type);
         });
+        console.log(View);
+        console.log(Entertainment_info);
+        console.log(Servcie_and_Extras);
+        console.log(Food_and_Drink);
+        console.log(Accessibility);
         var token=$("input[name='_token']").val();
         $.ajax({
             url:'/admin/facilities/create',
             type:"POST",
             datatType : 'JSON',
-            data:{"_token":token,"Entertainment_info":Entertainment_info,"Servcie_and_Extras":Servcie_and_Extras,"Food_and_Drink":Food_and_Drink,"View":View,"Accessibility":Accessibility,"id":id},
+            data:{["_token":token],["Entertainment_info":Entertainment_info,"Servcie_and_Extras":Servcie_and_Extras,"Food_and_Drink":Food_and_Drink,"View":View,"Accessibility":Accessibility,"id":id]},
         })
         .done(function(data) {
             console.log("success");

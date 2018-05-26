@@ -16,6 +16,7 @@ Route::get('admin/get_country','BasicInfoController@get_country');
 Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
     
     Route::get('/apartments/create', 'ApartmentController@createAparrtment')->name('getApartment');
+    Route::get('/policies', 'policiesController@index')->name('policies');
     Route::post('/apartments/create', 'ApartmentController@storeAparrtment')->name('postApartment');
     Route::get('/apartments/{id}/edit', 'ApartmentController@editAparrtment')->name('editApartment');
     Route::post('/apartments/{id}', 'ApartmentController@storeEditAparrtment')->name('storeEditAparrtment');

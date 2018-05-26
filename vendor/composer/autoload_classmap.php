@@ -35,6 +35,7 @@ return array(
     'App\\Http\\Controllers\\facilitiesController' => $baseDir . '/app/Http/Controllers/facilitiesController.php',
     'App\\Http\\Controllers\\featuresController' => $baseDir . '/app/Http/Controllers/featuresController.php',
     'App\\Http\\Controllers\\galleriesController' => $baseDir . '/app/Http/Controllers/galleriesController.php',
+    'App\\Http\\Controllers\\policiesController' => $baseDir . '/app/Http/Controllers/policiesController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',

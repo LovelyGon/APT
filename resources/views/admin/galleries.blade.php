@@ -129,14 +129,14 @@ use App\galleries;
                                                                                                
 												<div class="box box-solid galleries_images">
                                                                                                         <span class='zoom' id='ex1'>
-                                                                                                            <img width="200px" height="150px"
-                                                                                                                    src="/upload_images/{!! $galleries->image_name !!}" alt="..." > <img>
+                                                                                                            <img id="zoom_01" width="200px" height="150px"
+                                                                                                                    src="/upload_images/{!! $galleries->image_name !!}" alt="..." data-zoom-image="/upload_images/{!! $galleries->image_name !!}"> <img>
                                                                                                         </span>
 <input type="hidden" name="images_id" class="images_id" value="<?php echo $galleries->id; ?>"/>
 													<!-- /.box-body -->
 													<div class="box-footer">
 														<a href="" class="deleteImages"> <i class="fa fa-trash-o"></i>Delete
-														</a>&emsp; <a href=""> <i class="fa fa-rotate-left"></i>Rotate
+														</a>&emsp; <a href="" onClick="rotateImage(this.value);"> <i class="fa fa-rotate-left"  ></i>Rotate
 														</a>
 													</div>
                                                                                                 
@@ -210,11 +210,10 @@ use App\galleries;
   <script src="{{ url('/js/displayimages.js')}}"></script>
     <script src="{{ url('/js/selectize.min.js') }}"></script>
     <script src="{{ url('/js/jquery.zoom.js') }}"></script>
+    <script src="{{ url('/js/jquery.elevatezoom.js') }}" type="text/javascript"></script>
     	
     <script>
-        $(document).ready(function(){
-                $('#ex1').zoom();
-        });
+        $("#zoom_01").elevateZoom({easing : true});
         $(document).ready(function() {
             $('#subject').selectize({
                 maxItems: 5,

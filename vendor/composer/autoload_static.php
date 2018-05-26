@@ -367,6 +367,7 @@ class ComposerStaticInit0a3fc0b8316303922e3dd734bed85ac2
         'App\\Http\\Controllers\\facilitiesController' => __DIR__ . '/../..' . '/app/Http/Controllers/facilitiesController.php',
         'App\\Http\\Controllers\\featuresController' => __DIR__ . '/../..' . '/app/Http/Controllers/featuresController.php',
         'App\\Http\\Controllers\\galleriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/galleriesController.php',
+        'App\\Http\\Controllers\\policiesController' => __DIR__ . '/../..' . '/app/Http/Controllers/policiesController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
