@@ -847,9 +847,7 @@ use DeepCopy\f003\Foo;
                                                 {!! Form::close() !!}
                                        @endforeach         
 					</div>
-					
-				</div>
-            <div class="row" style="margin-bottom:10px ">
+					 <div class="row" style="margin-bottom:10px ">
         <div class="col-md-12">
             <button  type ="submit" class="btn btn-block btn-primary btn-lg"  onclick="updateapartments()" >Cập nhật thông tin khu vui chơi tòa nha</button>
         </div>
@@ -859,6 +857,8 @@ use DeepCopy\f003\Foo;
                }
             </script>                  
     </div>
+				</div>
+           
             <div class="row">
 		<div class="col-md-12">
 
